@@ -24,7 +24,10 @@
                 <a class="nav-link dropdown-toggle{{ currentRoute(
                                     route('category.create'), 
                                     route('category.index'),
-                                    route('category.edit', request()->category?: 0)
+                                    route('category.edit', request()->category?: 0),
+                                    route('product.create'), 
+                                    route('product.index'),
+                                    route('product.edit', request()->product?: 0)
                                 )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @lang('Administration')
                 </a>
@@ -34,6 +37,12 @@
                     </a>
                     <a class="dropdown-item" href="{{ route('category.index') }}">
                         <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les catégories')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('product.create') }}">
+                        <i class="fas fa-plus fa-lg"></i> @lang('Ajouter un produit')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('product.index') }}">
+                        <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les produits')
                     </a>
                 </div>
             </li>

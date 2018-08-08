@@ -19,4 +19,6 @@ Route::middleware('admin')->group(function () {
     Route::resource ('category', 'CategoryController', [
         'except' => 'show'
     ]);
+    Route::resource('product', 'ProductController');    
+
 });
