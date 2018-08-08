@@ -14,3 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::middleware('admin')->group(function () {
+    Route::resource ('category', 'CategoryController', [
+        'except' => 'show'
+    ]);
+});

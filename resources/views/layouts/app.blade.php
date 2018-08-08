@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Album') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     @yield('css')
 </head>
 <body>
@@ -16,10 +17,33 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            
+            @admin
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle{{ currentRoute(
+                                    route('category.create'), 
+                                    route('category.index'),
+                                    route('category.edit', request()->category?: 0)
+                                )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @lang('Administration')
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                    <a class="dropdown-item" href="{{ route('category.create') }}">
+                        <i class="fas fa-plus fa-lg"></i> @lang('Ajouter une catégorie')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('category.index') }}">
+                        <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les catégories')
+                    </a>
+                </div>
+            </li>
+            @endadmin
+            
+        </ul>
         <ul class="navbar-nav ml-auto">
             @guest
-                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">@lang('Connexion')</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">@lang('Inscription')</a></li>
+                <li class="nav-item{{ currentRoute(route('login')) }}"><a class="nav-link" href="{{ route('login') }}">@lang('Connexion')</a></li>
+                <li class="nav-item{{ currentRoute(route('register')) }}"><a class="nav-link" href="{{ route('register') }}">@lang('Inscription')</a></li>
             @else
                 <li class="nav-item">
                     <a id="logout" class="nav-link" href="{{ route('logout') }}">@lang('Déconnexion')</a>
@@ -31,6 +55,16 @@
         </ul>
     </div>
 </nav>
+@if (session('ok'))
+    <div class="container">
+        <div class="alert alert-dismissible alert-success fade show" role="alert">
+            {{ session('ok') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+@endif
 @yield('content')
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('script')

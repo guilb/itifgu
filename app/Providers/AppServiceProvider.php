@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::if('admin', function () {
+            return auth()->check() && auth()->user()->role === 'admin';
+        });
+
+        if(request()->server("SCRIPT_NAME") !== 'artisan') {
+            view ()->share ('categories', Category::all ());
+        }
+
     }
 
     /**
@@ -26,3 +37,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+
