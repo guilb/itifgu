@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CategorySaving' => [
             'App\Listeners\CategorySaving',
         ],
+        'App\Events\ProductSaving' => [
+            'App\Listeners\ProductSaving',
+        ],
     ];
 
 

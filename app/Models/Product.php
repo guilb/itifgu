@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ProductSaving;
+
 
 class Product extends Model
 {
@@ -14,4 +15,9 @@ class Product extends Model
 	{
 	    return $this->belongsTo(Category::class);
 	}
+
+	protected $dispatchesEvents = [
+	    'saving' => ProductSaving::class,
+	];
+
 }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Product;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
 
         if(request()->server("SCRIPT_NAME") !== 'artisan') {
             view ()->share ('categories', Category::all ());
+            view ()->share ('products', Product::all ());
         }
 
     }
