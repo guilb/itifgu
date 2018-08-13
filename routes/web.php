@@ -22,3 +22,10 @@ Route::middleware('admin')->group(function () {
     Route::resource('product', 'ProductController');    
 
 });
+
+Route::middleware('auth')->group(function () {
+    Route::resource('profile', 'UserController', [
+        'only' => ['edit', 'update'],
+        'parameters' => ['profile' => 'user']
+    ]);
+});

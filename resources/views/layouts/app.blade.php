@@ -60,6 +60,7 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
+                <li class="nav-item{{ currentRoute(route('profile.edit', auth()->id())) }}"><a class="nav-link" href="{{ route('profile.edit', auth()->id()) }}">@lang('Profil')</a></li>
             @endguest
         </ul>
     </div>
