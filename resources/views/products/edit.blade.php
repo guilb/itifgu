@@ -17,12 +17,8 @@
             <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
 
             <div class="form-group">
-                <label for="category_id">@lang('Catégorie')</label>
-                <select id="category_id" name="category_id" class="form-control">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
+                <label for="role">Catégorie</label>
+                {{ Form::select('category_id', $categories, $product->category_id, array('class' => 'form-control', 'id' => 'category_id')) }}
             </div>
             @include('partials.form-group', [
                 'title' => __('Prix'),
