@@ -82,7 +82,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $category->update($request->all());
+        $product->update($request->all());
         return redirect()->route('home')->with('ok', __('Le produit a bien été modifié'));
     }
 

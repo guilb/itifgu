@@ -21,7 +21,12 @@ class ProductRequest extends FormRequest
     {
         $id = $this->product ? ',' . $this->product->id : '';
         return $rules = [
-            'name' => 'required|string|max:255|unique:product,name' . $id,
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'delay' => 'nullable|string|max:255',
+            'price' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255',
         ];
     }
 }
+
