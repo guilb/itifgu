@@ -11,6 +11,13 @@
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             @include('partials.form-group', [
+                'title' => __('Nom'),
+                'type' => 'name',
+                'name' => 'name',
+                'required' => true,
+                'value' => $user->name,
+                ])
+            @include('partials.form-group', [
                 'title' => __('Adresse email'),
                 'type' => 'email',
                 'name' => 'email',
@@ -19,10 +26,8 @@
                 ])
             <div class="form-group">
                 <label for="role">Rôle</label>
-                <select id="role" name="role" class="form-control">
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                </select>
+                {{ $user->role }}
+                {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), $user->role, array('class' => 'form-control', 'id' => 'role')) }}
             </div>
             @component('components.button')
                 @lang('Envoyer')

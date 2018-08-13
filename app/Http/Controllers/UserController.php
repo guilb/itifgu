@@ -78,6 +78,8 @@ class UserController extends Controller
         ]);
         $user->update([
             'email' => $request->email,
+            'name' => $request->name,
+            'role' => $request->role,
         ]);
         return back()->with(['ok' => __('Le profil a bien été mis à jour')]);
     }
