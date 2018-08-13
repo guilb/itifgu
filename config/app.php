@@ -108,6 +108,10 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    //custom
+    'pagination' => 8,
+    //
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
