@@ -27,7 +27,8 @@
                                     route('category.edit', request()->category?: 0),
                                     route('product.create'), 
                                     route('product.index'),
-                                    route('product.edit', request()->product?: 0)
+                                    route('product.edit', request()->product?: 0),
+                                    route('user.index')
                                 )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @lang('Administration')
                 </a>
@@ -43,6 +44,9 @@
                     </a>
                     <a class="dropdown-item" href="{{ route('product.index') }}">
                         <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les produits')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('user.index') }}">
+                        <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les utilisateurs')
                     </a>
                 </div>
             </li>
