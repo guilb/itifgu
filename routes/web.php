@@ -20,6 +20,7 @@ Route::middleware('admin')->group(function () {
         'except' => 'show'
     ]);
     Route::resource('product', 'ProductController');    
+    Route::resource('user', 'UserController');    
 
 });
 

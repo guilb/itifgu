@@ -17,6 +17,13 @@
                 'required' => true,
                 'value' => $user->email,
                 ])
+            <div class="form-group">
+                <label for="role">Rôle</label>
+                <select id="role" name="role" class="form-control">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                </select>
+            </div>
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
