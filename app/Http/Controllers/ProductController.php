@@ -83,7 +83,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->all());
-        return redirect()->route('home')->with('ok', __('Le produit a bien été modifié'));
+        return redirect()->route('product.index')->with('ok', __('Le produit a bien été modifié'));
     }
 
     /**
