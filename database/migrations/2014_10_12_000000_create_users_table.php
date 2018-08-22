@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('parking_id')->unsigned();
+            $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('cascade');
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();
@@ -31,6 +33,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('parkings', function(Blueprint $table) {
+            $table->dropForeign('users_parking_id_foreign');
+        });
         Schema::dropIfExists('users');
     }
 }

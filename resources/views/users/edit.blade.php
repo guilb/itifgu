@@ -25,6 +25,10 @@
                 'value' => $user->email,
                 ])
             <div class="form-group">
+                <label for="role">Parking</label>
+                {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
+            </div>
+            <div class="form-group">
                 <label for="role">Rôle</label>
                 {{ $user->role }}
                 {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), $user->role, array('class' => 'form-control', 'id' => 'role')) }}

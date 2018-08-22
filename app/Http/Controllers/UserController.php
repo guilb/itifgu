@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Parking;
 
 class UserController extends Controller
 {
@@ -59,8 +60,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $this->authorize('update', $user);
+        $users = User::paginate(config('app.pagination'));
+        $parkings = Parking::pluck('name', 'id');
 
-        return view ('users.edit', compact('user'));
+        return view ('users.edit', compact('user','parkings'));
     }
 
     /**
@@ -80,6 +83,7 @@ class UserController extends Controller
             'email' => $request->email,
             'name' => $request->name,
             'role' => $request->role,
+            'parking_id' => $request->parking_id,
         ]);
         return back()->with(['ok' => __('Le profil a bien été mis à jour')]);
     }

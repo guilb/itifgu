@@ -9,11 +9,13 @@ class UsersTableSeeder extends Seeder
             'name' => 'Durand',
             'email' => 'durand@chezlui.fr',
             'role' => 'admin',
+            'parking_id' => '1',
             'password' => bcrypt('admin'),
         ]);
         User::create([
             'name' => 'Dupont',
             'email' => 'dupont@chezlui.fr',
+            'parking_id' => '1',
             'password' => bcrypt('user'),
         ]);
     }

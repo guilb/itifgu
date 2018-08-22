@@ -22,7 +22,11 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ProductSaving' => [
             'App\Listeners\ProductSaving',
         ],
+        'App\Events\ParkingSaving' => [
+        'App\Listeners\ParkingSaving',
+    ],
     ];
+
 
 
 
