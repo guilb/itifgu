@@ -19,6 +19,15 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+
+    public function parking($slug)
+    {
+        $parking = Parking::whereSlug($slug)->firstorFail();
+        $users = User::whereParking_id($parking->id)->paginate(config('app.pagination'));;
+
+        return view('users.index', compact('parking', 'users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
