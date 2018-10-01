@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
         'only' => ['edit', 'update'],
         'parameters' => ['profile' => 'user']
     ]);
+    Route::resource('order', 'OrderController');
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
 
 });
