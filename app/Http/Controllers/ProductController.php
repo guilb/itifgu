@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -14,10 +16,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products = Product::paginate(config('app.pagination'));
-        return view('products.index', compact('products'));
+
+
+
+    public function load_product(){
+        
+        $id = Input::post("id");
+        $product = Product::find($id);
+        //return $product;
+        return response()->json([
+            $product
+        ]);
     }
 
     /**

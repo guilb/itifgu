@@ -87,6 +87,47 @@
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
+
         </form>
     @endcomponent            
+@endsection
+
+@section('script')
+
+    <script>
+
+		$.ajaxSetup({
+		  headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		  }
+		});
+		$( document ).ready(function() {
+		    console.log( "ready!" );
+		});
+		$("#product_id").change(function(e) {
+			$( "#product_id" ).val();
+			console.log("eswd");
+			$.ajax({
+			    url: '/load_product/{id}',
+		            type: 'POST',
+		            data: {
+						id : $( "#product_id" ).val()
+		            },
+		                
+			    dataType: 'JSON',
+		            success: function (data) {
+
+			        console.dir(data[0].price);
+			        $( "#unit_price" ).val(data[0].price);
+					console.log("eswdddd");
+			       //test = jQuery.parseJSON( data );
+			       //console.log(e.responseText);
+		            },
+		            error: function (e) {
+		                console.log(e.responseText);
+		            }
+		        });
+		});
+
+    </script>
 @endsection

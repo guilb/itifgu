@@ -31,5 +31,6 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::resource('order', 'OrderController');
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
+    Route::post('/load_product/{id}', 'ProductController@load_product');
 
 });
