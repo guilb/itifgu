@@ -54,12 +54,31 @@
                 'name' => 'unit_price',
                 'required' => false,
                 ])   
-            @include('partials.form-group', [
-                'title' => __('Quantité'),
-                'type' => 'text',
-                'name' => 'quantity',
-                'required' => false,
-                ])
+            <div class="form-group">
+                <label for="quantity">@lang('Quantité')</label>
+                <select id="quantity" name="quantity" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                </select>
+            </div>
+        <div class="form-group">
+                <label for="status">@lang('Statut')</label>
+                <select id="status" name="status" class="form-control">
+                        <option value="open">open</option>
+                        <option value="waiting">waiting</option>
+                        <option value="validated">validated</option>
+                        <option value="ready">ready</option>
+                        <option value="closed">closed</option>
+                </select>
+            </div>
             @include('partials.form-group', [
                 'title' => __('Prix Total'),
                 'type' => 'text',
@@ -75,7 +94,7 @@
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
                 'type' => 'text',
-                'name' => 'comment',
+                'name' => 'customer_comment',
                 'required' => false,
                 ])
             @include('partials.form-group', [
@@ -118,7 +137,10 @@
 		            success: function (data) {
 
 			        console.dir(data[0].price);
-			        $( "#unit_price" ).val(data[0].price);
+			        $( "#unit_price" ).val(data[0].price_value);
+			        $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
+                    $( "#delay" ).val(data[0].delay);
+
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
 			       //console.log(e.responseText);

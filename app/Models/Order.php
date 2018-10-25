@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\OrderSaving;
 
-class ModelsOrder extends Model
+class Order extends Model
 {
+    protected $fillable = [
+        'category_id', 'product_id','parking_id', 'user_id','customer_comment','feedback','quantity','unit_price','total_price','delay','status'
+    ];
+
 	public function category()
 	{
 	    return $this->belongsTo(Category::class);

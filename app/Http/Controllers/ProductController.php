@@ -11,13 +11,27 @@ use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
+    
+
+
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $products = Product::paginate(config('app.pagination'));
+        return view('products.index', compact('products'));
+    }
 
-
+    /**
+     * Load product infos for ajax
+     *
+     * 
+     */
 
     public function load_product(){
         

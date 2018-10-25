@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use App\Models\User;
 use App\Models\Parking;
-
+use App\Models\Order;
+use App\Models\Category;
+use App\Models\Product;
+use Log;
 class OrderController extends Controller
 {
     /**
@@ -15,7 +19,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $user = \Auth::user();
+        if ( $user->role === 'admin') {
+            $orders = Order::all();
+        }
+        else
+        {
+            $orders = Order::whereUser_id($user->id)->paginate(config('app.pagination'));;
+        }
+        return view('orders.index', compact('orders'));
+
     }
 
     /**
@@ -38,7 +51,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'product_id' => 'required|exists:products,id',
+            'user_id' => 'required|exists:users,id',
+            'parking_id' => 'required|exists:parkings,id',
+            'quantity' => 'nullable|integer',
+            'unit_price' => 'nullable|numeric',
+            'float_price' => 'nullable|numeric',
+            'customer_comment' => 'nullable|string|max:255',
+            'delay' => 'nullable|string|max:255',
+        ]);
+        Order::create($request->all());
+
+        return back()->with('ok', __("La commande a bien été enregistrée"));
     }
 
     /**
@@ -58,10 +84,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        Log::alert("edition");
+
+        return view('orders.edit', compact('order'));
     }
+ 
 
     /**
      * Update the specified resource in storage.
@@ -70,19 +99,29 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(OrderRequest $request, Order $order)
+    {   
+        Log::alert("mise à jour");
+
+        $order->update($request->all());
+        return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
     }
 
+
+    public function cancel($id)
+    {
+        Order::where('id', $id)->update(array('status' => 'cancel'));
+    }
+
+    public function valid( $id)
+    {
+        Order::where('id', $id)->update(array('status' => 'valid'));
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

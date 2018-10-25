@@ -21,12 +21,19 @@
                 {{ Form::select('category_id', $categories, $product->category_id, array('class' => 'form-control', 'id' => 'category_id')) }}
             </div>
             @include('partials.form-group', [
-                'title' => __('Prix'),
+                'title' => __('Prix affiché'),
                 'type' => 'text',
-                'name' => 'price',
+                'name' => 'price_display',
                 'required' => false,
-                'value' => $product->price,
-                ])   
+                'value' => $product->price_display,
+                ])  
+            @include('partials.form-group', [
+                'title' => __('Prix réel'),
+                'type' => 'float',
+                'name' => 'price_value',
+                'required' => false,
+                'value' => $product->price_value,
+                ])  
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',

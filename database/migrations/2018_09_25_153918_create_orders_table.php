@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->float('unit_price');
             $table->float('total_price');
             $table->string('delay');
+            $table->string('status');
             $table->string('customer_comment');
             $table->string('feedback');
 

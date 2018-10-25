@@ -23,11 +23,17 @@
                 </select>
             </div>
             @include('partials.form-group', [
-                'title' => __('Prix'),
+                'title' => __('Prix affiché'),
                 'type' => 'text',
-                'name' => 'price',
+                'name' => 'price_display',
                 'required' => false,
-                ])   
+                ])  
+            @include('partials.form-group', [
+                'title' => __('Prix réel'),
+                'type' => 'float',
+                'name' => 'price_value',
+                'required' => false,
+                ])  
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
