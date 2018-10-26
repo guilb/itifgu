@@ -108,15 +108,12 @@ class OrderController extends Controller
     }
 
 
-    public function cancel($id)
+    public function update_status($id,$status)
     {
-        Order::where('id', $id)->update(array('status' => 'cancel'));
+        Order::where('id', $id)->update(array('status' => $status));
     }
 
-    public function valid( $id)
-    {
-        Order::where('id', $id)->update(array('status' => 'valid'));
-    }
+
     /**
      * Remove the specified resource from storage.
      *

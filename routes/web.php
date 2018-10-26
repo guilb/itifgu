@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
         'parameters' => ['profile' => 'user']
     ]);
     Route::resource('order', 'OrderController');
-    Route::post('/order_cancel/{id}', 'OrderController@cancel')->name('order.cancel');;
-    Route::post('/order_valid/{id}', 'OrderController@valid')->name('order.valid');;
+    Route::post('/order_status/{id}/{status}', 'OrderController@update_status')->name('order.status');;
+
 
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');
