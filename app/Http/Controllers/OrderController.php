@@ -111,6 +111,7 @@ class OrderController extends Controller
     public function update_status($id,$status)
     {
         Order::where('id', $id)->update(array('status' => $status));
+        return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
     }
 
 
