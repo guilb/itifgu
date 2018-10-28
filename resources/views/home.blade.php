@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Bienvenue sur votre interface Effia-Solutys
                 </div>
             </div>
         </div>

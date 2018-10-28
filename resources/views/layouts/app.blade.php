@@ -58,7 +58,24 @@
                 </div>
             </li>
             @endadmin
-            
+            @auth
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle{{ currentRoute(
+                                   route('order.create'), 
+                                    route('order.index')
+                                )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @lang('Menu')
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                    <a class="dropdown-item" href="{{ route('order.create') }}">
+                        <i class="fas fa-plus fa-lg"></i> @lang('Ajouter une commande')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('order.index') }}">
+                        <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les commandes')
+                    </a>
+                </div>
+            </li>
+            @endauth
         </ul>
         <ul class="navbar-nav ml-auto">
             @guest

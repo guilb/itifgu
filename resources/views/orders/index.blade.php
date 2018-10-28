@@ -12,14 +12,67 @@
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->status }}</td>
-                        <td>                            
+                        <td>{{ $order->product->name }}</td>
+                        <td>{{ $order->quantity }}</td>
+                        <td>{{ formatPrice($order->total_price) }}</td>
+                        <td>{{ Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</td>
+                        <td> 
+                            @switch($order->status)
+                                @case("created")
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Accepter la commande'),
+                                        'status' => 'accepted',
+                                        'iconclass' => 'fa-plus',
+                                    ])
 
-                            <a type="button" href="{{ route('order.status', [$order->id,'valid']) }}" class="btn btn-cancel btn-sm pull-right" data-toggle="tooltip" title="@lang('Valider la commande') {{ $order->id }}"><i class="fas fa-check fa-lg"></i></a>
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Préciser la commande'),
+                                        'status' => 'question',
+                                        'iconclass' => 'fa-info',
+                                            ])
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Annuler la commande'),
+                                        'status' => 'cancelled',
+                                        'iconclass' => 'fa-times',
+                                    ])
+                                    @break
+                                @case("accepted")
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Finaliser la commande'),
+                                        'status' => 'finished',
+                                        'iconclass' => 'fa-check',
+                                    ])                                    @break
+                                @case("cancelled")
+                                    @break
+                                @case("waiting_admin")
+                                    <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                                    @break
+                                @case("waiting_user")
+                                    <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Accepter la commande'),
+                                        'status' => 'accepted',
+                                        'iconclass' => 'fa-plus',
+                                    ])
 
-                            <a type="button" href="{{ route('order.status', [$order->id,'cancel']) }}" class="btn btn-cancel btn-sm pull-right" data-toggle="tooltip" title="@lang('Annuler la commande') {{ $order->id }}"><i class="fas fa-times fa-lg"></i></a>
-
-
-                            <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Préciser la commande'),
+                                        'status' => 'question',
+                                        'iconclass' => 'fa-info',
+                                            ])
+                                    @include('partials.action-icon-order', [
+                                        'tooltip' => __('Annuler la commande'),
+                                        'status' => 'cancelled',
+                                        'iconclass' => 'fa-times',
+                                    ])
+                                    @break
+                                @case("finished")
+                                    @break
+                                @case("billed")
+                                    @break
+                                @default
+                                    <span>Il y a un problème</span>
+                            @endswitch
                         </td>
                     </tr>
                 @endforeach
@@ -38,7 +91,7 @@
                 let that = $(this)
                 e.preventDefault()
                 swal({
-                    title: '@lang('Vraiment supprimer cette commande ?')',
+                    title: '@lang('Vraiment modifier cette commande ?')',
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#DD6B55',
@@ -67,7 +120,7 @@
                 let that = $(this)
                 e.preventDefault()
                 swal({
-                    title: '@lang('Vraiment valider cette commande ?')',
+                    title: '@lang('Vraiment modifier le statut cette commande ?')',
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#DD6B55',
@@ -80,6 +133,11 @@
                         type: 'POST'
                     })
                         .done(function () {
+                            alert("test");
+                            console.log(that);
+                            that.removeClass( "btn-cancel" ).addClass( "btn-success" );
+                            console.log(that);
+
                             //that.parents('tr').remove()
                         })
                         .fail(function () {

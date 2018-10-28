@@ -12,7 +12,7 @@
 
             <div class="form-group">
                 @include('partials.form-group', [
-                    'title' => __('Category'),
+                    'title' => __('Categorie'),
                     'type' => 'text',
                     'name' => 'category_id',
                     'value' => $order->category->id,
