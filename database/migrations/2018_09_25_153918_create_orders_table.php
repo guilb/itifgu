@@ -31,6 +31,8 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->string('customer_comment');
             $table->string('feedback');
+            $table->integer('invoice_id')->unsigned()->nullable();
+            $table->foreign('invoice_id')->references('id')->on('invoices');
 
         });
     }

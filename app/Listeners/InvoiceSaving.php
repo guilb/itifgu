@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\InvoiceSaving as EventInvoiceSaving;
+use App\Events\OrderSaving as EventOrderSaving;
 
 
 class InvoiceSaving

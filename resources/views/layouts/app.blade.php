@@ -28,6 +28,7 @@
                                     route('product.create'), 
                                     route('product.index'),                                    route('order.create'), 
                                     route('order.index'),
+                                    route('invoice.index'),
                                     route('product.edit', request()->product?: 0),
                                     route('user.index')
                                 )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,6 +46,9 @@
                     </a>
                     <a class="dropdown-item" href="{{ route('order.index') }}">
                         <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les commandes')
+                    </a>
+                    <a class="dropdown-item" href="{{ route('invoice.index') }}">
+                        <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les factures')
                     </a>
                     <a class="dropdown-item" href="{{ route('product.create') }}">
                         <i class="fas fa-plus fa-lg"></i> @lang('Ajouter un produit')

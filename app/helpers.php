@@ -26,3 +26,58 @@ if (!function_exists('formatPrice')) {
         return $price;
     }
 }
+
+
+if (!function_exists('classButtonStatus')) {
+
+    function classButtonStatus($order_status,$button_status)
+    {
+        switch ([$order_status, $button_status]) {
+            case ['created', 'finished']:
+            case ['created', 'validated']:
+
+            case ['waiting', 'accepted']:
+            #case ['waiting', 'cancelled']:
+            case ['waiting', 'finished']:
+            case ['waiting', 'waiting']:
+            #case ['waiting', 'validated']:
+
+            #case ['accepted', 'created']:
+            case ['accepted', 'accepted']:
+            case ['accepted', 'cancelled']:
+            case ['accepted', 'waiting']:
+            case ['accepted', 'validated']:
+
+            case ['validated', 'cancelled']:
+            case ['validated', 'accepted']:
+            #case ['validated', 'finished']:
+            case ['validated', 'waiting']:
+            case ['validated', 'validated']:
+
+            case ['cancelled', 'cancelled']:
+            case ['cancelled', 'accepted']:
+            case ['cancelled', 'finished']:
+            case ['cancelled', 'waiting']:
+            case ['cancelled', 'validated']:
+
+            case ['finished', 'accepted']:
+            case ['finished', 'cancelled']:
+            case ['finished', 'finished']:
+            case ['finished', 'waiting']:
+            case ['finished', 'validated']:
+
+            case ['billed', 'accepted']:
+            case ['billed', 'cancelled']:
+            case ['billed', 'finished']:
+            case ['billed', 'waiting']:
+            case ['billed', 'validated']:
+
+                $status = "btn-success disable-me";
+            break;
+            default:
+                $status = "";
+        }
+
+        return $status;
+    }
+}

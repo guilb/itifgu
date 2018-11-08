@@ -13,7 +13,7 @@
             <div class="form-group">
                 @include('partials.form-group', [
                     'title' => __('Categorie'),
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'name' => 'category_id',
                     'value' => $order->category->id,
                     'required' => true,
@@ -24,7 +24,7 @@
             <div class="form-group">
                 @include('partials.form-group', [
                     'title' => __('Produit'),
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'name' => 'product_id',
                     'value' => $order->product->id,
                     'required' => true,
@@ -35,7 +35,7 @@
             <div class="form-group">
                 @include('partials.form-group', [
                     'title' => __('Parking'),
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'name' => 'parking_id',
                     'value' => $order->parking->id,
                     'required' => true,
@@ -46,7 +46,7 @@
             <div class="form-group">
                 @include('partials.form-group', [
                     'title' => __('Client'),
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'name' => 'user_id',
                     'value' => $order->user->id,
                     'required' => true,
@@ -56,26 +56,22 @@
             </div>
             @include('partials.form-group', [
                 'title' => __('Prix Unitaire'),
-                'type' => 'text',
+                'type' => 'hidden',
                 'name' => 'unit_price',
                 'required' => false,
                 'value' => $order->unit_price,
-                ])   
-            <div class="form-group">
-                <label for="quantity">@lang('Quantité')</label>
-                <select id="quantity" name="quantity" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                </select>
-            </div>
+                ])  
+                {{ $order->unit_price }}
+
+            @include('partials.form-group', [
+                'title' => __('Quantité'),
+                'type' => 'hidden',
+                'name' => 'quantity',
+                'required' => false,
+                'value' => $order->quantity,
+                ])  
+                {{ $order->quantity }}
+
             @include('partials.form-group', [
                 'title' => __('Prix Total'),
                 'type' => 'text',
@@ -98,12 +94,12 @@
                 'value' => $order->customer_comment,
                 ])
             @include('partials.form-group', [
-                'title' => __('Feedback (optionnel)'),
+                'title' => __('Statut'),
                 'type' => 'text',
-                'name' => 'feedback',
+                'name' => 'status',
                 'required' => false,
-                'value' => $order->feedback,
-                ])   
+                'value' => 'waiting',
+                ])
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent

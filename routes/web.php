@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('order', 'OrderController');
     Route::post('/order_status/{id}/{status}', 'OrderController@update_status')->name('order.status');;
 
+    Route::resource('invoice', 'InvoiceController');
 
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');

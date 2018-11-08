@@ -47,7 +47,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'validated',
+            'status' => 'accepted',
             'customer_comment' => '',
             'feedback' => '',
         ]);
