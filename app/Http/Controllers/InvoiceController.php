@@ -71,11 +71,11 @@ class InvoiceController extends Controller
                         ->customer([
                             'name'      => $user->name,
                             'id'        => $user->id,
-                            'phone'     => '03 ** ** ** **',
-                            'location'  => 'Adresse',
-                            'zip'       => '00000',
-                            'city'      => 'Ville',
-                            'country'   => 'Pays',
+                            'phone'     => $user->phone,
+                            'location'  => $user->address,
+                            'zip'       => $user->zipcode,
+                            'city'      => $user->city,
+                            'country'   => $user->country,
                         ]);
 
         foreach($orders as $order){ 
@@ -102,17 +102,17 @@ class InvoiceController extends Controller
 
         #creation du PDF
         $invoice_pdf = \ConsoleTVs\Invoices\Classes\Invoice::make()
-                        ->number(4021)
+                        ->number($invoice->number)
                         ->tax(20)
                         ->notes('Affichage ici des conditions de paiement')
                         ->customer([
                             'name'      => $invoice->user->name,
                             'id'        => $invoice->user->id,
-                            'phone'     => '03 ** ** ** **',
-                            'location'  => 'Adresse',
-                            'zip'       => '00000',
-                            'city'      => 'Ville',
-                            'country'   => 'Pays',
+                            'phone'     => $invoice->user->phone,
+                            'location'  => $invoice->user->address,
+                            'zip'       => $invoice->user->zipcode,
+                            'city'      => $invoice->user->city,
+                            'country'   => $invoice->user->country,
                         ]);
 
         foreach($orders as $order){ 

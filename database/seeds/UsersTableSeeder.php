@@ -11,78 +11,143 @@ class UsersTableSeeder extends Seeder
             'role' => 'admin',
             'parking_id' => '1',
             'password' => bcrypt('admin'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Jean Dupont',
             'email' => 'dupont@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Paul Ince',
             'email' => 'ince@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Pierre Smith',
             'email' => 'smith@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Paul Licata',
             'email' => 'licata@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Jacques Vandaele',
             'email' => 'vandael@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Jean Lars',
             'email' => 'lars@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Pierre Louguet',
             'email' => 'louguet@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Paul Cornet',
             'email' => 'cornet@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Pierre Bal',
             'email' => 'bal@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Paul Casper',
             'email' => 'casper@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Jacques Bulle',
             'email' => 'bulle@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
         User::create([
             'name' => 'Jean Bichet',
             'email' => 'bichet@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
         ]);
     }
 }

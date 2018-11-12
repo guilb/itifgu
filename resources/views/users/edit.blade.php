@@ -24,6 +24,41 @@
                 'required' => true,
                 'value' => $user->email,
                 ])
+            @include('partials.form-group', [
+                'title' => __('Adresse postale'),
+                'type' => 'address',
+                'name' => 'address',
+                'required' => true,
+                'value' => $user->address,
+                ])
+            @include('partials.form-group', [
+                'title' => __('Code Postal'),
+                'type' => 'zipcode',
+                'name' => 'zipcode',
+                'required' => true,
+                'value' => $user->zipcode,
+                ])
+            @include('partials.form-group', [
+                'title' => __('Ville'),
+                'type' => 'city',
+                'name' => 'city',
+                'required' => true,
+                'value' => $user->city,
+                ])
+            @include('partials.form-group', [
+                'title' => __('Pays'),
+                'type' => 'country',
+                'name' => 'country',
+                'required' => true,
+                'value' => $user->country,
+                ])
+            @include('partials.form-group', [
+                'title' => __('Téléphone'),
+                'type' => 'phone',
+                'name' => 'phone',
+                'required' => true,
+                'value' => $user->phone,
+                ])
             <div class="form-group">
                 <label for="role">Parking</label>
                 {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}

@@ -93,6 +93,11 @@ class UserController extends Controller
             'name' => $request->name,
             'role' => $request->role,
             'parking_id' => $request->parking_id,
+            'address' => $request->address,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city,
+            'country' => $request->country,
+            'phone' => $request->phone,
         ]);
         return back()->with(['ok' => __('Le profil a bien été mis à jour')]);
     }

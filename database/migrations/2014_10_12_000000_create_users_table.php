@@ -18,6 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+
+            $table->string('address');
+            $table->string('zipcode');
+            $table->string('city');
+            $table->string('country');
+            $table->string('phone');
+
+
             $table->integer('parking_id')->unsigned();
             $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('cascade');
             $table->enum('role', ['user', 'admin'])->default('user');
