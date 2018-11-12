@@ -4,8 +4,8 @@
         @slot('title')
             @lang('Gestion des factures')
         @endslot
-        
-        <table class="table table-dark">
+
+        <table class="table table-light">
             <tbody>
                 @foreach($invoices as $invoice)
                     <tr>
@@ -20,5 +20,5 @@
         <div class="d-flex justify-content-center">
             {{ $invoices->links() }}
         </div>
-    @endcomponent            
+    @endcomponent
 @endsection

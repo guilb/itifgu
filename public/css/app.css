@@ -18,7 +18,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #f39325;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -2503,7 +2503,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
+  background-color: #f39325;
   border-color: #007bff;
 }
 
@@ -6145,7 +6145,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #1b374c !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -8973,19 +8973,90 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
 body {
-    background-color: #343a40;
-    padding-top: 70px;
+    background-color: #f5f5f6;
+    padding-top: 100px;
+}
+
+h1 {
+  color: #404040;
+}
+
+h4 {
+  line-height: 1.5;
+}
+
+button, .btn {
+  -webkit-appearance: none !important;
+}
+
+.btn-primary {
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  color: #000;
+  background-color: #f39325;
+  border: 1px solid transparent;
+}
+
+.btn-primary span {
+  float: right;
 }
 
 .card {
-    border: 4px solid rgba(255, 242, 242, .3);
-    border-radius: .5rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 .disable-me {
     pointer-events: none;
 }
+
+/***** HEADER *****/
+
+.navbar {
+  height: 80px;
+  border-bottom: 4px solid #f39325;
+}
+
+.main-brand {
+  position: absolute;
+  top: -5px;
+  width: 9.5em;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #fff;
+}
+
+.main-brand a {
+  padding: 1em;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.logo {
+    display: block;
+    position: relative;
+    width: 9em;
+    height: 2.2em;
+    margin: 0 auto;
+    background-image: url("/img/effia-logo.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main-nav {
+  padding-left: 17em;
+}
+
 body.swal2-shown {
   overflow-y: hidden; }
 
