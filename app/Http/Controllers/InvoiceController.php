@@ -9,6 +9,8 @@ use App\Models\Invoice;
 use App\Models\User;
 use App\Models\Order;
 use Carbon\Carbon;
+#use ConsoleTVs\Invoices\Classes\Invoice;
+
 use Log;
 
 
@@ -50,30 +52,74 @@ class InvoiceController extends Controller
      */
     public function store($user_id)
     {
-        #$request->number = "88";
-        #$request->user_id = "1";
-        #$request->parking_id = "1";
+
         $user = User::find($user_id);
 
-        Order::where('user_id', $user->id)->where('status', 'finished')->update(array('status' => "billed"));
+        #creation de l'INVOICE
+        $invoice = Invoice::create(['number' => $user->id.'000000','user_id' => $user->id,'parking_id' => $user->parking->id,'date' => Carbon::now()]);
+        #selection des lignes des commandes
+        $orders = Order::all()->where('user_id', $user_id)->where('status', 'finished');
 
 
-        Invoice::create(['number' => '1','user_id' => $user->id,'parking_id' => $user->parking->id,'date' => Carbon::now()]);
+        Order::where('user_id', $user->id)->where('status', 'finished')->update(array('status' => "billed",'invoice_id' => $invoice->id));
 
+        #creation du PDF
+        $invoice_pdf = \ConsoleTVs\Invoices\Classes\Invoice::make()
+                        ->number(4021)
+                        ->tax(20)
+                        ->notes('Affichage ici des conditions de paiement')
+                        ->customer([
+                            'name'      => $user->name,
+                            'id'        => $user->id,
+                            'phone'     => '03 ** ** ** **',
+                            'location'  => 'Adresse',
+                            'zip'       => '00000',
+                            'city'      => 'Ville',
+                            'country'   => 'Pays',
+                        ]);
 
+        foreach($orders as $order){ 
+             $invoice_pdf->addItem($order->product->name, $order->unit_price, $order->quantity, 1526);
+         }
+
+        $invoice_pdf->save('/public/facture_'.$invoice->number.'.pdf');
 
         return back()->with('ok', __("La facture a bien été créée"));
+
+        #return back()->with('ok', __("La facture a bien été créée"));
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsemyinvoicename
      */
-    public function show($id)
+    public function show($invoice_id)
     {
-        //
+        $invoice = Invoice::find($invoice_id);
+        $orders = Order::all()->where('invoice_id', $invoice_id);
+
+        #creation du PDF
+        $invoice_pdf = \ConsoleTVs\Invoices\Classes\Invoice::make()
+                        ->number(4021)
+                        ->tax(20)
+                        ->notes('Affichage ici des conditions de paiement')
+                        ->customer([
+                            'name'      => $invoice->user->name,
+                            'id'        => $invoice->user->id,
+                            'phone'     => '03 ** ** ** **',
+                            'location'  => 'Adresse',
+                            'zip'       => '00000',
+                            'city'      => 'Ville',
+                            'country'   => 'Pays',
+                        ]);
+
+        foreach($orders as $order){ 
+             $invoice_pdf->addItem($order->product->name, $order->unit_price, $order->quantity, 1526);
+         }
+
+        $invoice_pdf->download('test.php');
     }
 
     /**
