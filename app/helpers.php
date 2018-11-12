@@ -28,6 +28,15 @@ if (!function_exists('formatPrice')) {
 }
 
 
+if (!function_exists('finishedOrders')) {
+
+    function finishedOrders($user)
+    {
+        // Do your necessary logic
+        return $user->orders->where('status', '=', 'finished')->count();
+    }
+}
+
 if (!function_exists('classButtonStatus')) {
 
     function classButtonStatus($order_status,$button_status)

@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Models\Invoice;
-
+use App\Models\User;
+use App\Models\Order;
+use Carbon\Carbon;
+use Log;
 
 
 class InvoiceController extends Controller
@@ -18,6 +21,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+
         $user = \Auth::user();
         if ( $user->role === 'admin') {
             $invoices = Invoice::paginate(config('app.pagination'));
@@ -44,9 +48,21 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($user_id)
     {
-        //
+        #$request->number = "88";
+        #$request->user_id = "1";
+        #$request->parking_id = "1";
+        $user = User::find($user_id);
+
+        Order::where('user_id', $user->id)->where('status', 'finished')->update(array('status' => "billed"));
+
+
+        Invoice::create(['number' => '1','user_id' => $user->id,'parking_id' => $user->parking->id,'date' => Carbon::now()]);
+
+
+
+        return back()->with('ok', __("La facture a bien été créée"));
     }
 
     /**
@@ -93,4 +109,9 @@ class InvoiceController extends Controller
     {
         //
     }
+
+
+
+
+
 }

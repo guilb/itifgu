@@ -19,6 +19,7 @@ class User extends Authenticatable
     ];
 
 
+
     public function parking()
     {
         return $this->belongsTo(Parking::class);
@@ -28,6 +29,8 @@ class User extends Authenticatable
     {
         return $this->hasMany (Order::class);
     }
+
+
 
     /**
      * The attributes that should be hidden for arrays.

@@ -6,7 +6,9 @@ use App\Events\InvoiceSaving;
 
 class Invoice extends Model
 {
-
+    protected $fillable = [
+        'user_id', 'parking_id','number', 'date'
+    ];
 
 	public function orders()
 	{
@@ -17,6 +19,7 @@ class Invoice extends Model
 	{
 	    return $this->belongsTo(User::class);
 	}
+
 
 
 	public function parking()

@@ -14,6 +14,15 @@
                         <td>                            
                             <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm pull-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>
                             <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
+                            </a>
+                        <td> {{ finishedOrders($user) }}
+                            Commandes à facturer
+                        </td>
+                        <td>
+                        @if (finishedOrders($user) != "0")
+                            <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
+                        @endif
+
                         </td>
                     </tr>
                 @endforeach

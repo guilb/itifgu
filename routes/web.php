@@ -21,6 +21,7 @@ Route::middleware('admin')->group(function () {
     ]);
     Route::resource('product', 'ProductController');    
     Route::resource('user', 'UserController');    
+    Route::get('/create_invoice/{id}', 'InvoiceController@store')->name('invoice.store'); ;
 
 });
 
@@ -30,10 +31,11 @@ Route::middleware('auth')->group(function () {
         'parameters' => ['profile' => 'user']
     ]);
     Route::resource('order', 'OrderController');
-    Route::post('/order_status/{id}/{status}', 'OrderController@update_status')->name('order.status');;
+    Route::post('/order_status/{id}/{status}', 'OrderController@update_status')->name('order.status');
 
-    Route::resource('invoice', 'InvoiceController');
-
+    Route::resource('invoice', 'InvoiceController', [
+        'except' => 'store'
+    ]);
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');
 
