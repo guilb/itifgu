@@ -3,9 +3,12 @@
     @component('components.card')
         @slot('title')
             @lang('Gestion des commandes')
+            <a class="btn btn-primary pull-right" href="{{ route('order.create') }}">
+              <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
+            </a>
         @endslot
-        
-        <table class="table table-dark">
+
+        <table class="table table-light">
             <tbody>
                 @foreach($orders as $order)
                     <tr>
@@ -16,7 +19,7 @@
                         <td>{{ $order->quantity }}</td>
                         <td>{{ formatPrice($order->total_price) }}</td>
                         <td>{{ Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</td>
-                        <td> 
+                        <td>
                             @admin
                             @include('partials.action-icon-order', [
                                 'tooltip' => __('Accepter la commande'),
@@ -43,7 +46,7 @@
                                 'status' => 'finished',
                                 'iconclass' => 'fa-check',
                                 'btnsuccess' => classButtonStatus($order->status,"finished")
-                            ]) 
+                            ])
                             @endadmin
                             @admin
                             <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting') }}btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
@@ -52,7 +55,7 @@
                 @endforeach
             </tbody>
         </table>
-    @endcomponent            
+    @endcomponent
 @endsection
 @section('script')
     <script>
@@ -76,7 +79,7 @@
                     cancelButtonText: '@lang('Non')'
                 }).then(function () {
                     $('[data-toggle="tooltip"]').tooltip('hide')
-                    $.ajax({                        
+                    $.ajax({
                         url: that.attr('href'),
                         type: 'POST'
                     })
@@ -88,29 +91,29 @@
                             all_buttons = that.parents('tr').children('td').slice(7,8)
                             all_buttons.children('.btn-sm').removeClass( "" ).addClass( "btn-success disable-me" );
 
-                            switch (new_status) { 
-                                case 'accepted': 
+                            switch (new_status) {
+                                case 'accepted':
                                     alert('accepted');
                                     all_buttons.children('.btn-finished').removeClass( "btn-success disable-me" ).addClass( "" );
                                     break;
-                                case 'validated': 
+                                case 'validated':
                                     alert('validated');
                                     break;
-                                case 'cancelled': 
+                                case 'cancelled':
                                     alert('cancelled');
                                     break;
-                                case 'finished': 
+                                case 'finished':
                                     alert('finished');
 
-                                    break;      
-                                case 'question': 
+                                    break;
+                                case 'question':
                                     alert('question');
                                     break;
                                 default:
                                     alert('problème');
                             }
 
-                            
+
                         })
                         .fail(function () {
                             swal({
@@ -124,4 +127,3 @@
         })
     </script>
 @endsection
-

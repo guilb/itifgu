@@ -4,14 +4,14 @@
         @slot('title')
             @lang('Gestion des Users')
         @endslot
-        
-        <table class="table table-dark">
+
+        <table class="table table-light">
             <tbody>
                 @foreach($users as $user)
                     <tr>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        <td>                            
+                        <td>
                             <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm pull-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>
                             <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
                             </a>
@@ -31,7 +31,7 @@
         <div class="d-flex justify-content-center">
             {{ $users->links() }}
         </div>
-    @endcomponent            
+    @endcomponent
 @endsection
 @section('script')
     <script>
@@ -52,7 +52,7 @@
                     cancelButtonText: '@lang('Non')'
                 }).then(function () {
                     $('[data-toggle="tooltip"]').tooltip('hide')
-                    $.ajax({                        
+                    $.ajax({
                         url: that.attr('href'),
                         type: 'DELETE'
                     })

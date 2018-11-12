@@ -1,4 +1,4 @@
-<div class="card text-white bg-dark mb-3">
+<div class="card yauto">
     <h4 class="card-header">
         {{ $title }}
     </h4>
