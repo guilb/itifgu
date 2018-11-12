@@ -27,6 +27,42 @@ if (!function_exists('formatPrice')) {
     }
 }
 
+if (!function_exists('displayStatus')) {
+
+    /**
+     * Format integer to a price
+     *
+     * @param integer $price
+     *
+     * @return string
+     */
+    function displayStatus($status)
+    {
+        // Do your necessary logic
+
+        switch ($status) {
+            case 'created':
+                $status = "Créée";
+            break;
+            case 'cancelled':
+                $status = "Annulée";
+            break;
+            case 'accepted':
+                $status = "Acceptée";
+            break;
+            case 'finished':
+                $status = "Terminée";
+            break;
+            case 'billed':
+                $status = "Facturée";
+            break;
+            case 'waiting':
+                $status = "En attente";
+            break;
+      }
+        return $status;
+    }
+}
 
 if (!function_exists('finishedOrders')) {
 

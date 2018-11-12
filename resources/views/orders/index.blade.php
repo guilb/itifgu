@@ -14,7 +14,7 @@
                     <tr>
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->user->name }}</td>
-                        <td class="statut">{{ $order->status }}</td>
+                        <td class="statut"><?php echo e(displayStatus($order->status)); ?></td>
                         <td>{{ $order->product->name }}</td>
                         <td>{{ $order->quantity }}</td>
                         <td>{{ formatPrice($order->total_price) }}</td>
