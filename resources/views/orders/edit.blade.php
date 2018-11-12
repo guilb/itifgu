@@ -85,14 +85,18 @@
                 'name' => 'delay',
                 'required' => false,
                 'value' => $order->delay,
-                ])   
+                ])  
+            <div class="form-group">
+                Commentaire : {{ $order->customer_comment }}
+            </div>
             @include('partials.form-group', [
-                'title' => __('Commentaire (optionnel)'),
+                'title' => __('Feedback (optionnel)'),
                 'type' => 'text',
-                'name' => 'customer_comment',
+                'name' => 'feedback',
                 'required' => false,
-                'value' => $order->customer_comment,
+                'value' => $order->feedback,
                 ])
+
             @include('partials.form-group', [
                 'title' => __('Statut'),
                 'type' => 'text',

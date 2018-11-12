@@ -6,12 +6,7 @@
         @endslot
         <form method="POST" action="{{ route('order.store') }}" >
             {{ csrf_field() }}
-            @include('partials.form-group', [
-                'title' => __('Nom'),
-                'type' => 'text',
-                'name' => 'name',
-                'required' => false,
-                ])   
+ 
             <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
 
             <div class="form-group">
@@ -69,16 +64,13 @@
                         <option value="10">10</option>
                 </select>
             </div>
-        <div class="form-group">
-                <label for="status">@lang('Statut')</label>
-                <select id="status" name="status" class="form-control">
-                        <option value="open">open</option>
-                        <option value="waiting">waiting</option>
-                        <option value="validated">validated</option>
-                        <option value="ready">ready</option>
-                        <option value="closed">closed</option>
-                </select>
-            </div>
+            @include('partials.form-group', [
+                'title' => __('Statut'),
+                'type' => 'hidden',
+                'name' => 'status',
+                'value' => 'created',
+                'required' => true,
+                ])  
             @include('partials.form-group', [
                 'title' => __('Prix Total'),
                 'type' => 'text',
@@ -97,12 +89,6 @@
                 'name' => 'customer_comment',
                 'required' => false,
                 ])
-            @include('partials.form-group', [
-                'title' => __('Feedback (optionnel)'),
-                'type' => 'text',
-                'name' => 'feedback',
-                'required' => false,
-                ])   
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent

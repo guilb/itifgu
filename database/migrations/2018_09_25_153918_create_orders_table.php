@@ -29,8 +29,8 @@ class CreateOrdersTable extends Migration
             $table->float('total_price');
             $table->string('delay');
             $table->string('status');
-            $table->string('customer_comment');
-            $table->string('feedback');
+            $table->string('customer_comment')->default("");
+            $table->string('feedback')->default("");
             $table->integer('invoice_id')->unsigned()->nullable();
             $table->foreign('invoice_id')->references('id')->on('invoices');
 

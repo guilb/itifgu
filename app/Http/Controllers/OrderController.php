@@ -86,7 +86,6 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        Log::alert("edition");
 
         return view('orders.edit', compact('order'));
     }
@@ -101,7 +100,6 @@ class OrderController extends Controller
      */
     public function update(OrderRequest $request, Order $order)
     {   
-        Log::alert("mise à jour");
 
         $order->update($request->all());
         return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
