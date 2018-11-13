@@ -108,7 +108,31 @@
                     })
                         .done(function () {
                             //update status label
-                            that.parent('div').parent('div').children('#status').children('#label-status').html(new_status);
+                            switch (new_status) {
+                                case 'created':
+                                    display_status = "Créée";
+                                break;
+                                case 'cancelled':
+                                    display_status = "Annulée";
+                                break;
+                                case 'accepted':
+                                    display_status = "Acceptée";
+                                break;
+                                case 'finished':
+                                    display_status = "Terminée";
+                                break;
+                                case 'validated':
+                                    display_status = "Validée";
+                                break;
+                                case 'billed':
+                                    display_status = "Facturée";
+                                break;
+                                case 'waiting':
+                                    display_status = "En attente";
+                                break;
+                            }
+
+                            that.parent('div').parent('div').children('#status').children('#label-status').html(display_status);
 ;
 
                             //that.parent('div').parent('div').children('#buttons').children('a').addClass( "disable-me" );
@@ -117,11 +141,11 @@
                             switch (new_status) {
                                 case 'accepted':
                                     alert('accepted');
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished' > "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled' >  "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted' >  "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting' >  "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated' >  "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
                                     break;
                                 case 'validated':
                                     alert('validated');
