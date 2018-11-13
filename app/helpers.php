@@ -53,6 +53,9 @@ if (!function_exists('displayStatus')) {
             case 'finished':
                 $status = "Terminée";
             break;
+            case 'validated':
+                $status = "Validée";
+            break;
             case 'billed':
                 $status = "Facturée";
             break;

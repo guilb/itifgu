@@ -24,13 +24,13 @@
             <div class="clearfix div-row row">
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">N° : </span>{{ $order->id }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $order->user->name }}</div>
-              <div class="statut col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Statut : </span><?php echo e(displayStatus($order->status)); ?></div>
+              <div class="statut col-sm-1" id="status"><span class="d-xs-block d-sm-block d-md-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Produit : </span>{{ $order->product->name }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Quantité : </span>{{ $order->quantity }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
               <div class="d-xs-block d-sm-block d-md-none mt-4"></div>
-              <div class="col-xs-12 col-md-3">
+              <div class="col-xs-12 col-md-3" id="buttons">
                 @admin
                 @include('partials.action-icon-order', [
                   'tooltip' => __('Accepter la commande'),
@@ -64,7 +64,7 @@
                             ])
                             @endadmin
                             @admin
-                            <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting') }} btn-sm btn-warning pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                            <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting') }} btn-sm btn-waiting btn-warning pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
                             @endadmin
                           </div>
                           <div class="clearfix div-comment">
@@ -108,29 +108,44 @@
                     })
                         .done(function () {
                             //update status label
-                            that.parents('tr').children('td').slice(2,3).html(new_status);
+                            that.parent('div').parent('div').children('#status').children('#label-status').html(new_status);
 ;
-                            console.log(that);
-                            all_buttons = that.parents('tr').children('td').slice(7,8)
-                            all_buttons.children('.btn-sm').removeClass( "" ).addClass( "disable-me" );
+
+                            //that.parent('div').parent('div').children('#buttons').children('a').addClass( "disable-me" );
+    
 
                             switch (new_status) {
                                 case 'accepted':
                                     alert('accepted');
-                                    all_buttons.children('.btn-finished').removeClass( "btn-success disable-me" ).addClass( "" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
                                     break;
                                 case 'validated':
                                     alert('validated');
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );  
                                     break;
                                 case 'cancelled':
                                     alert('cancelled');
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
                                     break;
                                 case 'finished':
                                     alert('finished');
-
-                                    break;
-                                case 'question':
-                                    alert('question');
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
                                     break;
                                 default:
                                     alert('problème');
