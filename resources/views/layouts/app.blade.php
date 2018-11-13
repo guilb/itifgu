@@ -27,10 +27,10 @@
           <ul class="navbar-nav mr-auto">
             @admin
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('order.index') }}"> @lang('Commandes')</a>
+              <a class="nav-link" href="{{ route('order.index') }}">@lang('Commandes')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('invoice.index') }}"> @lang('Factures')</a>
+              <a class="nav-link" href="{{ route('invoice.index') }}">@lang('Factures')</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('user.index') }}">@lang('Utilisateurs')</a>
@@ -47,16 +47,12 @@
                 route('invoice.index'),
                 route('product.edit', request()->product?: 0),
                 route('user.index')
-                )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                )}}" href="#" id="navbarDropdownGestCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i>
                 @lang('Administration')
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
-                <a class="dropdown-item" href="{{ route('category.index') }}">
-                  <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les catégories')
-                </a>
-                <a class="dropdown-item" href="{{ route('product.index') }}">
-                  <i class="fas fa-wrench fa-lg"></i> @lang('Gérer les produits')
-                </a>
+                <a class="dropdown-item" href="{{ route('category.index') }}">@lang('Gérer les catégories')</a>
+                <a class="dropdown-item" href="{{ route('product.index') }}">@lang('Gérer les produits')</a>
               </div>
             </li>
             @else
@@ -81,7 +77,7 @@
             <li class="nav-item{{ currentRoute(route('login')) }}"><a class="nav-link" href="{{ route('login') }}">@lang('Connexion')</a></li>
             <li class="nav-item{{ currentRoute(route('register')) }}"><a class="nav-link" href="{{ route('register') }}">@lang('Inscription')</a></li>
             @else
-            <li class="nav-item{{ currentRoute(route('profile.edit', auth()->id())) }}"><a class="nav-link" href="{{ route('profile.edit', auth()->id()) }}">@lang('Profil')</a></li>
+            <li class="nav-item{{ currentRoute(route('profile.edit', auth()->id())) }}"><a class="nav-link" href="{{ route('profile.edit', auth()->id()) }}">@lang('Mon compte')</a></li>
             <li class="nav-item">
               <a id="logout" class="nav-link" href="{{ route('logout') }}">@lang('Déconnexion')</a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">

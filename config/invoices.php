@@ -87,7 +87,7 @@ return [
       'location'    => 'Main Street 1st',
       'zip'         => '08241',
       'city'        => 'Barcelona',
-      'country'     => 'Spain',
+      'country'     => 'France',
   ],
 
   /*

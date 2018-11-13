@@ -8987,17 +8987,37 @@ h4 {
   line-height: 1.5;
 }
 
+.alert {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.bg-dark {
+  background-color: #87868b !important;
+}
+
 button, .btn {
   -webkit-appearance: none !important;
 }
 
 .btn-primary {
+  background-color: #aacc61;
   border: 1px solid transparent;
 }
 
 .btn-primary:hover {
   color: #000;
-  background-color: #f39325;
+  background-color: #aacc61;
+  border: 1px solid transparent;
+}
+
+.btn-accepted {
+  background-color: #aacc61;
+  border: 1px solid transparent;
+}
+
+.btn-accepted:hover {
+  background-color: #aacc61;
   border: 1px solid transparent;
 }
 
@@ -9005,11 +9025,37 @@ button, .btn {
   float: right;
 }
 
+.disable-me {
+  background-color: #f1f1f1 !important;
+  border: 1px solid transparent;
+  color: #fff !important;
+}
+
 .card {
   margin-top: 1rem;
   background-color: #fff;
   border-radius: 0;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.table-div-container {
+  font-size: 0.8em;
+  margin-bottom: 1rem;
+}
+
+.table-div-container .div-row {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-div-container .div-row.header {
+  font-weight: 800;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-div-container .div-row .div-comment {
+  margin-top: 10px;
 }
 
 .disable-me {
@@ -9020,16 +9066,22 @@ button, .btn {
 
 .navbar {
   height: 80px;
-  border-bottom: 4px solid #f39325;
+  border-bottom: 4px solid #aacc61;
+}
+
+.navbar .nav-link {
+  color:#fff !important;
 }
 
 .main-brand {
   position: absolute;
-  top: -5px;
-  width: 9.5em;
+  top: -10px;
+  width: 7.5em;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #fff;
+  line-height: 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 .main-brand a {
@@ -9045,10 +9097,10 @@ button, .btn {
 .logo {
     display: block;
     position: relative;
-    width: 9em;
-    height: 2.2em;
+    width: 6em;
+    height: 5em;
     margin: 0 auto;
-    background-image: url("/img/effia-logo.svg");
+    background-image: url("/img/concierge-solutis-logo.jpg");
     background-repeat: no-repeat;
     background-size: contain;
 }

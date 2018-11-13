@@ -7,7 +7,7 @@
         <form method="POST" action="{{ route('order.update', $order->id) }}">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
-            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
+            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">
 
 
             <div class="form-group">
@@ -60,7 +60,7 @@
                 'name' => 'unit_price',
                 'required' => false,
                 'value' => $order->unit_price,
-                ])  
+                ])
                 {{ $order->unit_price }}
 
             @include('partials.form-group', [
@@ -69,7 +69,7 @@
                 'name' => 'quantity',
                 'required' => false,
                 'value' => $order->quantity,
-                ])  
+                ])
                 {{ $order->quantity }}
 
             @include('partials.form-group', [
@@ -78,14 +78,14 @@
                 'name' => 'total_price',
                 'required' => false,
                 'value' => $order->total_price,
-                ])   
+                ])
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
                 'value' => $order->delay,
-                ])  
+                ])
             <div class="form-group">
                 Commentaire : {{ $order->customer_comment }}
             </div>
@@ -109,7 +109,7 @@
             @endcomponent
 
         </form>
-    @endcomponent            
+    @endcomponent
 @endsection
 
 @section('script')
@@ -133,7 +133,7 @@
                     data: {
                         id : $( "#product_id" ).val()
                     },
-                        
+
                 dataType: 'JSON',
                     success: function (data) {
 

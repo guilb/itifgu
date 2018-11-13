@@ -1,1 +1,1 @@
-<a type="button" href="{{ route('order.status', [$order->id, $status ]) }}" class="btn {{ $btnsuccess }} btn-status btn-{{ $status }} btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang($tooltip) {{ $order->id }}"><i class="fas {{ $iconclass }} fa-lg"></i></a>
+<a type="button" href="{{ route('order.status', [$order->id, $status ]) }}" class="btn {{ $btnsuccess }} btn-status btn-{{ $status }} {{ $btnstyle }} btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang($tooltip) {{ $order->id }}"><i class="fas {{ $iconclass }} fa-lg"></i></a>
