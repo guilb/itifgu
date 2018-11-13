@@ -79,7 +79,7 @@ class InvoiceController extends Controller
                         ]);
 
         foreach($orders as $order){ 
-             $invoice_pdf->addItem($order->product->name, $order->unit_price, $order->quantity, 1526);
+             $invoice_pdf->addItem($order->product_name, $order->unit_price, $order->quantity, 1526);
          }
 
         $invoice_pdf->save('/public/facture_'.$invoice->number.'.pdf');
@@ -116,7 +116,7 @@ class InvoiceController extends Controller
                         ]);
 
         foreach($orders as $order){ 
-             $invoice_pdf->addItem($order->product->name, $order->unit_price, $order->quantity, 1526);
+             $invoice_pdf->addItem($order->product_name, $order->unit_price, $order->quantity, 1526);
          }
 
         $invoice_pdf->download('test.php');
