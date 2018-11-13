@@ -33,6 +33,13 @@
                 'name' => 'price_value',
                 'required' => false,
                 'value' => $product->price_value,
+                ])    
+            @include('partials.form-group', [
+                'title' => __('TVA'),
+                'type' => 'float',
+                'name' => 'vat',
+                'required' => false,
+                'value' => $product->vat,
                 ])  
             @include('partials.form-group', [
                 'title' => __('Délai'),

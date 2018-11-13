@@ -35,6 +35,12 @@
                 'required' => false,
                 ])  
             @include('partials.form-group', [
+                'title' => __('TVA'),
+                'type' => 'float',
+                'name' => 'vat',
+                'required' => false,
+                ])  
+            @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
