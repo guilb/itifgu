@@ -35,4 +35,9 @@ class Order extends Model
 	{
 	    return $this->belongsTo(Parking::class);
 	}
+
+	protected $dispatchesEvents = [
+	    'saving' => OrderSaving::class,
+	];
+
 }

@@ -12,6 +12,7 @@
             <div class="form-group">
                 <label for="category_id">@lang('Catégorie')</label>
                 <select id="category_id" name="category_id" class="form-control">
+                    <option value="">Choisissez une catégorie</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -21,9 +22,7 @@
             <div class="form-group">
                 <label for="product_id">@lang('Produit')</label>
                 <select id="product_id" name="product_id" class="form-control">
-                    @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
+                        <option value="">Choisissez un produit</option>
                 </select>
             </div>
 
@@ -109,6 +108,52 @@
 		$( document ).ready(function() {
 		    console.log( "ready!" );
 		});
+
+        
+        $( document ).ready(function() {
+            console.log( "ready!" );
+        });
+        $("#category_id").change(function(e) {
+            $( "#category_id" ).val();
+            $.ajax({
+                url: '/load_products/{id}',
+                    type: 'POST',
+                    data: {
+                        id : $( "#category_id" ).val()
+                    },
+                        
+                dataType: 'JSON',
+                    success: function (data) {
+                        $('#product_id').children('option:not(:first)').remove();
+                        $( "#unit_price" ).val("");
+                        $( "#total_price" ).val("");
+                        $( "#delay" ).val("");
+                        $.each(data[0], function (id,value) { 
+                            $('#product_id').append($('<option/>', { 
+                                value: value.id,
+                                text : value.name 
+                            }));
+                        });      
+
+                    //#$("#product_id").addOption("1", "Vase");
+
+                    //$( "#unit_price" ).val(data[0].price_value);
+                    //$( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
+                    //$( "#delay" ).val(data[0].delay);
+
+                    //console.log("eswdddd");
+                   //test = jQuery.parseJSON( data );
+                   //console.log(e.responseText);
+                    },
+                    error: function (e) {
+                        console.log(e.responseText);
+                    }
+                });
+        });
+
+
+
+
 		$("#product_id").change(function(e) {
 			$( "#product_id" ).val();
 			console.log("eswd");

@@ -43,6 +43,16 @@ class ProductController extends Controller
         ]);
     }
 
+    public function load_products(){
+        
+        $id = Input::post("id");
+        $products = Product::all()->where('category_id', $id);
+        //return $product;
+        return response()->json([
+            $products
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

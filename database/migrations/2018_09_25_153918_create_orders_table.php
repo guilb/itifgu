@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
+            $table->string('product_name');
             $table->integer('parking_id')->unsigned();
             $table->foreign('parking_id')->references('id')->on('parkings');
             $table->integer('user_id')->unsigned();
@@ -29,8 +30,8 @@ class CreateOrdersTable extends Migration
             $table->float('total_price');
             $table->string('delay');
             $table->string('status');
-            $table->string('customer_comment')->default("");
-            $table->string('feedback')->default("");
+            $table->string('customer_comment')->nullable();
+            $table->string('feedback')->nullable();
             $table->integer('invoice_id')->unsigned()->nullable();
             $table->foreign('invoice_id')->references('id')->on('invoices');
 

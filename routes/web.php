@@ -38,5 +38,6 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');
+    Route::post('/load_products/{id}', 'ProductController@load_products');
 
 });

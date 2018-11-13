@@ -60,7 +60,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -73,7 +73,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -151,7 +151,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -164,7 +164,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -242,7 +242,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -255,7 +255,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -333,7 +333,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -346,7 +346,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -424,7 +424,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -437,7 +437,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -515,7 +515,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -528,7 +528,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -606,7 +606,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -619,7 +619,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -696,7 +696,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_admin',
+            'status' => 'waiting',
             'customer_comment' => '',
             'feedback' => '',
         ]);
@@ -709,7 +709,7 @@ class OrdersTableSeeder extends Seeder
             'unit_price' => '3.90',
             'total_price' => '3.90',
             'delay' => 'J+1',
-            'status' => 'waiting_user',
+            'status' => 'validated',
             'customer_comment' => '',
             'feedback' => '',
         ]);

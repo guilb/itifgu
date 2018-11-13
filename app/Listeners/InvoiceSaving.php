@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Events\OrderSaving as EventOrderSaving;
 
 
-class InvoiceSaving
+class OrderSaving
 {
     /**
      * Create the event listener.
@@ -27,6 +27,5 @@ class InvoiceSaving
      */
     public function handle($event)
     {
-        #$event->model->slug = str_slug($event->model->name, '-');
     }
 }

@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->string('price_display')->nullable();
             $table->float('price_value')->nullable();
+            $table->float('vat');
             $table->string('delay')->nullable();
             $table->string('description')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
