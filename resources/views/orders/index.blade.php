@@ -117,11 +117,11 @@
                             switch (new_status) {
                                 case 'accepted':
                                     alert('accepted');
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
-                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-finished' > "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-cancelled' >  "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-accepted' >  "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-waiting' >  "disable-me" );
+                                    that.parent('div').parent('div').children('#buttons').children('.btn-validated' >  "disable-me" );
                                     break;
                                 case 'validated':
                                     alert('validated');
