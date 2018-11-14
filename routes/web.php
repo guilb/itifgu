@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         'except' => 'store'
     ]);
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
+    Route::name('orderparking')->get('orderparking/{slug}', 'OrderController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');
     Route::post('/load_products/{id}', 'ProductController@load_products');
 

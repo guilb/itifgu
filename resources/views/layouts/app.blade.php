@@ -26,14 +26,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             @admin
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('order.index') }}">@lang('Commandes')</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{{ route('order.index') }}" id="navbarDropdownGestUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-alt"></i>
+                @lang('Commandes')
+              </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                  @foreach($parkings as $parking)
+                    <a class="dropdown-item" href="{{ route('orderparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
+                  @endforeach
+                </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('invoice.index') }}">@lang('Factures')</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('user.index') }}">@lang('Utilisateurs')</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{{ route('user.index') }}" id="navbarDropdownGestUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
+                @lang('Utilisateurs')
+              </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                  @foreach($parkings as $parking)
+                    <a class="dropdown-item" href="{{ route('userparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
+                  @endforeach
+                </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle{{ currentRoute(

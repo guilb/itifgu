@@ -67,6 +67,16 @@ class OrderController extends Controller
         return back()->with('ok', __("La commande a bien été enregistrée"));
     }
 
+
+
+    public function parking($slug)
+    {
+        $parking = Parking::whereSlug($slug)->firstorFail();
+        $orders = Order::whereParking_id($parking->id)->paginate(config('app.pagination'));;
+
+        return view('orders.index', compact('parking', 'orders'));
+    }
+
     /**
      * Display the specified resource.
      *
