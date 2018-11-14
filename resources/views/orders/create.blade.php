@@ -193,5 +193,10 @@
 		        });
 		});
 
+        $("#quantity").change(function(e) {
+            $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
+        });
+
+
     </script>
 @endsection
