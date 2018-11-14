@@ -38,9 +38,10 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $this_user = \Auth::user();
         $parkings = Parking::all();
         $users = User::all();
-        return view('orders.create', compact('parkings','users'));
+        return view('orders.create', compact('parkings','users','this_user'));
     }
 
     /**

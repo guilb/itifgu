@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
             view ()->share ('categories', Category::all ());
             view ()->share ('products', Product::all ());
             view ()->share ('parkings', Parking::all ());
+            
         }
         Blade::if('adminOrOwner', function ($id) {
             return auth()->check() && (auth()->id() === $id || auth()->user()->role === 'admin');

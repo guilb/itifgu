@@ -25,23 +25,27 @@
                         <option value="">Choisissez un produit</option>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label for="parking_id">@lang('Parking')</label>
-                <select id="parking_id" name="parking_id" class="form-control">
-                    @foreach($parkings as $parking)
-                        <option value="{{ $parking->id }}">{{ $parking->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="user_id">@lang('Client')</label>
-                <select id="user_id" name="user_id" class="form-control">
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+            @admin
+                <div class="form-group">
+                    <label for="parking_id">@lang('Parking')</label>
+                    <select id="parking_id" name="parking_id" class="form-control">
+                        @foreach($parkings as $parking)
+                            <option value="{{ $parking->id }}">{{ $parking->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user_id">@lang('Client')</label>
+                    <select id="user_id" name="user_id" class="form-control">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @else
+                <input class="form-control" id="user_id" type="hidden" name="user_id" value="{{ $this_user->id }}">
+                <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $this_user->parking_id }}">
+            @endadmin
             @include('partials.form-group', [
                 'title' => __('Prix Unitaire'),
                 'type' => 'text',
