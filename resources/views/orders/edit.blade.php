@@ -2,7 +2,7 @@
 @section('card')
     @component('components.card')
         @slot('title')
-            @lang('Créer une commande')
+            @lang('Modifier une commande')
         @endslot
         <form method="POST" action="{{ route('order.update', $order->id) }}">
             {{ csrf_field() }}
@@ -17,6 +17,7 @@
                     'name' => 'category_id',
                     'value' => $order->category->id,
                     'required' => true,
+                    'disabled' => '',
                 ])
                 {{ $order->category->name }}
             </div>
@@ -28,6 +29,7 @@
                     'name' => 'product_id',
                     'value' => $order->product->id,
                     'required' => true,
+                    'disabled' => '',
                 ])
                 {{ $order->product->name }}
             </div>
@@ -39,6 +41,7 @@
                     'name' => 'parking_id',
                     'value' => $order->parking->id,
                     'required' => true,
+                    'disabled' => '',
                 ])
                 {{ $order->parking->name }}
 
@@ -50,6 +53,7 @@
                     'name' => 'user_id',
                     'value' => $order->user->id,
                     'required' => true,
+                    'disabled' => '',
                 ])
                 {{ $order->user->name }}
 
@@ -60,6 +64,7 @@
                 'name' => 'unit_price',
                 'required' => false,
                 'value' => $order->unit_price,
+                'disabled' => '',
                 ])
                 {{ $order->unit_price }}
 
@@ -69,6 +74,7 @@
                 'name' => 'quantity',
                 'required' => false,
                 'value' => $order->quantity,
+                'disabled' => '',
                 ])
                 {{ $order->quantity }}
 
@@ -78,6 +84,7 @@
                 'name' => 'total_price',
                 'required' => false,
                 'value' => $order->total_price,
+                'disabled' => '',
                 ])
             @include('partials.form-group', [
                 'title' => __('Taux de TVA (%)'),
@@ -85,6 +92,7 @@
                 'name' => 'vat',
                 'required' => false,
                 'value' => $order->vat,
+                'disabled' => 'disabled',
                 ])
             @include('partials.form-group', [
                 'title' => __('Délai'),
@@ -92,6 +100,7 @@
                 'name' => 'delay',
                 'required' => false,
                 'value' => $order->delay,
+                'disabled' => '',
                 ])
             <div class="form-group">
                 Commentaire : {{ $order->customer_comment }}
@@ -102,6 +111,7 @@
                 'name' => 'feedback',
                 'required' => false,
                 'value' => $order->feedback,
+                'disabled' => '',
                 ])
 
             @include('partials.form-group', [
@@ -110,6 +120,7 @@
                 'name' => 'status',
                 'required' => false,
                 'value' => 'waiting',
+                'disabled' => '',
                 ])
             @component('components.button')
                 @lang('Envoyer')
