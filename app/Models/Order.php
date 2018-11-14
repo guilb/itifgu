@@ -8,7 +8,7 @@ use App\Events\OrderSaving;
 class Order extends Model
 {
     protected $fillable = [
-        'category_id', 'product_id','parking_id', 'user_id','customer_comment','feedback','quantity','unit_price','total_price','delay','status'
+        'category_id', 'product_id','parking_id', 'user_id','customer_comment','feedback','quantity','unit_price','total_price','vat','delay','status'
     ];
 
 	public function category()

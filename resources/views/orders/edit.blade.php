@@ -80,6 +80,13 @@
                 'value' => $order->total_price,
                 ])
             @include('partials.form-group', [
+                'title' => __('Taux de TVA (%)'),
+                'type' => 'text',
+                'name' => 'vat',
+                'required' => false,
+                'value' => $order->vat,
+                ])
+            @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',

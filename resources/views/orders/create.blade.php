@@ -77,6 +77,12 @@
                 'required' => false,
                 ])   
             @include('partials.form-group', [
+                'title' => __('Taux de TVA (%)'),
+                'type' => 'text',
+                'name' => 'vat',
+                'required' => false,
+                ])   
+            @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
@@ -171,6 +177,7 @@
 			        $( "#unit_price" ).val(data[0].price_value);
 			        $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
                     $( "#delay" ).val(data[0].delay);
+                    $( "#vat" ).val(data[0].vat);
 
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
