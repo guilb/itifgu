@@ -131,33 +131,46 @@
                             break;
                         }
 
-                        that.parent('div').parent('div').children('#status').children('#label-status').html(display_status);
+                        // that.parent('div').parent('div').children('#status').children('#label-status').html(display_status);
 
                         //that.parent('div').parent('div').children('#buttons').children('a').addClass( "disable-me" );
     
 
                         switch (new_status) {
                             case 'accepted':
-                                console.log('accepted');
-                                that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
+                                alert('accepted');
                                 that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
-                            break;
+                                that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
+                                break;
                             case 'validated':
-                                console.log('validated');
-                                that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
-                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" ); 
-                            break;
+                                alert('validated');
+                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );  
+                                break;
                             case 'cancelled':
-                                console.log('cancelled');
-                                that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
-                            break;
+                                alert('cancelled');
+                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
+                                break;
                             case 'finished':
-                                console.log('finished');
-                                that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
-                            break;
+                                alert('finished');
+                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-cancelled').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-accepted').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-waiting').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-validated').addClass( "disable-me" );
+                                break;
                             default:
-                                console.log('problème');
-                            break;
+                                alert('problème');
                         }
 
 
