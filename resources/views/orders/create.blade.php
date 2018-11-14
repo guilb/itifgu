@@ -136,6 +136,8 @@
                         $( "#unit_price" ).val("");
                         $( "#total_price" ).val("");
                         $( "#delay" ).val("");
+                         $( "#vat" ).val("");
+
                         $.each(data[0], function (id,value) { 
                             $('#product_id').append($('<option/>', { 
                                 value: value.id,
@@ -192,9 +194,12 @@
 		});
 
         $("#quantity").change(function(e) {
-            $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
+            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
         });
 
+    
+
+        
 
     </script>
 @endsection
