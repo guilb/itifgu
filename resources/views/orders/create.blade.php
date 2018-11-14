@@ -178,10 +178,11 @@
 		            success: function (data) {
 
 			        console.dir(data[0].price);
-			        $( "#unit_price" ).val(data[0].price_value);
-			        $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
+			        $( "#unit_price" ).val(parseFloat(data[0].price_value).toFixed(2));
+			        $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
                     $( "#delay" ).val(data[0].delay);
                     $( "#vat" ).val(data[0].vat);
+
 
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
