@@ -96,14 +96,9 @@
                 'required' => false,
                 'disabled' => '',
                 ])   
-
-            @include('partials.form-group', [
-                'title' => __('Taux de TVA (%)'),
-                'type' => 'text',
-                'name' => 'vat',
-                'required' => false,
-                'disabled' => '',
-                ])
+            <span>Taux de TVA (%) : </span>
+            <span id="vat-label"></span>
+            <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="" >
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
@@ -168,6 +163,7 @@
                         $( "#total_price" ).val("");
                         $( "#delay" ).val("");
                          $( "#vat" ).val("");
+                        $( "#vat-label" ).html("");
 
                         $.each(data[0], function (id,value) {
                             $('#product_id').append($('<option/>', {
@@ -213,7 +209,7 @@
 			        $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
                     $( "#delay" ).val(data[0].delay);
                     $( "#vat" ).val(data[0].vat);
-
+                    $( "#vat-label" ).html(data[0].vat+" %");
 
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
