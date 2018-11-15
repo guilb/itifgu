@@ -24,10 +24,10 @@
           @foreach($orders as $order)
             <div class="clearfix div-row row">
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">N° : </span>{{ $order->id }}</div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $order->user->name }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $order->user_name }}</div>
               <div class="statut col-sm-1" id="status"><span class="d-xs-block d-sm-block d-md-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Catégorie : </span>{{ $order->category->name }}</div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Produit : </span>{{ $order->product->name }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Catégorie : </span>{{ $order->category_name }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Produit : </span>{{ $order->product_name }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Quantité : </span>{{ $order->quantity }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
