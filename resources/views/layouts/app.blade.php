@@ -31,7 +31,7 @@
                 @lang('Commandes')
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
-                  @foreach($parkings as $parking)
+                  @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('orderparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
                   @endforeach
                 </div>
@@ -44,7 +44,7 @@
                 @lang('Utilisateurs')
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
-                  @foreach($parkings as $parking)
+                  @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('userparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
                   @endforeach
                 </div>
