@@ -89,13 +89,9 @@
               </div>
             </div>
 
-            @include('partials.form-group', [
-                'title' => __('Prix Total'),
-                'type' => 'text',
-                'name' => 'total_price',
-                'required' => false,
-                'disabled' => '',
-                ])   
+            <span>Prix total : </span>
+            <span id="total_price-label"></span>
+            <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="" >
             <span>Taux de TVA (%) : </span>
             <span id="vat-label"></span>
             <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="" >
@@ -164,6 +160,7 @@
                         $( "#delay" ).val("");
                          $( "#vat" ).val("");
                         $( "#vat-label" ).html("");
+                        $( "#total_price-label" ).html("");
 
                         $.each(data[0], function (id,value) {
                             $('#product_id').append($('<option/>', {
@@ -210,6 +207,7 @@
                     $( "#delay" ).val(data[0].delay);
                     $( "#vat" ).val(data[0].vat);
                     $( "#vat-label" ).html(data[0].vat+" %");
+                    $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
 
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
@@ -223,6 +221,7 @@
 
         $("#quantity").change(function(e) {
             $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
         });
 
 
