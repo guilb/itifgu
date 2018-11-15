@@ -2,32 +2,31 @@
 @section('card')
     @component('components.card')
         @slot('title')
-            @lang('Gestion des Users')
+            @lang('Gestion des Utilisateurs')
         @endslot
+        <div class="table-div-container container clearfix">
+          <div class="clearfix div-row header row d-none d-md-flex">
+            <div class="col-sm-3">Email</div>
+            <div class="col-sm-2">Role</div>
+            <div class="col-sm-3">Nb commande à facturer</div>
+            <div class="col-xs-12 col-md-4 text-right">Actions</div>
+          </div>
 
-        <table class="table table-light">
-            <tbody>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>
-                            <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm pull-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>
-                            <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
-                            </a>
-                        <td> {{ finishedOrders($user) }}
-                            Commandes à facturer
-                        </td>
-                        <td>
-                        @if (finishedOrders($user) != "0")
-                            <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-sm pull-left mr-2" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
-                        @endif
-
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+          @foreach($users as $user)
+            <div class="clearfix div-row row">
+              <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Email : </span>{{ $user->email }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Role : </span>{{ $user->role }}</div>
+              <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Nb de commandes à facturer : </span>{{ finishedOrders($user) }}</div>
+              <div class="col-xs-12 col-md-4" id="buttons">
+                <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm pull-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>
+                <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
+                @if (finishedOrders($user) != "0")
+                    <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-primary btn-sm pull-right mr-2 px-3" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
+                @endif
+              </div>
+            </div>
+          @endforeach
+      </div>
         <div class="d-flex justify-content-center">
             {{ $users->links() }}
         </div>
