@@ -60,15 +60,24 @@
                 </div>
             @else
                 <input class="form-control" id="user_id" type="hidden" name="user_id" value="{{ $this_user->id }}">
+
                 <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $this_user->parking_id }}">
             @endadmin
-            @include('partials.form-group', [
-                'title' => __('Prix Unitaire'),
-                'type' => 'text',
-                'name' => 'unit_price',
-                'required' => false,
-                'disabled' => '',
-                ])
+            @admin
+                @include('partials.form-group', [
+                    'title' => __('Prix Unitaire'),
+                    'type' => 'text',
+                    'name' => 'unit_price',
+                    'required' => false,
+                    'disabled' => '',
+                    ])
+            @else
+                <div>
+                    <span>Prix unitaire : </span>
+                    <span id="unit_price-label"></span>
+                    <input class="form-control"  id="unit_price" type="hidden" class="form-control" name="unit_price" value="" >
+                </div>
+            @endadmin
             <div class="form-row">
               <div class="col-md-3">
                 <label for="quantity">@lang('Quantité')</label>
@@ -88,31 +97,35 @@
                 </select>
               </div>
             </div>
-
-            <span>Prix total : </span>
-            <span id="total_price-label"></span>
-            <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="" >
-
-            <span>Taux de TVA (%) : </span>
-            <span id="vat-label"></span>
-            <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="" >
-            
-            @include('partials.form-group', [
+            <div>
+                <span>Prix total : </span>
+                <span id="total_price-label"></span>
+                <input class="form-control"  id="total_price" type="hidden" class="form-control" name="total_price" value="" >
+            </div>
+            <div>
+                <span>Taux de TVA (%) : </span>
+                <span id="vat-label"></span>
+                <input class="form-control"  id="vat" type="hidden" class="form-control" name="vat" value="" >
+            </div>
+            @admin
+                @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
                 'disabled' => '',
-                ])   
+                ])
+            @else 
+                <div>
+                    <span>Délai : </span>
+                    <span id="delay-label"></span>
+                    <input class="form-control"  id="delay" type="hidden" class="form-control" name="delay" value="" >
+                </div>
+            @endadmin
 
-            @include('partials.form-group', [
-                'title' => __('Statut'),
-                'type' => 'hidden',
-                'name' => 'status',
-                'value' => 'created',
-                'required' => true,
-                'disabled' => '',
-                ])  
+
+            <input class="form-control"  id="status" type="hidden" class="form-control" name="status" value="created" >
+
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
                 'type' => 'text',
@@ -162,6 +175,8 @@
                         $( "#delay" ).val("");
                          $( "#vat" ).val("");
                         $( "#vat-label" ).html("");
+                        $( "#delay-label" ).html("");
+                        $( "#unit_price-label" ).html("");
                         $( "#total_price-label" ).html("");
 
                         $.each(data[0], function (id,value) {
@@ -205,11 +220,14 @@
 
 			        console.dir(data[0].price);
 			        $( "#unit_price" ).val(parseFloat(data[0].price_value).toFixed(2));
+                    $( "#unit_price-label" ).html(data[0].price_value+" €");
+
 			        $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+                    $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
                     $( "#delay" ).val(data[0].delay);
+                    $( "#delay-label" ).html(data[0].delay);
                     $( "#vat" ).val(data[0].vat);
                     $( "#vat-label" ).html(data[0].vat+" %");
-                    $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
 
 					console.log("eswdddd");
 			       //test = jQuery.parseJSON( data );
@@ -227,7 +245,10 @@
         });
 
 
-
+         $('#unit_price').keyup(function (e) {
+            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");            
+         });
 
 
     </script>
