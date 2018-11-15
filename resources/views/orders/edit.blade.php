@@ -133,7 +133,6 @@
 @section('script')
 
     <script>
-
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -151,15 +150,12 @@
                     data: {
                         id : $( "#product_id" ).val()
                     },
-
                 dataType: 'JSON',
                     success: function (data) {
-
                     console.dir(data[0].price);
                     $( "#unit_price" ).val(data[0].price_value);
                     $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
                     $( "#delay" ).val(data[0].delay);
-
                     console.log("eswdddd");
                    //test = jQuery.parseJSON( data );
                    //console.log(e.responseText);
@@ -169,6 +165,5 @@
                     }
                 });
         });
-
     </script>
 @endsection

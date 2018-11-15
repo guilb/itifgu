@@ -7,7 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Effia') }}</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   @yield('css')
 </head>
 <body>
@@ -27,23 +27,25 @@
           <ul class="navbar-nav mr-auto">
             @admin
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="{{ route('order.index') }}" id="navbarDropdownGestUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-alt"></i>
+              <a class="nav-link dropdown-toggle" href="{{ route('order.index') }}" id="navbarDropdownGestUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-shopping-basket"></i>
                 @lang('Commandes')
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                  <a class="dropdown-item" href="{{ route('order.index') }}">@lang('Toutes les commandes')</a>
                   @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('orderparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
                   @endforeach
                 </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('invoice.index') }}">@lang('Factures')</a>
+              <a class="nav-link" href="{{ route('invoice.index') }}"><i class="fas fa-file-alt"></i> @lang('Factures')</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="{{ route('user.index') }}" id="navbarDropdownGestUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
                 @lang('Utilisateurs')
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
+                  <a class="dropdown-item" href="{{ route('user.index') }}">@lang('Toutes les utilisateurs')</a>
                   @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('userparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
                   @endforeach
