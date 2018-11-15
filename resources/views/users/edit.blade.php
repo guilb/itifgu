@@ -66,18 +66,26 @@
                 'disabled' => '',
                 'value' => $user->phone,
                 ])
-            <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="role">Parking</label>
+              </div>
+              <div class="col-md-3">
                 {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
-            </div>
-            <div class="form-group">
+              </div>
+           </div>
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="role">Rôle</label>
                 {{ $user->role }}
+              </div>
+              <div class="col-md-3">
                 {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), $user->role, array('class' => 'form-control', 'id' => 'role')) }}
+              </div>
             </div>
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
-        </form> 
-    @endcomponent            
+        </form>
+    @endcomponent
 @endsection

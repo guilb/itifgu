@@ -30,7 +30,7 @@
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
               <div class="d-xs-block d-sm-block d-md-none mt-4"></div>
-              <div class="col-xs-12 col-md-3" id="buttons">
+              <div class="col-xs-12 col-md-3 actions" id="buttons">
                 @admin
                 @include('partials.action-icon-order', [
                   'tooltip' => __('Accepter la commande'),
@@ -50,7 +50,7 @@
                             @include('partials.action-icon-order', [
                                 'tooltip' => __('Valider la commande'),
                                 'status' => 'validated',
-                                'iconclass' => 'fa-plus',
+                                'iconclass' => 'fa-check',
                                 'btnstyle' => 'btn-success',
                                 'btnsuccess' => classButtonStatus($order->status,"validated")
                             ])
@@ -58,7 +58,7 @@
                             @include('partials.action-icon-order', [
                                 'tooltip' => __('Finaliser la commande'),
                                 'status' => 'finished',
-                                'iconclass' => 'fa-check',
+                                'iconclass' => 'fa-check-double',
                                 'btnstyle' => 'btn-info',
                                 'btnsuccess' => classButtonStatus($order->status,"finished")
                             ])
@@ -134,7 +134,7 @@
                         that.parent('div').parent('div').children('#status').children('#label-status').html(display_status);
 
                         //that.parent('div').parent('div').children('#buttons').children('a').addClass( "disable-me" );
-    
+
 
                         switch (new_status) {
                             case 'accepted':
@@ -145,7 +145,7 @@
                             case 'validated':
                                 console.log('validated');
                                 that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
-                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" ); 
+                                that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
                             break;
                             case 'cancelled':
                                 console.log('cancelled');

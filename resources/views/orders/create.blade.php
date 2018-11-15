@@ -6,41 +6,57 @@
         @endslot
         <form method="POST" action="{{ route('order.store') }}" >
             {{ csrf_field() }}
- 
-            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
 
-            <div class="form-group">
+            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">
+
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="category_id">@lang('Catégorie')</label>
+              </div>
+              <div class="col-md-6">
                 <select id="category_id" name="category_id" class="form-control">
                     <option value="">Choisissez une catégorie</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+              </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="product_id">@lang('Produit')</label>
+              </div>
+              <div class="col-md-6">
                 <select id="product_id" name="product_id" class="form-control">
                         <option value="">Choisissez un produit</option>
                 </select>
+              </div>
             </div>
             @admin
-                <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-3">
                     <label for="parking_id">@lang('Parking')</label>
+                  </div>
+                  <div class="col-md-6">
                     <select id="parking_id" name="parking_id" class="form-control">
                         @foreach($parkings as $parking)
                             <option value="{{ $parking->id }}">{{ $parking->name }}</option>
                         @endforeach
                     </select>
+                  </div>
                 </div>
-                <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-3">
                     <label for="user_id">@lang('Client')</label>
+                  </div>
+                  <div class="col-md-6">
                     <select id="user_id" name="user_id" class="form-control">
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
+                  </div>
                 </div>
             @else
                 <input class="form-control" id="user_id" type="hidden" name="user_id" value="{{ $this_user->id }}">
@@ -52,9 +68,12 @@
                 'name' => 'unit_price',
                 'required' => false,
                 'disabled' => 'disabled',
-                ])   
-            <div class="form-group">
+                ])
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="quantity">@lang('Quantité')</label>
+              </div>
+              <div class="col-md-6">
                 <select id="quantity" name="quantity" class="form-control">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -67,6 +86,7 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                 </select>
+              </div>
             </div>
             @include('partials.form-group', [
                 'title' => __('Prix Total'),
@@ -74,21 +94,21 @@
                 'name' => 'total_price',
                 'required' => false,
                 'disabled' => 'disabled',
-                ])   
+                ])
             @include('partials.form-group', [
                 'title' => __('Taux de TVA (%)'),
                 'type' => 'text',
                 'name' => 'vat',
                 'required' => false,
                 'disabled' => 'disabled',
-                ])   
+                ])
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
                 'disabled' => 'disabled',
-                ])   
+                ])
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
                 'type' => 'text',
@@ -99,9 +119,9 @@
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
-
+</div>
         </form>
-    @endcomponent            
+    @endcomponent
 @endsection
 
 @section('script')
@@ -117,7 +137,7 @@
 		    console.log( "ready!" );
 		});
 
-        
+
         $( document ).ready(function() {
             console.log( "ready!" );
         });
@@ -129,7 +149,7 @@
                     data: {
                         id : $( "#category_id" ).val()
                     },
-                        
+
                 dataType: 'JSON',
                     success: function (data) {
                         $('#product_id').children('option:not(:first)').remove();
@@ -138,12 +158,12 @@
                         $( "#delay" ).val("");
                          $( "#vat" ).val("");
 
-                        $.each(data[0], function (id,value) { 
-                            $('#product_id').append($('<option/>', { 
+                        $.each(data[0], function (id,value) {
+                            $('#product_id').append($('<option/>', {
                                 value: value.id,
-                                text : value.name 
+                                text : value.name
                             }));
-                        });      
+                        });
 
                     //#$("#product_id").addOption("1", "Vase");
 
@@ -173,7 +193,7 @@
 		            data: {
 						id : $( "#product_id" ).val()
 		            },
-		                
+
 			    dataType: 'JSON',
 		            success: function (data) {
 
@@ -198,9 +218,9 @@
             $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
         });
 
-    
 
-        
+
+
 
     </script>
 @endsection
