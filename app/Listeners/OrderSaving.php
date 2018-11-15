@@ -28,6 +28,8 @@ class OrderSaving
     public function handle($event)
     {
         $event->model->product_name = $event->model->product->name;
-
+        $event->model->category_name = $event->model->category->name;
+        $event->model->parking_name = $event->model->parking->name;
+        $event->model->user_name = $event->model->user->name;
     }
 }

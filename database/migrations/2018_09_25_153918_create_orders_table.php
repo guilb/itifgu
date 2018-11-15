@@ -18,13 +18,16 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('category_name');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('product_name');
             $table->integer('parking_id')->unsigned();
             $table->foreign('parking_id')->references('id')->on('parkings');
+            $table->string('parking_name');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('user_name');
             $table->float('quantity');
             $table->float('unit_price');
             $table->float('total_price');
