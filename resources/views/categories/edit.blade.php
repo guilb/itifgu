@@ -13,6 +13,7 @@
                 'name' => 'name',
                 'value' => $category->name,
                 'required' => true,
+                'disabled' => '',
                 ])
             @component('components.button')
                 @lang('Envoyer')

@@ -11,24 +11,28 @@
                 'type' => 'text',
                 'name' => 'name',
                 'required' => true,
+                'disabled' => '',
                 ])
             @include('partials.form-group', [
                 'title' => __('Adresse email'),
                 'type' => 'email',
                 'name' => 'email',
                 'required' => true,
+                'disabled' => '',
                 ])
             @include('partials.form-group', [
                 'title' => __('Mot de passe'),
                 'type' => 'password',
                 'name' => 'password',
                 'required' => true,
+                'disabled' => '',
                 ])
             @include('partials.form-group', [
                 'title' => __('Confirmation du mot de passe'),
                 'type' => 'password',
                 'name' => 'password_confirmation',
                 'required' => true,
+                'disabled' => '',
                 ])
             @component('components.button')
                 @lang('Inscription')

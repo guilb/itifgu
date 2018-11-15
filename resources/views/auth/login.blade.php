@@ -11,12 +11,14 @@
                 'type' => 'email',
                 'name' => 'email',
                 'required' => true,
+                'disabled' => '',
                 ])
             @include('partials.form-group', [
                 'title' => __('Mot de passe'),
                 'type' => 'password',
                 'name' => 'password',
                 'required' => true,
+                'disabled' => '',
                 ])    
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}> 

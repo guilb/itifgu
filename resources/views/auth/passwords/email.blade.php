@@ -16,6 +16,7 @@
                 'type' => 'email',
                 'name' => 'email',
                 'required' => true,
+                'disabled' => '',
                 ])
             @component('components.button')
                 @lang('Envoi de la demande')

@@ -11,6 +11,7 @@
                 'type' => 'text',
                 'name' => 'name',
                 'required' => false,
+                'disabled' => '',
                 ])   
             <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
 
@@ -27,30 +28,35 @@
                 'type' => 'text',
                 'name' => 'price_display',
                 'required' => false,
+                'disabled' => '',
                 ])  
             @include('partials.form-group', [
                 'title' => __('Prix réel'),
                 'type' => 'float',
                 'name' => 'price_value',
                 'required' => false,
+                'disabled' => '',
                 ])  
             @include('partials.form-group', [
                 'title' => __('TVA'),
                 'type' => 'float',
                 'name' => 'vat',
                 'required' => false,
+                'disabled' => '',
                 ])  
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
+                'disabled' => '',
                 ])   
             @include('partials.form-group', [
                 'title' => __('Description (optionnelle)'),
                 'type' => 'text',
                 'name' => 'description',
                 'required' => false,
+                'disabled' => '',
                 ])   
             @component('components.button')
                 @lang('Envoyer')

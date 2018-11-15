@@ -12,6 +12,7 @@
                 'type' => 'text',
                 'name' => 'name',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->name,
                 ])   
             <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
@@ -25,6 +26,7 @@
                 'type' => 'text',
                 'name' => 'price_display',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->price_display,
                 ])  
             @include('partials.form-group', [
@@ -32,6 +34,7 @@
                 'type' => 'float',
                 'name' => 'price_value',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->price_value,
                 ])    
             @include('partials.form-group', [
@@ -39,6 +42,7 @@
                 'type' => 'float',
                 'name' => 'vat',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->vat,
                 ])  
             @include('partials.form-group', [
@@ -46,6 +50,7 @@
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->delay,
                 ])    
             @include('partials.form-group', [
@@ -53,6 +58,7 @@
                 'type' => 'text',
                 'name' => 'description',
                 'required' => false,
+                'disabled' => '',
                 'value' => $product->description,
                 ])   
             @component('components.button')

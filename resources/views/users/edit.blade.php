@@ -15,6 +15,7 @@
                 'type' => 'name',
                 'name' => 'name',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->name,
                 ])
             @include('partials.form-group', [
@@ -22,6 +23,7 @@
                 'type' => 'email',
                 'name' => 'email',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->email,
                 ])
             @include('partials.form-group', [
@@ -29,6 +31,7 @@
                 'type' => 'address',
                 'name' => 'address',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->address,
                 ])
             @include('partials.form-group', [
@@ -36,6 +39,7 @@
                 'type' => 'zipcode',
                 'name' => 'zipcode',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->zipcode,
                 ])
             @include('partials.form-group', [
@@ -43,6 +47,7 @@
                 'type' => 'city',
                 'name' => 'city',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->city,
                 ])
             @include('partials.form-group', [
@@ -50,6 +55,7 @@
                 'type' => 'country',
                 'name' => 'country',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->country,
                 ])
             @include('partials.form-group', [
@@ -57,6 +63,7 @@
                 'type' => 'phone',
                 'name' => 'phone',
                 'required' => true,
+                'disabled' => '',
                 'value' => $user->phone,
                 ])
             <div class="form-group">

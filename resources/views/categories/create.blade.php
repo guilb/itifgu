@@ -11,6 +11,7 @@
                 'type' => 'text',
                 'name' => 'name',
                 'required' => true,
+                'disabled' => '',
                 ])
             @component('components.button')
                 @lang('Envoyer')
