@@ -75,7 +75,7 @@
                 <div>
                     <span>Prix unitaire : </span>
                     <span id="unit_price-label"></span>
-                    <input class="form-control"  id="unit_price" type="hidden" class="form-control" name="unit_price" value="" >
+                    <input class="form-control"  id="unit_price" type="text" class="form-control" name="unit_price" value="" >
                 </div>
             @endadmin
             <div class="form-row">
@@ -100,7 +100,7 @@
             <div>
                 <span>Prix total : </span>
                 <span id="total_price-label"></span>
-                <input class="form-control"  id="total_price" type="hidden" class="form-control" name="total_price" value="" >
+                <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="" >
             </div>
             <div>
                 <span>Taux de TVA (%) : </span>
@@ -207,7 +207,6 @@
 
 		$("#product_id").change(function(e) {
 			$( "#product_id" ).val();
-			console.log("eswd");
 			$.ajax({
 			    url: '/load_product/{id}',
 		            type: 'POST',
@@ -217,21 +216,28 @@
 
 			    dataType: 'JSON',
 		            success: function (data) {
+                        console.log(data[0].price_value);
+                        if (data[0].price_value==null) {
+                            console.log('null');
+                            $( "#unit_price" ).val("");
+                            $( "#unit_price-label" ).html("Prix variable");
+                            $( "#total_price" ).val("");
+                            $( "#total_price-label" ).html("Nous vous ferons parvenir un prix"); 
+                        }
+                        else
+                        {
+                            console.log('pas null');
 
-			        console.dir(data[0].price);
-			        $( "#unit_price" ).val(parseFloat(data[0].price_value).toFixed(2));
-                    $( "#unit_price-label" ).html(data[0].price_value+" €");
+                            $( "#unit_price" ).val(parseFloat(data[0].price_value).toFixed(2));
+                            $( "#unit_price-label" ).html(data[0].price_value+" €");
+                            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+                            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");          
+                        }  
+                        $( "#delay" ).val(data[0].delay);
+                        $( "#delay-label" ).html(data[0].delay);
+                        $( "#vat" ).val(data[0].vat);
+                        $( "#vat-label" ).html(data[0].vat+" %");  
 
-			        $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
-                    $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
-                    $( "#delay" ).val(data[0].delay);
-                    $( "#delay-label" ).html(data[0].delay);
-                    $( "#vat" ).val(data[0].vat);
-                    $( "#vat-label" ).html(data[0].vat+" %");
-
-					console.log("eswdddd");
-			       //test = jQuery.parseJSON( data );
-			       //console.log(e.responseText);
 		            },
 		            error: function (e) {
 		                console.log(e.responseText);
@@ -240,14 +246,25 @@
 		});
 
         $("#quantity").change(function(e) {
-            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
-            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
+            console.log("qty");
+            console.log($( "#unit_price" ).val());
+            if ($( "#unit_price" ).val()!="") {
+                $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+                $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
+            }    
         });
 
 
          $('#unit_price').keyup(function (e) {
-            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
-            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");            
+            if ($( "#unit_price" ).val()!=""){
+                $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+                $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €"); 
+            }
+            else
+            {
+                $( "#total_price" ).val("");
+                $( "#total_price-label" ).html("Nous vous ferons parvenir un prix"); 
+            }         
          });
 
 

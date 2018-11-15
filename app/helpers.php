@@ -22,7 +22,13 @@ if (!function_exists('formatPrice')) {
     function formatPrice($price)
     {
         // Do your necessary logic
-		$price = number_format($price, 2, ',', ' ') . ' €';
+        if ($price != 0) {
+		  $price = number_format($price, 2, ',', ' ') . ' €';
+        }
+        else
+        {
+            $price = "-";
+        }
         return $price;
     }
 }

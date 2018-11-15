@@ -29,8 +29,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('user_name');
             $table->float('quantity');
-            $table->float('unit_price');
-            $table->float('total_price');
+            $table->float('unit_price')->nullable();
+            $table->float('total_price')->nullable();
             $table->float('vat');
             $table->string('delay');
             $table->string('status');
