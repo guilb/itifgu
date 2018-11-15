@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         if(request()->server("SCRIPT_NAME") !== 'artisan') {
-            view ()->share ('categories', Category::all ());
-            view ()->share ('products', Product::all ());
+            view ()->share ('all_categories', Category::all ());
+            view ()->share ('all_products', Product::all ());
             view ()->share ('all_parkings', Parking::all ());
             
         }

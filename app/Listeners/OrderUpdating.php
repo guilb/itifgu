@@ -4,10 +4,8 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\InvoiceSaving as EventInvoiceSaving;
 
-
-class InvoiceSaving
+class OrderUpdating
 {
     /**
      * Create the event listener.
@@ -27,5 +25,6 @@ class InvoiceSaving
      */
     public function handle($event)
     {
+        //
     }
 }

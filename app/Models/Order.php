@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\OrderSaving;
+use App\Events\OrderUpdating;
 
 class Order extends Model
 {
@@ -38,6 +39,7 @@ class Order extends Model
 
 	protected $dispatchesEvents = [
 	    'saving' => OrderSaving::class,
+	    'updating' => OrderUpdating::class,
 	];
 
 }

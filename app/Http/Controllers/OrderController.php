@@ -97,8 +97,14 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+Log::debug($order);
+Log::debug($order->category_id);
 
-        return view('orders.edit', compact('order'));
+        #$order = Order::find($order);
+
+
+        $products = Product::whereCategory_id($order->category_id)->pluck('name', 'id','category_id');
+        return view('orders.edit', compact('order','products'));
     }
  
 

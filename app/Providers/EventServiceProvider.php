@@ -27,7 +27,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\OrderSaving' => [
         'App\Listeners\OrderSaving',
-    ],
+        ],
+        'App\Events\OrderUpdating' => [
+        'App\Listeners\OrderUpdating',
+        ],
     ];
 
 

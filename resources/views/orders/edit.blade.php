@@ -9,82 +9,50 @@
             {{ method_field('PUT') }}
             <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">
 
-
-            <div class="form-group">
-                @include('partials.form-group', [
-                    'title' => __('Categorie'),
-                    'type' => 'hidden',
-                    'name' => 'category_id',
-                    'value' => $order->category->id,
-                    'required' => true,
-                    'disabled' => '',
-                ])
-                {{ $order->category->name }}
+            <div>
+                <span>Parking</span>
+                <span>{{ $order->parking_name }}</span>
+                <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $order->parking_id }}">
             </div>
-
-            <div class="form-group">
-                @include('partials.form-group', [
-                    'title' => __('Produit'),
-                    'type' => 'hidden',
-                    'name' => 'product_id',
-                    'value' => $order->product->id,
-                    'required' => true,
-                    'disabled' => '',
-                ])
-                {{ $order->product->name }}
+            <div>
+                <span>Client</span>
+                <span>{{ $order->user_name }}</span>
+                <input class="form-control" id="user_id" type="hidden" name="user_id" value="{{ $order->user_id }}">
             </div>
-
-            <div class="form-group">
-                @include('partials.form-group', [
-                    'title' => __('Parking'),
-                    'type' => 'hidden',
-                    'name' => 'parking_id',
-                    'value' => $order->parking->id,
-                    'required' => true,
-                    'disabled' => '',
-                ])
-                {{ $order->parking->name }}
-
+            <div>
+                <span>Catégorie</span>
+                <span>{{ $order->category_name }}</span>
+                <input class="form-control" id="category_id" type="hidden" name="category_id" value="{{ $order->category_id }}">
+            
             </div>
             <div class="form-group">
-                @include('partials.form-group', [
-                    'title' => __('Client'),
-                    'type' => 'hidden',
-                    'name' => 'user_id',
-                    'value' => $order->user->id,
-                    'required' => true,
-                    'disabled' => '',
-                ])
-                {{ $order->user->name }}
-
+                <span>Produit</span>
+                {{ Form::select('product_id', $products, $order->product_id, array('class' => 'form-control', 'id' => 'product_id')) }}
             </div>
+
             @include('partials.form-group', [
                 'title' => __('Prix Unitaire'),
-                'type' => 'hidden',
+                'type' => 'text',
                 'name' => 'unit_price',
                 'required' => false,
                 'value' => $order->unit_price,
                 'disabled' => '',
                 ])
-                {{ $order->unit_price }}
+            <div class="form-group">
+                <span>Quantité</span>
+                {{ Form::select('quantity', array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10), $order->quantity, array('class' => 'form-control', 'id' => 'quantity')) }}
 
-            @include('partials.form-group', [
-                'title' => __('Quantité'),
-                'type' => 'hidden',
-                'name' => 'quantity',
-                'required' => false,
-                'value' => $order->quantity,
-                'disabled' => '',
-                ])
-                {{ $order->quantity }}
-            <span>Prix total : </span>
-            <span id="total_price-label">{{ $order->total_price }} €</span>
-            <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="{{ $order->total_price }}" >
-
-            <span>Taux de TVA (%) : </span>
-            <span id="vat-label">{{ $order->vat }} %</span>
-            <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="{{ $order->vat }}" >
-
+            </div>
+            <div>
+                <span>Prix total : </span>
+                <span id="total_price-label">{{ $order->total_price }} €</span>
+                <input class="form-control"  id="total_price" type="hidden" class="form-control" name="total_price" value="{{ $order->total_price }}" >
+            </div>
+            <div>
+                <span>Taux de TVA (%) : </span>
+                <span id="vat-label">{{ $order->vat }} %</span>
+                <input class="form-control"  id="vat" type="hidden" class="form-control" name="vat" value="{{ $order->vat }}" >
+            </div>
 
 
             @include('partials.form-group', [
@@ -107,14 +75,8 @@
                 'disabled' => '',
                 ])
 
-            @include('partials.form-group', [
-                'title' => __('Statut'),
-                'type' => 'text',
-                'name' => 'status',
-                'required' => false,
-                'value' => 'waiting',
-                'disabled' => '',
-                ])
+            <input class="form-control"  id="status" type="hidden" class="form-control" name="status" value="waiting">
+
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
@@ -151,14 +113,23 @@
                     $( "#delay" ).val(data[0].delay);
                     $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
 
-                    console.log("eswdddd");
-                   //test = jQuery.parseJSON( data );
-                   //console.log(e.responseText);
                     },
                     error: function (e) {
                         console.log(e.responseText);
                     }
                 });
         });
+        $("#quantity").change(function(e) {
+            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
+        });
+
+
+         $('#unit_price').keyup(function (e) {
+            $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
+            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");            
+        });
+
+        
     </script>
 @endsection

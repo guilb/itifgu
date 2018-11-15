@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\ProductSaving;
+use App\Events\ProductUpdating;
 
 
 class Product extends Model
