@@ -10,7 +10,7 @@
 
         <table class="table table-light">
             <tbody>
-                @foreach($categories as $category)
+                @foreach($all_categories as $category)
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td>
