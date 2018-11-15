@@ -29,6 +29,28 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
+            'name' => 'François Guilbert',
+            'email' => 'francois.guilbert@neoweb.fr',
+            'parking_id' => '1',
+            'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
+        ]);
+        User::create([
+            'name' => 'Fabien Lanselle',
+            'email' => 'fabien.lanselle@neoweb.fr',
+            'parking_id' => '1',
+            'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
+        ]);
+        User::create([
             'name' => 'Paul Ince',
             'email' => 'ince@chezlui.fr',
             'parking_id' => '1',

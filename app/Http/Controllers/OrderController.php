@@ -21,7 +21,7 @@ class OrderController extends Controller
     {
         $user = \Auth::user();
         if ( $user->role === 'admin') {
-            $orders = Order::all();
+            $orders = Order::paginate(config('app.pagination'));;
         }
         else
         {
