@@ -77,23 +77,16 @@
                 'disabled' => '',
                 ])
                 {{ $order->quantity }}
+            <span>Prix total : </span>
+            <span id="total_price-label">{{ $order->total_price }} €</span>
+            <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="{{ $order->total_price }}" >
 
-            @include('partials.form-group', [
-                'title' => __('Prix Total'),
-                'type' => 'text',
-                'name' => 'total_price',
-                'required' => false,
-                'value' => $order->total_price,
-                'disabled' => '',
-                ])
-            @include('partials.form-group', [
-                'title' => __('Taux de TVA (%)'),
-                'type' => 'text',
-                'name' => 'vat',
-                'required' => false,
-                'value' => $order->vat,
-                'disabled' => 'disabled',
-                ])
+            <span>Taux de TVA (%) : </span>
+            <span id="vat-label">{{ $order->vat }} %</span>
+            <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="{{ $order->vat }}" >
+
+
+
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
@@ -156,6 +149,8 @@
                     $( "#unit_price" ).val(data[0].price_value);
                     $( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
                     $( "#delay" ).val(data[0].delay);
+                    $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
+
                     console.log("eswdddd");
                    //test = jQuery.parseJSON( data );
                    //console.log(e.responseText);

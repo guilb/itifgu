@@ -92,9 +92,11 @@
             <span>Prix total : </span>
             <span id="total_price-label"></span>
             <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="" >
+
             <span>Taux de TVA (%) : </span>
             <span id="vat-label"></span>
             <input class="form-control"  id="vat" type="text" class="form-control" name="vat" value="" >
+            
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
