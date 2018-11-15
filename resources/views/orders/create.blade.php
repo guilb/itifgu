@@ -51,7 +51,7 @@
                 'type' => 'text',
                 'name' => 'unit_price',
                 'required' => false,
-                'disabled' => 'disabled',
+                'disabled' => '',
                 ])   
             <div class="form-group">
                 <label for="quantity">@lang('Quantité')</label>
@@ -68,27 +68,36 @@
                         <option value="10">10</option>
                 </select>
             </div>
+
             @include('partials.form-group', [
                 'title' => __('Prix Total'),
                 'type' => 'text',
                 'name' => 'total_price',
                 'required' => false,
-                'disabled' => 'disabled',
+                'disabled' => '',
                 ])   
             @include('partials.form-group', [
                 'title' => __('Taux de TVA (%)'),
                 'type' => 'text',
                 'name' => 'vat',
                 'required' => false,
-                'disabled' => 'disabled',
+                'disabled' => '',
                 ])   
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
-                'disabled' => 'disabled',
+                'disabled' => '',
                 ])   
+            @include('partials.form-group', [
+                'title' => __('Statut'),
+                'type' => 'hidden',
+                'name' => 'status',
+                'value' => 'created',
+                'required' => true,
+                'disabled' => '',
+                ])  
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
                 'type' => 'text',
