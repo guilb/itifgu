@@ -84,7 +84,7 @@ if (!function_exists('finishedOrders')) {
 
 if (!function_exists('classButtonStatus')) {
 
-    function classButtonStatus($order_status,$button_status)
+    function classButtonStatus($order_status,$button_status,$order_total_price)
     {
         switch ([$order_status, $button_status]) {
             case ['created', 'finished']:
@@ -128,8 +128,17 @@ if (!function_exists('classButtonStatus')) {
 
                 $status = "btn-success disable-me";
             break;
+
+
             default:
-                $status = "";
+                if ($order_total_price==null && $button_status =="accepted"){
+
+                    $status = "btn-success disable-me";
+                }
+                else
+                {
+                    $status = "";
+                }
         }
 
         return $status;

@@ -17,12 +17,13 @@
             <div class="col-sm-2">Produit</div>
             <div class="col-sm-1">Q.</div>
             <div class="col-sm-1">Prix</div>
+            <div class="col-sm-1">Délai</div>
             <div class="col-sm-1">Date</div>
             <div class="col-xs-12 col-md-3">Actions</div>
           </div>
 
           @foreach($orders as $order)
-            <div class="clearfix div-row row">
+          <div class="clearfix div-row row">
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">N° : </span>{{ $order->id }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $order->user_name }}</div>
               <div class="statut col-sm-1" id="status"><span class="d-xs-block d-sm-block d-md-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
@@ -30,55 +31,56 @@
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Produit : </span>{{ $order->product_name }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Quantité : </span>{{ $order->quantity }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
+              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Délai : </span>{{($order->delay) }}</div>
               <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
               <div class="d-xs-block d-sm-block d-md-none mt-4"></div>
               <div class="col-xs-12 col-md-3 actions" id="buttons">
                 @admin
+                    @include('partials.action-icon-order', [
+                    'tooltip' => __('Accepter la commande'),
+                    'status' => 'accepted',
+                    'iconclass' => 'fa-plus',
+                    'btnstyle' => 'btn-success',
+                    'btnsuccess' => classButtonStatus($order->status,"accepted",$order->total_price)
+                    ])
+                @endadmin
                 @include('partials.action-icon-order', [
-                  'tooltip' => __('Accepter la commande'),
-                  'status' => 'accepted',
-                  'iconclass' => 'fa-plus',
-                  'btnstyle' => 'btn-success',
-                  'btnsuccess' => classButtonStatus($order->status,"accepted")
-                            ])
-                            @endadmin
-                            @include('partials.action-icon-order', [
-                                'tooltip' => __('Annuler la commande'),
-                                'status' => 'cancelled',
-                                'iconclass' => 'fa-times',
-                                'btnstyle' => 'btn-danger',
-                                'btnsuccess' => classButtonStatus($order->status,"cancelled")
-                            ])
-                            @include('partials.action-icon-order', [
-                                'tooltip' => __('Valider la commande'),
-                                'status' => 'validated',
-                                'iconclass' => 'fa-check',
-                                'btnstyle' => 'btn-success',
-                                'btnsuccess' => classButtonStatus($order->status,"validated")
-                            ])
-                            @admin
-                            @include('partials.action-icon-order', [
-                                'tooltip' => __('Finaliser la commande'),
-                                'status' => 'finished',
-                                'iconclass' => 'fa-check-double',
-                                'btnstyle' => 'btn-info',
-                                'btnsuccess' => classButtonStatus($order->status,"finished")
-                            ])
-                            @endadmin
-                            @admin
-                            <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting') }} btn-sm btn-waiting btn-warning pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
-                            @endadmin
-                          </div>
-                          <div class="clearfix div-comment">
-                            @unless ($order->customer_comment=="")
-                              <div class="col-xs-12"><strong>Commentaire :</strong> {{ $order->customer_comment }}</div>
-                            @endunless
-                            @unless ($order->feedback=="")
-                            <div class="col-xs-12"><strong>Feedback :</strong> {{ $order->feedback }}</div>
-                            @endunless
-                          </div>
-                    </div>
-                @endforeach
+                'tooltip' => __('Annuler la commande'),
+                'status' => 'cancelled',
+                'iconclass' => 'fa-times',
+                'btnstyle' => 'btn-danger',
+                'btnsuccess' => classButtonStatus($order->status,"cancelled",$order->total_price)
+                ])
+                @include('partials.action-icon-order', [
+                'tooltip' => __('Valider la commande'),
+                'status' => 'validated',
+                'iconclass' => 'fa-check',
+                'btnstyle' => 'btn-success',
+                'btnsuccess' => classButtonStatus($order->status,"validated",$order->total_price)
+                ])
+                @admin
+                    @include('partials.action-icon-order', [
+                    'tooltip' => __('Finaliser la commande'),
+                    'status' => 'finished',
+                    'iconclass' => 'fa-check-double',
+                    'btnstyle' => 'btn-info',
+                    'btnsuccess' => classButtonStatus($order->status,"finished",$order->total_price)
+                    ])
+                @endadmin
+                @admin
+                <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting',$order->total_price) }} btn-sm btn-waiting btn-warning pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                @endadmin
+            </div>
+            <div class="clearfix div-comment">
+                @unless ($order->customer_comment=="")
+                <div class="col-xs-12"><strong>Commentaire :</strong> {{ $order->customer_comment }}</div>
+                @endunless
+                @unless ($order->feedback=="")
+                <div class="col-xs-12"><strong>Feedback :</strong> {{ $order->feedback }}</div>
+                @endunless
+            </div>
+        </div>
+        @endforeach
         </div>
         <div class="d-flex justify-content-center">
             {{ $orders->links() }}
