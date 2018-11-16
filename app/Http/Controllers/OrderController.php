@@ -78,6 +78,13 @@ class OrderController extends Controller
         return view('orders.index', compact('parking', 'orders'));
     }
 
+
+    public function user($id)
+    {
+        $orders = Order::whereUser_id($id)->paginate(config('app.pagination'));;
+
+        return view('orders.index', compact ('orders'));
+    }
     /**
      * Display the specified resource.
      *

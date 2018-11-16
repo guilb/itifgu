@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::resource('order', 'OrderController');
     Route::post('/order_status/{id}/{status}', 'OrderController@update_status')->name('order.status');
+    Route::get('/order/user/{id}', 'OrderController@user')->name('order.user');
 
     Route::resource('invoice', 'InvoiceController', [
         'except' => 'store'
