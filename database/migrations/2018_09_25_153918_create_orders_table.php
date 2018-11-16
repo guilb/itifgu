@@ -28,6 +28,10 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('user_name');
+            $table->string('user_address');
+            $table->string('user_zipcode');
+            $table->string('user_city');
+            $table->string('user_country');
             $table->float('quantity');
             $table->float('unit_price')->nullable();
             $table->float('total_price')->nullable();

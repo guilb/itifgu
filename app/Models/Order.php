@@ -8,8 +8,8 @@ use App\Events\OrderUpdating;
 
 class Order extends Model
 {
-    protected $fillable = [
-        'category_id', 'product_id','parking_id', 'user_id','customer_comment','feedback','quantity','unit_price','total_price','vat','delay','status'
+protected $fillable = [
+        'category_id', 'product_id','parking_id', 'user_id','customer_comment','feedback','quantity','unit_price','total_price','vat','delay','status’,’user_name', 'user_address', 'user_city','user_zipcode', 'user_country'
     ];
 
 	public function category()
