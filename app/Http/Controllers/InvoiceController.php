@@ -98,25 +98,8 @@ class InvoiceController extends Controller
     public function show($invoice_id)
     {
         $invoice = Invoice::find($invoice_id);
-        //$vats = Order::groupBy('vat')->where('invoice_id', $invoice_id)->selectRaw('sum(total_price) as total, vat')->get();
+
         $vats = Order::groupBy('vat')->where('invoice_id', $invoice_id)->selectRaw('sum(total_price-(total_price)/((100+vat)/100)) as vat, vat as percentage, sum(total_price)/((100+vat)/100) as ht')->get();
-#$orders = DB::table('orders')->selectRaw('unit_price * ? as total', [1.0825])
-        //$invoice_pdf->download('test.php');
-        Log::warning('start');
-        Log::warning($invoice);
-        Log::warning('end');
-        #$products = Product::all();
-        #$vats =Order::all()->where('invoice_id', $invoice_id);
-#
-
-#$vats = Order::all()->select('vat', ('count(*) as total'))
-               ##  ->groupBy('vat')
-               #  ->get();
-
-
-        Log::warning('vat');
-        Log::warning($vats);
-        Log::warning('vat');
 
         $pdf = PDF::loadView('invoices.pdf',compact('invoice','vats'));
         return $pdf->download('facture.pdf');
