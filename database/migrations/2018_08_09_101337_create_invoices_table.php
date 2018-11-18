@@ -20,6 +20,11 @@ class CreateInvoicesTable extends Migration
             $table->foreign('parking_id')->references('id')->on('parkings');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('user_name');
+            $table->string('user_address');
+            $table->string('user_zipcode');
+            $table->string('user_city');
+            $table->string('user_country');
             $table->date('date');
             $table->timestamps();
         });

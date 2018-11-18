@@ -12,7 +12,7 @@ use Carbon\Carbon;
 #use ConsoleTVs\Invoices\Classes\Invoice;
 
 use Log;
-
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -98,28 +98,28 @@ class InvoiceController extends Controller
     public function show($invoice_id)
     {
         $invoice = Invoice::find($invoice_id);
-        $orders = Order::all()->where('invoice_id', $invoice_id);
+        //$vats = Order::groupBy('vat')->where('invoice_id', $invoice_id)->selectRaw('sum(total_price) as total, vat')->get();
+        $vats = Order::groupBy('vat')->where('invoice_id', $invoice_id)->selectRaw('sum(total_price-(total_price)/((100+vat)/100)) as vat, vat as percentage, sum(total_price)/((100+vat)/100) as ht')->get();
+#$orders = DB::table('orders')->selectRaw('unit_price * ? as total', [1.0825])
+        //$invoice_pdf->download('test.php');
+        Log::warning('start');
+        Log::warning($invoice);
+        Log::warning('end');
+        #$products = Product::all();
+        #$vats =Order::all()->where('invoice_id', $invoice_id);
+#
 
-        #creation du PDF
-        $invoice_pdf = \ConsoleTVs\Invoices\Classes\Invoice::make()
-                        ->number($invoice->number)
-                        ->tax(20)
-                        ->notes('Affichage ici des conditions de paiement')
-                        ->customer([
-                            'name'      => $invoice->user->name,
-                            'id'        => $invoice->user->id,
-                            'phone'     => $invoice->user->phone,
-                            'location'  => $invoice->user->address,
-                            'zip'       => $invoice->user->zipcode,
-                            'city'      => $invoice->user->city,
-                            'country'   => $invoice->user->country,
-                        ]);
+#$vats = Order::all()->select('vat', ('count(*) as total'))
+               ##  ->groupBy('vat')
+               #  ->get();
 
-        foreach($orders as $order){ 
-             $invoice_pdf->addItem($order->product_name, $order->unit_price, $order->quantity, 1526);
-         }
 
-        $invoice_pdf->download('test.php');
+        Log::warning('vat');
+        Log::warning($vats);
+        Log::warning('vat');
+
+        $pdf = PDF::loadView('invoices.pdf',compact('invoice','vats'));
+        return $pdf->download('facture.pdf');
     }
 
     /**

@@ -27,5 +27,10 @@ class InvoiceSaving
      */
     public function handle($event)
     {
+        $event->model->user_name = $event->model->user->name;
+        $event->model->user_address = $event->model->user->address;
+        $event->model->user_zipcode = $event->model->user->zipcode;
+        $event->model->user_city = $event->model->user->city;
+        $event->model->user_country = $event->model->user->country;
     }
 }
