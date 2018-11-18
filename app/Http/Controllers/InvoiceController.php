@@ -59,34 +59,15 @@ class InvoiceController extends Controller
         $invoice = Invoice::create(['number' => $user->id.'000000','user_id' => $user->id,'parking_id' => $user->parking->id,'date' => Carbon::now()]);
         #selection des lignes des commandes
         $orders = Order::all()->where('user_id', $user_id)->where('status', 'finished');
-
-
+        #mise à jour du statut des commandes
         Order::where('user_id', $user->id)->where('status', 'finished')->update(array('status' => "billed",'invoice_id' => $invoice->id));
 
-        #creation du PDF
-        $invoice_pdf = \ConsoleTVs\Invoices\Classes\Invoice::make()
-                        ->number(4021)
-                        ->tax(20)
-                        ->notes('Affichage ici des conditions de paiement')
-                        ->customer([
-                            'name'      => $user->name,
-                            'id'        => $user->id,
-                            'phone'     => $user->phone,
-                            'location'  => $user->address,
-                            'zip'       => $user->zipcode,
-                            'city'      => $user->city,
-                            'country'   => $user->country,
-                        ]);
 
-        foreach($orders as $order){ 
-             $invoice_pdf->addItem($order->product_name, $order->unit_price, $order->quantity, 1526);
-         }
+        $vats = Order::groupBy('vat')->where('invoice_id', $invoice->id)->selectRaw('sum(total_price-(total_price)/((100+vat)/100)) as vat, vat as percentage, sum(total_price)/((100+vat)/100) as ht')->get();
 
-        $invoice_pdf->save('/public/facture_'.$invoice->number.'.pdf');
+        $pdf = PDF::loadView('invoices.pdf',compact('invoice','vats'));
+        return $pdf->download('facture.pdf');
 
-        return back()->with('ok', __("La facture a bien été créée"));
-
-        #return back()->with('ok', __("La facture a bien été créée"));
     }
 
     /**
