@@ -3,7 +3,7 @@
     @component('components.card')
         @slot('title')
             @lang('Gestion des produits')
-            <a class="btn btn-primary pull-right" href="{{ route('product.create') }}">
+            <a class="btn btn-primary float-right" href="{{ route('product.create') }}">
               <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter un produit')</span>
             </a>
         @endslot
@@ -14,8 +14,8 @@
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>
-                            <a type="button" href="{{ route('product.destroy', $product->id) }}" class="btn btn-danger btn-sm pull-right" data-toggle="tooltip" title="@lang('Supprimer le produit') {{ $product->name }}"><i class="fas fa-trash fa-lg"></i></a>
-                            <a type="button" href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="@lang('Modifier le produit') {{ $product->name }}"><i class="fas fa-edit fa-lg"></i></a>
+                            <a type="button" href="{{ route('product.destroy', $product->id) }}" class="btn btn-danger btn-sm float-right" data-toggle="tooltip" title="@lang('Supprimer le produit') {{ $product->name }}"><i class="fas fa-trash fa-lg"></i></a>
+                            <a type="button" href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm float-right mr-2" data-toggle="tooltip" title="@lang('Modifier le produit') {{ $product->name }}"><i class="fas fa-edit fa-lg"></i></a>
                         </td>
                     </tr>
                 @endforeach

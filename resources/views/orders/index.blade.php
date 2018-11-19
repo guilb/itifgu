@@ -3,38 +3,38 @@
     @component('components.card')
         @slot('title')
             @lang('Gestion des commandes')
-            <a class="btn btn-primary pull-right" href="{{ route('order.create') }}">
+            <a class="btn btn-primary float-right" href="{{ route('order.create') }}">
               <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
             </a>
         @endslot
 
         <div class="table-div-container container clearfix">
-          <div class="clearfix div-row header row d-none d-md-flex">
-            <div class="col-sm-1">N°</div>
-            <div class="col-sm-2">Nom</div>
-            <div class="col-sm-1">Statut</div>
-            <div class="col-sm-2">Catégorie</div>
-            <div class="col-sm-2">Produit</div>
-            <div class="col-sm-1">Q.</div>
-            <div class="col-sm-1">Prix</div>
-            <div class="col-sm-1">Délai</div>
-            <div class="col-sm-1">Date</div>
-            <div class="col-xs-12 col-md-3">Actions</div>
+          <div class="clearfix div-row header row d-none d-lg-flex">
+            <div class="col-lg-1">N°</div>
+            <div class="col-lg-1">Nom</div>
+            <div class="col-lg-1">Statut</div>
+            <div class="col-lg-1">Catégorie</div>
+            <div class="col-lg-1">Produit</div>
+            <div class="col-lg-1">Q.</div>
+            <div class="col-lg-1">Prix</div>
+            <div class="col-lg-1">Délai</div>
+            <div class="col-lg-1">Date</div>
+            <div class="col-xs-12 col-lg-3">Actions</div>
           </div>
 
           @foreach($orders as $order)
           <div class="clearfix div-row row">
-              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">N° : </span>{{ $order->id }}</div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $order->user_name }}</div>
-              <div class="statut col-sm-1" id="status"><span class="d-xs-block d-sm-block d-md-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Catégorie : </span>{{ $order->category_name }}</div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Produit : </span>{{ $order->product_name }}</div>
-              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Quantité : </span>{{ $order->quantity }}</div>
-              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
-              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Délai : </span>{{($order->delay) }}</div>
-              <div class="col-sm-1"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
-              <div class="d-xs-block d-sm-block d-md-none mt-4"></div>
-              <div class="col-xs-12 col-md-3 actions" id="buttons">
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
+              <div class="statut col-lg-1" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Catégorie : </span>{{ $order->category_name }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Produit : </span>{{ $order->product_name }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Quantité : </span>{{ $order->quantity }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Délai : </span>{{($order->delay) }}</div>
+              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
+              <div class="d-xs-block d-lg-none mt-4"></div>
+              <div class="col-xs-12 col-lg-3 actions" id="buttons">
                 @admin
                     @include('partials.action-icon-order', [
                     'tooltip' => __('Accepter la commande'),
@@ -68,7 +68,7 @@
                     ])
                 @endadmin
                 @admin
-                <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting',$order->total_price) }} btn-sm btn-waiting btn-warning pull-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting',$order->total_price) }} btn-sm btn-waiting btn-warning float-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
                 @endadmin
             </div>
             <div class="clearfix div-comment">
