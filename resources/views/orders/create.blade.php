@@ -122,7 +122,7 @@
                 </div>
             @endadmin
 
-            <input class="form-control" id="status" type="text" name="status" value="created">
+            <input class="form-control" id="status" type="hidden" name="status" value="created">
 
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
