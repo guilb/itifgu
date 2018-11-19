@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+
+use Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Parking;
+
 
 class UserController extends Controller
 {
@@ -35,7 +39,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $parkings = Parking::pluck('name', 'id');
+
+        return view('users.create',compact('parkings'));
     }
 
     /**
@@ -44,9 +50,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(UserRequest $request)
+    { 
+
+        $request->merge(['password' => Hash::make($request->password)]);
+        
+        $user = User::create($request->all());
+
+        return redirect('/user');
     }
 
     /**
