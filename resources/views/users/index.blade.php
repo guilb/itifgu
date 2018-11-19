@@ -22,7 +22,7 @@
                 <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm pull-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
                 <a type="button" href="{{ route('order.user', $user->id) }}" class="btn btn-primary btn-sm pull-right mr-2" data-toggle="tooltip" title="Afficher les commandes"><i class="fas fa-eye fa-lg"></i></a>
                 @if (finishedOrders($user) != "0")
-                    <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-primary btn-sm pull-right mr-2" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
+                    <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-primary btn-invoice btn-sm pull-right mr-2" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
                 @endif
               </div>
             </div>
@@ -68,6 +68,20 @@
                     )
                 })
             })
-        })
-    </script>
+ 
+            $('a.btn-invoice').click(function(e) {
+                let that = $(this)
+                e.preventDefault()
+                $.fileDownload(that.attr('href'))
+                    .done(function () {
+                        that.remove();
+                        console.log('File download a success!'); 
+                    })
+                    .fail(function () {
+                        console.log('File download failed!');
+                    });
+                that.remove();
+
+            })
+        })    </script>
 @endsection

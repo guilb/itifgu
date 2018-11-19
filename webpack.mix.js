@@ -19,5 +19,6 @@ mix.styles([
 .scripts([ 
     'resources/assets/js/jquery-3.3.1.js', 
     'resources/assets/js/bootstrap.bundle.js',
-    'resources/assets/js/sweetalert2.js' 
+    'resources/assets/js/sweetalert2.js',
+    'resources/assets/js/jquery.fileDownload.js'
 ], 'public/js/app.js');

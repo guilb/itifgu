@@ -37,7 +37,7 @@
                 let that = $(this)
                 e.preventDefault()
                 swal({
-                    title: '@lang('Vraiment supprimer ce produit ?')',
+                    title: '@lang('Vraiment suppdrimer ce produit ?')',
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#DD6B55',
