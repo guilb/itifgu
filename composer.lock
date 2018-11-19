@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a919e320697817d5412c696aba4a689",
+    "content-hash": "f518bfd424c8cc7a056dc97640667ee6",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -61,63 +61,6 @@
                 "pdf"
             ],
             "time": "2018-08-31T13:25:44+00:00"
-        },
-        {
-            "name": "consoletvs/invoices",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ConsoleTVs/Invoices.git",
-                "reference": "ab5d3cb81aaa6a87b6243dc83f272c0202bebf71"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ConsoleTVs/Invoices/zipball/ab5d3cb81aaa6a87b6243dc83f272c0202bebf71",
-                "reference": "ab5d3cb81aaa6a87b6243dc83f272c0202bebf71",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "^0.8",
-                "ext-bcmath": "*",
-                "illuminate/support": "5.*",
-                "illuminate/view": "5.*",
-                "nesbot/carbon": "^1.22"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ConsoleTVs\\Invoices\\InvoicesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ConsoleTVs\\Invoices\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Erik Campobadal",
-                    "email": "ConsoleTVs@gmail.com"
-                }
-            ],
-            "description": "Generate PDF invoices for your customers in laravel",
-            "keywords": [
-                "Erik Campobadal",
-                "create",
-                "customers",
-                "generate",
-                "invoices",
-                "laravel",
-                "open source",
-                "pdf"
-            ],
-            "time": "2018-02-18T11:53:35+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
