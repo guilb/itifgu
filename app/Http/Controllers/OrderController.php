@@ -56,7 +56,6 @@ class OrderController extends Controller
         Log::warning($request);
         Order::create($request->all());
         Log::warning($request);
-
         return back()->with('ok', __("La commande a bien été enregistrée"));
     }
 
