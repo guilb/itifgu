@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\InvoiceSaving;
+use App\Events\InvoiceCreating;
 
 class Invoice extends Model
 {
@@ -55,15 +56,9 @@ class Invoice extends Model
 	}	
 
 
-	public function test()
-	{
-		$total_price = 0;
-
-	    return "ERT";
-	}
-
 	protected $dispatchesEvents = [
 	    'saving' => InvoiceSaving::class,
+	    'creating' => InvoiceCreating::class,
 	];
 }
 

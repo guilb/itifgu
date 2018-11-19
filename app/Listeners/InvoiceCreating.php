@@ -4,10 +4,11 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\UserCreating as EventUserCreating;
-use App\Models\User;
+use App\Events\InvoiceCreating as EventInvoiceCreating;
+use App\Models\Invoice;
+use Log;
 
-class UserCreating
+class InvoiceCreating
 {
     /**
      * Create the event listener.
@@ -27,11 +28,12 @@ class UserCreating
      */
     public function handle($event)
     {
-        $code_parking = $event->model->parking->code;
-        $max = User::selectRaw('MAX(RIGHT(customer_number,5)) AS max_value')->whereParking_id($event->model->parking->id)->first();
+        $max = Invoice::selectRaw('MAX(RIGHT(number,4)) AS max_value')
+        ->whereRaw('LEFT(number,5) = ?' ,'C'.date('y').date('m'))
+        ->first();
         $new_number=$max->max_value+1;
-        $new_number = sprintf("%05d", $new_number);
-        $event->model->customer_number = "DLC".$code_parking.$new_number;
+        $new_number = sprintf("%04d", $new_number);
+        $event->model->number = "C".date("y").date("m").$new_number;
 
     }
 }
