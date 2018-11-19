@@ -52,18 +52,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'product_id' => 'required|exists:products,id',
-            'user_id' => 'required|exists:users,id',
-            'parking_id' => 'required|exists:parkings,id',
-            'quantity' => 'nullable|integer',
-            'unit_price' => 'nullable|numeric',
-            'float_price' => 'nullable|numeric',
-            'customer_comment' => 'nullable|string|max:255',
-            'delay' => 'nullable|string|max:255',
-        ]);
+
+        Log::warning($request);
         Order::create($request->all());
+        Log::warning($request);
 
         return back()->with('ok', __("La commande a bien été enregistrée"));
     }

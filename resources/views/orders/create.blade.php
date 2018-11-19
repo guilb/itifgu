@@ -40,6 +40,7 @@
                   </div>
                   <div class="col-md-6">
                     <select id="parking_id" name="parking_id" class="form-control">
+                        <option>Choisissez un parking</option>
                         @foreach($parkings as $parking)
                             <option value="{{ $parking->id }}">{{ $parking->name }}</option>
                         @endforeach
@@ -52,9 +53,7 @@
                   </div>
                   <div class="col-md-6">
                     <select id="user_id" name="user_id" class="form-control">
-                        @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
+                        <option>Choisissez un utilisateur</option>
                     </select>
                   </div>
                 </div>
@@ -100,7 +99,7 @@
             <div>
                 <span>Prix total : </span>
                 <span id="total_price-label"></span>
-                <input class="form-control"  id="total_price" type="text" class="form-control" name="total_price" value="" >
+                <input class="form-control"  id="total_price" type="hidden" class="form-control" name="total_price" value="" >
             </div>
             <div>
                 <span>Taux de TVA (%) : </span>
@@ -123,8 +122,6 @@
                 </div>
             @endadmin
 
-
-            <input class="form-control"  id="status" type="hidden" class="form-control" name="status" value="created" >
 
             @include('partials.form-group', [
                 'title' => __('Commentaire (optionnel)'),
@@ -186,15 +183,6 @@
                             }));
                         });
 
-                    //#$("#product_id").addOption("1", "Vase");
-
-                    //$( "#unit_price" ).val(data[0].price_value);
-                    //$( "#total_price" ).val($( "#quantity" ).val()*$( "#unit_price" ).val());
-                    //$( "#delay" ).val(data[0].delay);
-
-                    //console.log("eswdddd");
-                   //test = jQuery.parseJSON( data );
-                   //console.log(e.responseText);
                     },
                     error: function (e) {
                         console.log(e.responseText);
@@ -202,7 +190,33 @@
                 });
         });
 
+        $("#parking_id").change(function(e) {
+            $( "#parking_id" ).val();
+            console.log('fqdfqd');
+            $.ajax({
+                url: '/load_users/{id}',
+                    type: 'POST',
+                    data: {
+                        id : $( "#parking_id" ).val()
+                    },
 
+                dataType: 'JSON',
+                    success: function (data) {
+                        $('#user_id').children('option:not(:first)').remove();
+
+                        $.each(data[0], function (id,value) {
+                            $('#user_id').append($('<option/>', {
+                                value: value.id,
+                                text : value.name
+                            }));
+                        });
+
+                    },
+                    error: function (e) {
+                        console.log(e.responseText);
+                    }
+                });
+        });
 
 
 		$("#product_id").change(function(e) {

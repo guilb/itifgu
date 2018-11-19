@@ -8,6 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Parking;
+use Illuminate\Support\Facades\Input;
 
 
 class UserController extends Controller
@@ -30,6 +31,18 @@ class UserController extends Controller
         $users = User::whereParking_id($parking->id)->paginate(config('app.pagination'));;
 
         return view('users.index', compact('parking', 'users'));
+    }
+
+
+    public function load_users()
+    {
+        
+        $id = Input::post("id");
+        $users = User::all()->where('parking_id', $id);
+        //return $product;
+        return response()->json([
+            $users
+        ]);
     }
 
     /**

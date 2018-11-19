@@ -35,6 +35,7 @@ class OrderSaving
         $event->model->user_zipcode = $event->model->user->zipcode;
         $event->model->user_city = $event->model->user->city;
         $event->model->user_country = $event->model->user->country;
+        $event->model->user_country = "created";
 
     }
 }

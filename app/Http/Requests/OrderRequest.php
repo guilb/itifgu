@@ -30,6 +30,7 @@ class OrderRequest extends FormRequest
             'float_price' => 'nullable|numeric',
             'customer_comment' => 'nullable|string|max:255',
             'delay' => 'nullable|string|max:255',
+            'status' => 'required',
         ];
     }
 }
