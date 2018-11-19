@@ -3,6 +3,9 @@
     @component('components.card')
         @slot('title')
             @lang('Gestion des Utilisateurs')
+            <a class="btn btn-primary pull-right" href="{{ route('user.create') }}">
+              <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter un utilisateur')</span>
+            </a>
         @endslot
         <div class="table-div-container container clearfix">
           <div class="clearfix div-row header row d-none d-md-flex">
