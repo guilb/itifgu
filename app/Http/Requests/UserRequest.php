@@ -24,13 +24,14 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|unique:users,email',
             #'password' => 'required',
+            #'customer_number' => 'required',
             'address' => 'required',
             'zipcode' => 'nullable',
             'city' => 'nullable',
             'country' => 'nullable',
             'phone' => 'nullable',
             'parking_id' => 'required|exists:parkings,id',
-            'role'
+            'role' => 'required',
         ];
     }
 }

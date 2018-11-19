@@ -34,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\InvoiceSaving' => [
         'App\Listeners\InvoiceSaving',
         ],
+        'App\Events\UserCreating' => [
+        'App\Listeners\UserCreating',
+        ],
     ];
 
 

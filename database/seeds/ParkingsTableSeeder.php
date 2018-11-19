@@ -14,19 +14,19 @@ class ParkingsTableSeeder extends Seeder
     {
         Parking::create([
             'name' => 'République',
-            'code' => 'RE',
+            'code' => '13',
         ]);        
         Parking::create([
             'name' => 'Opéra',
-            'code' => 'OP',
+            'code' => '12',
         ]);         
         Parking::create([
             'name' => 'Nouveau Siècle',
-            'code' => 'NS',
+            'code' => '11',
         ]);         
         Parking::create([
-            'name' => 'Lille Flandre',
-            'code' => 'LF',
+            'name' => 'Champ de Mars',
+            'code' => '15',
         ]);     
     }
 }
