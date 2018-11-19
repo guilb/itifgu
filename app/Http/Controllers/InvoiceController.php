@@ -65,7 +65,7 @@ class InvoiceController extends Controller
         $vats = Order::groupBy('vat')->where('invoice_id', $invoice->id)->selectRaw('sum(total_price-(total_price)/((100+vat)/100)) as vat, vat as percentage, sum(total_price)/((100+vat)/100) as ht')->get();
 
         $pdf = PDF::loadView('invoices.pdf',compact('invoice','vats'));
-        return $pdf->download('facture.pdf');
+        return $pdf->download($invoice->number.'.pdf');
 
     }
 
@@ -82,7 +82,7 @@ class InvoiceController extends Controller
         $vats = Order::groupBy('vat')->where('invoice_id', $invoice_id)->selectRaw('sum(total_price-(total_price)/((100+vat)/100)) as vat, vat as percentage, sum(total_price)/((100+vat)/100) as ht')->get();
 
         $pdf = PDF::loadView('invoices.pdf',compact('invoice','vats'));
-        return $pdf->download('facture.pdf');
+        return $pdf->download($invoice->number.'.pdf');
     }
 
     /**
