@@ -66,14 +66,20 @@
                 'disabled' => '',
                 'value' => $user->phone,
                 ])
-            <div class="form-row">
-              <div class="col-md-3">
-                <label for="role">Parking</label>
-              </div>
-              <div class="col-md-3">
-                {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
-              </div>
-           </div>
+            @admin
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <label for="role">Parking</label>
+                  </div>
+                  <div class="col-md-3">
+                    {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
+                  </div>
+               </div>
+            @else
+                <span>Parking</span>
+                <span>{{ $user->parking->name }}</span>
+                <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
+            @endadmin
             <div class="form-row">
               <div class="col-md-3">
                 <label for="role">Rôle</label>
