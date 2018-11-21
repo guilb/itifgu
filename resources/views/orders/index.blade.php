@@ -11,7 +11,9 @@
         <div class="table-div-container container clearfix">
           <div class="clearfix div-row header row d-none d-lg-flex">
             <div class="col-lg-1">N°</div>
-            <div class="col-lg-1">Nom</div>
+            @admin
+                <div class="col-lg-1">Nom</div>
+            @endadmin
             <div class="col-lg-1">Statut</div>
             <div class="col-lg-1">Catégorie</div>
             <div class="col-lg-1">Produit</div>
@@ -25,7 +27,9 @@
           @foreach($orders as $order)
           <div class="clearfix div-row row">
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
+              @admin
+                <div class="col-lg-1"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
+            @endadmin
               <div class="statut col-lg-1" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">Catégorie : </span>{{ $order->category_name }}</div>
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">Produit : </span>{{ $order->product_name }}</div>
