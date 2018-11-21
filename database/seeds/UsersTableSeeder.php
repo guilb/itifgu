@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
         ]);
         User::create([
             'name' => 'Fabien Lanselle',
-            'email' => 'fabien.Lanselle@neoweb.fr',
+            'email' => 'fabien.lanselle@neoweb.fr',
             'role' => 'admin',
             'parking_id' => '1',
             'password' => bcrypt('admin'),

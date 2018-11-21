@@ -74,7 +74,7 @@
                 <div>
                     <span>Prix unitaire : </span>
                     <span id="unit_price-label"></span>
-                    <input class="form-control"  id="unit_price" type="text" class="form-control" name="unit_price" value="" >
+                    <input class="form-control"  id="unit_price" type="hidden" class="form-control" name="unit_price" value="" >
                 </div>
             @endadmin
             <div class="form-row">
