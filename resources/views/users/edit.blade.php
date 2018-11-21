@@ -80,15 +80,19 @@
                 <span>{{ $user->parking->name }}</span>
                 <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
             @endadmin
-            <div class="form-row">
-              <div class="col-md-3">
-                <label for="role">Rôle</label>
-                {{ $user->role }}
-              </div>
-              <div class="col-md-3">
-                {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), $user->role, array('class' => 'form-control', 'id' => 'role')) }}
-              </div>
-            </div>
+            @admin
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <label for="role">Rôle</label>
+                    {{ $user->role }}
+                  </div>
+                  <div class="col-md-3">
+                    {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), $user->role, array('class' => 'form-control', 'id' => 'role')) }}
+                  </div>
+                </div>
+            @else
+                <input class="form-control" id="role" type="hidden" name="role" value="{{ $user->role }}">
+            @endadmin
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
