@@ -7,8 +7,8 @@
 </head>
 <body>
   <div style="clear:both; position:relative;">
-    <div style="position:absolute; right:0pt; width:320pt;">
-      <img class="img-rounded" height="81px" src="{{ public_path('img/vitasolutis.png') }}">
+    <div style="position:absolute; right:0pt; width:139pt;">
+      <img class="img-rounded" height="100px" src="{{ public_path('img/solutis-logo.jpg') }}">
     </div>
   </div>
   <br />
