@@ -34,7 +34,7 @@
     <div style="margin-left: 300pt;">
       <div class="panel panel-default">
         <div class="panel-body">
-          <strong>N° CLIENT XXXXXXXX</strong><br />
+          <strong>N° CLIENT {{ $invoice->user_customer_number }}</strong><br />
           {{ $invoice->user_name }}<br />
           {{ $invoice->user_address }}<br />
           {{ $invoice->user_zipcode }} {{ $invoice->user_city }}<br />
