@@ -10,7 +10,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "v5.6.39",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "orangehill/iseed": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

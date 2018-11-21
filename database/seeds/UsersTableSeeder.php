@@ -6,11 +6,56 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Jacques Durand',
-            'email' => 'durand@chezlui.fr',
+            'name' => 'François Guilbert',
+            'email' => 'francois.guilbert@neoweb.fr',
             'role' => 'admin',
             'parking_id' => '1',
             'password' => bcrypt('admin'),
+            'address' => "165, avenue de Bretagne",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 06 14 17",
+        ]);
+        User::create([
+            'name' => 'Fabien Lanselle',
+            'email' => 'fabien.Lanselle@neoweb.fr',
+            'role' => 'admin',
+            'parking_id' => '1',
+            'password' => bcrypt('admin'),
+            'address' => "165, avenue de Bretagne",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 06 14 17",
+        ]);
+        User::create([
+            'name' => 'Matthieu Estève',
+            'email' => 'matthieu.esteve@groupevitaminet.com',
+            'parking_id' => '1',
+            'password' => bcrypt('admin'),
+            'address' => "2 Boulevard Thomson",
+            'zipcode' => "59810",
+            'city' => "Lesquin",
+            'country' => "France",
+            'phone' => "03 20 61 70 70",
+        ]);
+        User::create([
+            'name' => 'Olivier Decornet',
+            'email' => 'olivier.decornet@groupevitaminet.com',
+            'parking_id' => '1',
+            'password' => bcrypt('admin'),
+            'address' => "2 Boulevard Thomson",
+            'zipcode' => "59810",
+            'city' => "Lesquin",
+            'country' => "France",
+            'phone' => "03 20 61 70 70",
+        ]);
+        User::create([
+            'name' => 'Paul Rolland',
+            'email' => 'rolland@chezlui.fr',
+            'parking_id' => '1',
+            'password' => bcrypt('user'),
             'address' => "12 rue du lion",
             'zipcode' => "59000",
             'city' => "Lille",
@@ -18,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Jean Dupont',
+            'name' => 'Pierre Dupont',
             'email' => 'dupont@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
@@ -29,85 +74,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'François Guilbert',
-            'email' => 'francois.guilbert@neoweb.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Fabien Lanselle',
-            'email' => 'fabien.lanselle@neoweb.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Paul Ince',
-            'email' => 'ince@chezlui.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Pierre Smith',
-            'email' => 'smith@chezlui.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Paul Licata',
-            'email' => 'licata@chezlui.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Jacques Vandaele',
-            'email' => 'vandael@chezlui.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Jean Lars',
-            'email' => 'lars@chezlui.fr',
-            'parking_id' => '1',
-            'password' => bcrypt('user'),
-            'address' => "12 rue du lion",
-            'zipcode' => "59000",
-            'city' => "Lille",
-            'country' => "France",
-            'phone' => "03 20 03 20 03",
-        ]);
-        User::create([
-            'name' => 'Pierre Louguet',
-            'email' => 'louguet@chezlui.fr',
+            'name' => 'Jacques Carpentier',
+            'email' => 'carpentier@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
@@ -117,8 +85,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Paul Cornet',
-            'email' => 'cornet@chezlui.fr',
+            'name' => 'Virginie Leroux',
+            'email' => 'leroux@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
@@ -128,9 +96,9 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Pierre Bal',
-            'email' => 'bal@chezlui.fr',
-            'parking_id' => '2',
+            'name' => 'Valérie Dufour',
+            'email' => 'dufour@chezlui.fr',
+            'parking_id' => '3',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
             'zipcode' => "59000",
@@ -139,9 +107,9 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Paul Casper',
-            'email' => 'casper@chezlui.fr',
-            'parking_id' => '2',
+            'name' => 'Rolland Ledoux',
+            'email' => 'ledoux@chezlui.fr',
+            'parking_id' => '3',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
             'zipcode' => "59000",
@@ -150,9 +118,9 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Jacques Bulle',
-            'email' => 'bulle@chezlui.fr',
-            'parking_id' => '2',
+            'name' => 'François Dumont',
+            'email' => 'dumont@chezlui.fr',
+            'parking_id' => '4',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
             'zipcode' => "59000",
@@ -161,9 +129,9 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Jean Bichet',
-            'email' => 'bichet@chezlui.fr',
-            'parking_id' => '2',
+            'name' => 'Stéphane Hermant',
+            'email' => 'hermant@chezlui.fr',
+            'parking_id' => '4',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
             'zipcode' => "59000",
