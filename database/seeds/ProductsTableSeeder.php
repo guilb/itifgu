@@ -12,7 +12,6 @@ class ProductsTableSeeder extends Seeder
  */
 public function run()
 {
-
 Product::create(['name'=>'Chemise cintre','category_id'=>'1','price_display'=>'3,90€','price_value'=>'3.90','delay'=>'J+1', 'vat'=>'20',]);
 Product::create(['name'=>'Chemise Pliée','category_id'=>'1','price_display'=>'4,40€','price_value'=>'4.40','delay'=>'J+1', 'vat'=>'20', ]);
 Product::create(['name'=>'Pull','category_id'=>'1','price_display'=>'4,80€','price_value'=>'4.80','delay'=>'J+1', 'vat'=>'20', ]);
