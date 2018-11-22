@@ -7,7 +7,7 @@
               <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
             </a>
         @endslot
-
+        {{ classDifferentAdminUser('classe user', 'classe admin') }}
         <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-lg-flex">
             <div class="col-lg-1">N°</div>
