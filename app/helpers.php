@@ -85,7 +85,7 @@ if (!function_exists('finishedOrders')) {
 
 if (!function_exists('classButtonStatus')) {
 
-    function classDifferentAdminUser($class_user,$class_admin)
+    function differentClassAdminUser($class_admin,$class_user)
     {
 
         $user = \Auth::user();
