@@ -71,10 +71,14 @@
                     'disabled' => '',
                     ])
             @else
-                <div>
-                    <span>Prix unitaire : </span>
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <label for="unit_price">@lang('Prix unitaire : ')</label>
+                  </div>
+                  <div class="col-md-6">
                     <span id="unit_price-label"></span>
                     <input class="form-control"  id="unit_price" type="hidden" class="form-control" name="unit_price" value="" >
+                  </div>
                 </div>
             @endadmin
             <div class="form-row">
@@ -96,15 +100,25 @@
                 </select>
               </div>
             </div>
-            <div>
-                <span>Prix total : </span>
+
+            <div class="form-row">
+              <div class="col-md-3">
+                <label for="total_price">@lang('Prix total : ')</label>
+              </div>
+              <div class="col-md-6">
                 <span id="total_price-label"></span>
                 <input class="form-control"  id="total_price" type="hidden" class="form-control" name="total_price" value="" >
+              </div>
             </div>
-            <div>
-                <span>Taux de TVA (%) : </span>
+
+            <div class="form-row">
+              <div class="col-md-3">
+                <label for="vat">@lang('Taux de TVA (%) : ')</label>
+              </div>
+              <div class="col-md-6">
                 <span id="vat-label"></span>
                 <input class="form-control"  id="vat" type="hidden" class="form-control" name="vat" value="" >
+              </div>
             </div>
             @admin
                 @include('partials.form-group', [
@@ -114,11 +128,15 @@
                 'required' => false,
                 'disabled' => '',
                 ])
-            @else 
-                <div>
-                    <span>Délai : </span>
+            @else
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <label for="delay">@lang('Délai : ')</label>
+                  </div>
+                  <div class="col-md-6">
                     <span id="delay-label"></span>
                     <input class="form-control"  id="delay" type="hidden" class="form-control" name="delay" value="" >
+                  </div>
                 </div>
             @endadmin
 
@@ -237,7 +255,7 @@
                             $( "#unit_price" ).val("");
                             $( "#unit_price-label" ).html("Prix variable");
                             $( "#total_price" ).val("");
-                            $( "#total_price-label" ).html("Nous vous ferons parvenir un prix"); 
+                            $( "#total_price-label" ).html("Nous vous ferons parvenir un prix");
                         }
                         else
                         {
@@ -246,12 +264,12 @@
                             $( "#unit_price" ).val(parseFloat(data[0].price_value).toFixed(2));
                             $( "#unit_price-label" ).html(data[0].price_value+" €");
                             $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
-                            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");          
-                        }  
+                            $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
+                        }
                         $( "#delay" ).val(data[0].delay);
                         $( "#delay-label" ).html(data[0].delay);
                         $( "#vat" ).val(data[0].vat);
-                        $( "#vat-label" ).html(data[0].vat+" %");  
+                        $( "#vat-label" ).html(data[0].vat+" %");
 
 		            },
 		            error: function (e) {
@@ -266,20 +284,20 @@
             if ($( "#unit_price" ).val()!="") {
                 $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
                 $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
-            }    
+            }
         });
 
 
          $('#unit_price').keyup(function (e) {
             if ($( "#unit_price" ).val()!=""){
                 $( "#total_price" ).val(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2));
-                $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €"); 
+                $( "#total_price-label" ).html(parseFloat($( "#quantity" ).val()*$( "#unit_price" ).val()).toFixed(2)+" €");
             }
             else
             {
                 $( "#total_price" ).val("");
-                $( "#total_price-label" ).html("Nous vous ferons parvenir un prix"); 
-            }         
+                $( "#total_price-label" ).html("Nous vous ferons parvenir un prix");
+            }
          });
 
 

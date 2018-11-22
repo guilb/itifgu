@@ -12,12 +12,10 @@
           <div class="clearfix div-row header row d-none d-lg-flex">
             <div class="col-lg-1">N°</div>
             @admin
-                <div class="col-lg-1">Nom</div>
+                <div class="col-lg-2">Nom</div>
             @endadmin
             <div class="col-lg-1">Statut</div>
-            <div class="col-lg-1">Catégorie</div>
-            <div class="col-lg-1">Produit</div>
-            <div class="col-lg-1">Q.</div>
+            <div class="col-lg-2">Produits</div>
             <div class="col-lg-1">Prix</div>
             <div class="col-lg-1">Délai</div>
             <div class="col-lg-1">Date</div>
@@ -28,12 +26,10 @@
           <div class="clearfix div-row row">
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
               @admin
-                <div class="col-lg-1"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
+                <div class="col-lg-2"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
             @endadmin
               <div class="statut col-lg-1" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Catégorie : </span>{{ $order->category_name }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Produit : </span>{{ $order->product_name }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Quantité : </span>{{ $order->quantity }}</div>
+              <div class="col-lg-2"><span class="d-xs-block d-lg-none">Produits : </span>{{ $order->category_name }}<br />{{ $order->quantity }} x {{ $order->product_name }}</div>
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">Délai : </span>{{($order->delay) }}</div>
               <div class="col-lg-1"><span class="d-xs-block d-lg-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
@@ -77,10 +73,24 @@
             </div>
             <div class="clearfix div-comment">
                 @unless ($order->customer_comment=="")
-                <div class="col-xs-12"><strong>Commentaire :</strong> {{ $order->customer_comment }}</div>
+                <div class="offset-sm-1 col-sm-11">
+                  <div class="row">
+
+                  <div class="alert alert-secondary">
+                    <i class="fas fa-angle-right"></i><strong> Commentaire : </strong><i>" {{ $order->customer_comment }} "</i>
+                  </div>
+                </div>
+                  </div>
                 @endunless
                 @unless ($order->feedback=="")
-                <div class="col-xs-12"><strong>Feedback :</strong> {{ $order->feedback }}</div>
+                <div class="offset-sm-1 col-sm-11">
+                  <div class="row">
+
+                  <div class=" alert alert-success">
+                    <i class="fas fa-angle-double-right"></i><strong> Retour Solutis : </strong><i>" {{ $order->feedback }} "</i>
+                  </div>
+                </div>
+                  </div>
                 @endunless
             </div>
         </div>

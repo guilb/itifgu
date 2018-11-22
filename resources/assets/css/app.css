@@ -24,6 +24,22 @@ button, .btn {
   -webkit-appearance: none !important;
 }
 
+.pagination li {
+  color: #aacc61 !important;
+}
+.pagination li span, .pagination li a {
+  border: 1px solid #aacc61 !important;
+  color: #aacc61;
+}
+.pagination li a.page-link:hover {
+  border: 1px solid #aacc61 !important;
+  color: #aacc61;
+}
+.pagination li.active .page-link {
+  background: #aacc61;
+  color: #fff !important;
+}
+
 .actions .btn {
   width: 2.5em;
 }
@@ -86,6 +102,10 @@ button, .btn {
 }
 
 .table-div-container .div-row .div-comment {
+  width: 100%;
+}
+
+.table-div-container .div-row .div-comment .alert {
   margin-top: 10px;
 }
 
