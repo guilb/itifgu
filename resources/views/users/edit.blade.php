@@ -76,9 +76,15 @@
                   </div>
                </div>
             @else
+            <div class="form-row">
+              <div class="col-md-3">
                 <span>Parking</span>
+              </div>
+              <div class="col-md-3">
                 <span>{{ $user->parking->name }}</span>
                 <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
+              </div>
+            </div>
             @endadmin
             @admin
                 <div class="form-row">
