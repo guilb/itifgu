@@ -73,7 +73,7 @@
             </div>
             <div class="clearfix div-comment">
                 @unless ($order->customer_comment=="")
-                <div class="offset-sm-1 col-sm-11">
+                <div class="offset-lg-1 col-sm-11">
                   <div class="row">
 
                   <div class="alert alert-secondary">
@@ -83,7 +83,7 @@
                   </div>
                 @endunless
                 @unless ($order->feedback=="")
-                <div class="offset-sm-1 col-sm-11">
+                <div class="offset-lg-1 col-sm-11">
                   <div class="row">
 
                   <div class=" alert alert-success">

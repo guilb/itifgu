@@ -7,7 +7,7 @@
               <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter un utilisateur')</span>
             </a>
         @endslot
-        <div class="table-div-container container clearfix">
+        <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-md-flex">
             <div class="col-sm-3">Email</div>
             <div class="col-sm-2">Role</div>
@@ -71,14 +71,14 @@
                     )
                 })
             })
- 
+
             $('a.btn-invoice').click(function(e) {
                 let that = $(this)
                 e.preventDefault()
                 $.fileDownload(that.attr('href'))
                     .done(function () {
                         that.remove();
-                        console.log('File download a success!'); 
+                        console.log('File download a success!');
                     })
                     .fail(function () {
                         console.log('File download failed!');
