@@ -8,7 +8,7 @@
             </a>
         @endslot
 
-        <div class="table-div-container container clearfix">
+        <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-lg-flex">
             <div class="col-lg-1">N°</div>
             @admin

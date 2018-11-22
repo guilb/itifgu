@@ -13,7 +13,7 @@
 </head>
 <body>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+    <div class="container-fluid">
       <div class="main-brand">
         <a href="{{ route('home') }}" class="navbar-brand" title="Accueil">
           <span class="logo"></span>
