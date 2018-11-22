@@ -39,7 +39,7 @@ class OrderController extends Controller
     public function create()
     {
         $this_user = \Auth::user();
-        $parkings = Parking::all();
+        $parkings = Parking::all ()->except(99);
         $users = User::all();
         return view('orders.create', compact('parkings','users','this_user'));
     }
@@ -95,8 +95,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-Log::debug($order);
-Log::debug($order->category_id);
+
 
         #$order = Order::find($order);
 

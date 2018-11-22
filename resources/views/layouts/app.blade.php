@@ -56,6 +56,8 @@
                   @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('userparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
                   @endforeach
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ route('userparking', 'administrateurs') }}">Administrateurs</a>
                 </div>
             </li>
 
