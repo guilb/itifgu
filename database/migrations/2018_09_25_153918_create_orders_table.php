@@ -38,8 +38,8 @@ class CreateOrdersTable extends Migration
             $table->float('vat');
             $table->string('delay');
             $table->string('status');
-            $table->string('customer_comment')->nullable();
-            $table->string('feedback')->nullable();
+            $table->text('customer_comment')->nullable();
+            $table->text('feedback')->nullable();
             $table->integer('invoice_id')->unsigned()->nullable();
             $table->foreign('invoice_id')->references('id')->on('invoices');
 
