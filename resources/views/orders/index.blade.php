@@ -7,34 +7,33 @@
               <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
             </a>
         @endslot
-        {{ differentClassAdminUser('class admin', 'class user') }}
         <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-lg-flex">
-            <div class="col-lg-1">N°</div>
+            <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-1') }}">N°</div>
             @admin
                 <div class="col-lg-2">Nom</div>
             @endadmin
-            <div class="col-lg-1">Statut</div>
-            <div class="col-lg-2">Produits</div>
-            <div class="col-lg-1">Prix</div>
-            <div class="col-lg-1">Délai</div>
-            <div class="col-lg-1">Date</div>
-            <div class="col-xs-12 col-lg-3">Actions</div>
+            <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}">Statut</div>
+            <div class="{{ differentClassAdminUser('col-lg-2', 'col-lg-2') }}">Produits</div>
+            <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-1') }}">Prix</div>
+            <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}">Délai</div>
+            <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}">Date</div>
+            <div class="{{ differentClassAdminUser('col-lg-3', 'col-lg-2') }}col-xs-12">Actions</div>
           </div>
 
           @foreach($orders as $order)
           <div class="clearfix div-row row">
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
+              <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-1') }}"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
               @admin
                 <div class="col-lg-2"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
             @endadmin
-              <div class="statut col-lg-1" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
-              <div class="col-lg-2"><span class="d-xs-block d-lg-none">Produits : </span>{{ $order->category_name }}<br />{{ $order->quantity }} x {{ $order->product_name }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Délai : </span>{{($order->delay) }}</div>
-              <div class="col-lg-1"><span class="d-xs-block d-lg-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
+              <div class="statut {{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
+              <div class="{{ differentClassAdminUser('col-lg-2', 'col-lg-2') }}"><span class="d-xs-block d-lg-none">Produits : </span>{{ $order->category_name }}<br />{{ $order->quantity }} x {{ $order->product_name }}</div>
+              <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-1') }}"><span class="d-xs-block d-lg-none">Prix : </span>{{ formatPrice($order->total_price) }}</div>
+              <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}"><span class="d-xs-block d-lg-none">Délai : </span>{{($order->delay) }}</div>
+              <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}"><span class="d-xs-block d-lg-none">Date : </span>{{ Carbon\Carbon::parse($order->created_at)->format('d/m/y') }}</div>
               <div class="d-xs-block d-lg-none mt-4"></div>
-              <div class="col-xs-12 col-lg-3 actions" id="buttons">
+              <div class="col-xs-12 {{ differentClassAdminUser('col-lg-3', 'col-lg-2') }} actions" id="buttons">
                 @admin
                     @include('partials.action-icon-order', [
                     'tooltip' => __('Accepter la commande'),
