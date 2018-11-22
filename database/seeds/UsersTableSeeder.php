@@ -32,6 +32,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Matthieu Estève',
             'email' => 'matthieu.esteve@groupevitaminet.com',
+            'role' => 'admin',
             'parking_id' => '99',
             'password' => bcrypt('admin'),
             'address' => "2 Boulevard Thomson",
@@ -43,6 +44,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Olivier Decornet',
             'email' => 'olivier.decornet@groupevitaminet.com',
+            'role' => 'admin',
             'parking_id' => '99',
             'password' => bcrypt('admin'),
             'address' => "2 Boulevard Thomson",

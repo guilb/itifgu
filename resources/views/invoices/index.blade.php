@@ -4,7 +4,7 @@
         @slot('title')
             @lang('Gestion des factures')
         @endslot
-        <div class="table-div-container container clearfix">
+        <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-md-flex">
             <div class="col-sm-2">N°</div>
             <div class="col-sm-2">Utilisateur</div>
