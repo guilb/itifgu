@@ -69,20 +69,6 @@
             @admin
                 <div class="form-row">
                   <div class="col-md-3">
-                    <label for="role">Parking</label>
-                  </div>
-                  <div class="col-md-3">
-                    {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
-                  </div>
-               </div>
-            @else
-                <span>Parking</span>
-                <span>{{ $user->parking->name }}</span>
-                <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
-            @endadmin
-            @admin
-                <div class="form-row">
-                  <div class="col-md-3">
                     <label for="role">Rôle</label>
                     {{ $user->role }}
                   </div>
@@ -93,9 +79,80 @@
             @else
                 <input class="form-control" id="role" type="hidden" name="role" value="{{ $user->role }}">
             @endadmin
+            @admin
+                @if ($user->role == "user")
+                    <div class="form-row">
+                      <div class="col-md-3">
+                        <label for="role">Parking</label>
+                      </div>
+                      <div class="col-md-3">
+                        {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
+                      </div>
+                   </div>
+               @else
+                <div class="form-row">
+                  <div class="col-md-3">
+                    <label for="role">Parking</label>
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-control" id="parking_id" name="parking_id">
+                        <option value="99">Tous les parkings</option>
+                    </select>
+                  </div>
+               </div>
+               @endif
+
+            @else
+                <span>Parking</span>
+                <span>{{ $user->parking->name }}</span>
+                <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
+            @endadmin
+
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
         </form>
     @endcomponent
+@endsection
+@section('script')
+
+    <script>
+
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+
+
+        $("#role").change(function(e) {
+            $( "#role" ).val();
+            switch ($( "#role" ).val()) {
+            case 'admin':
+                $('#parking_id').children('option').remove();
+                $('#parking_id').append($('<option/>', {
+                                value: 99,
+                                text : "Tous les parkings"
+                            }));
+                break;
+            case 'user':
+                $('#parking_id').children('option').remove();
+                @foreach($all_parkings as $parking)
+
+                    $('#parking_id').append($('<option/>', {
+                                value: {{ $parking->id }},
+                                text : "{{ $parking->name }}"
+                            }));
+                
+                @endforeach
+                break;
+            }
+        });
+
+                      
+
+
+
+    </script>
 @endsection

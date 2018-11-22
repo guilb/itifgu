@@ -28,5 +28,10 @@ class ParkingsTableSeeder extends Seeder
             'name' => 'Champ de Mars',
             'code' => '15',
         ]);     
+        Parking::create([
+            'id' => 99,
+            'name' => 'Administrateurs',
+            'code' => 'ALL',
+        ]);     
     }
 }

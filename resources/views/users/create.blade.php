@@ -60,23 +60,67 @@
                 ])
             <div class="form-row">
               <div class="col-md-3">
-                <label for="role">Parking</label>
-              </div>
-              <div class="col-md-3">
-                {{ Form::select('parking_id', $parkings,'', array('class' => 'form-control', 'id' => 'parking_id')) }}
-              </div>
-           </div>
-            <div class="form-row">
-              <div class="col-md-3">
                 <label for="role">Rôle</label>
               </div>
               <div class="col-md-3">
                 {{ Form::select('role', array('admin' => 'Admin', 'user' => 'User'), 'user', array('class' => 'form-control', 'id' => 'role')) }}
               </div>
             </div>
+            <div class="form-row">
+              <div class="col-md-3">
+                <label for="role">Parking</label>
+              </div>
+              <div class="col-md-3">
+                {{ Form::select('parking_id', $parkings,'', array('class' => 'form-control', 'id' => 'parking_id')) }}
+              </div>
+           </div>
+
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
         </form>
     @endcomponent
+@endsection
+
+@section('script')
+
+    <script>
+
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+
+
+        $("#role").change(function(e) {
+            $( "#role" ).val();
+            switch ($( "#role" ).val()) {
+            case 'admin':
+                $('#parking_id').children('option').remove();
+                $('#parking_id').append($('<option/>', {
+                                value: 99,
+                                text : "Tous les parkings"
+                            }));
+                break;
+            case 'user':
+                $('#parking_id').children('option').remove();
+                @foreach($all_parkings as $parking)
+
+                    $('#parking_id').append($('<option/>', {
+                                value: {{ $parking->id }},
+                                text : "{{ $parking->name }}"
+                            }));
+                
+                @endforeach
+                break;
+            }
+        });
+
+                      
+
+
+
+    </script>
 @endsection

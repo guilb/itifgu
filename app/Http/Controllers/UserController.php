@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $parkings = Parking::pluck('name', 'id');
+        $parkings = Parking::all ()->except(99)->pluck('name', 'id');
 
         return view('users.create',compact('parkings'));
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
         $users = User::paginate(config('app.pagination'));
-        $parkings = Parking::pluck('name', 'id');
+        $parkings = Parking::all ()->except(99)->pluck('name', 'id');
 
         return view ('users.edit', compact('user','parkings'));
     }
