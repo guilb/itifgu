@@ -51,7 +51,7 @@
                 @lang('Utilisateurs')
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownGestCat">
-                  <a class="dropdown-item" href="{{ route('user.index') }}">@lang('Toutes les utilisateurs')</a>
+                  <a class="dropdown-item" href="{{ route('user.index') }}">@lang('Tous les utilisateurs')</a>
                   <div class="dropdown-divider"></div>
                   @foreach($all_parkings as $parking)
                     <a class="dropdown-item" href="{{ route('userparking', $parking->slug) }}">@lang('Parking') {{ $parking->name }}</a>
