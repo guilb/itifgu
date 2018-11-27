@@ -13,20 +13,24 @@ class ParkingsTableSeeder extends Seeder
     public function run()
     {
         Parking::create([
-            'name' => 'République',
+            'name' => 'Effia République',
             'code' => '13',
         ]);        
         Parking::create([
-            'name' => 'Opéra',
+            'name' => 'Effia Opéra',
             'code' => '12',
         ]);         
         Parking::create([
-            'name' => 'Nouveau Siècle',
+            'name' => 'Effia Nouveau Siècle',
             'code' => '11',
         ]);         
         Parking::create([
-            'name' => 'Champ de Mars',
+            'name' => 'Effia Champ de Mars',
             'code' => '15',
+        ]);          
+        Parking::create([
+            'name' => 'Euratechnologies',
+            'code' => '16',
         ]);     
         Parking::create([
             'id' => 99,
