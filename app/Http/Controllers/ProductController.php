@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(config('app.pagination'));
+        $products = Product::orderBy('name', 'asc')->paginate(config('app.pagination'));
         return view('products.index', compact('products'));
     }
 
