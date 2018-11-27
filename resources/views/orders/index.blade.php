@@ -25,7 +25,7 @@
           <div class="clearfix div-row row">
               <div class="{{ differentClassAdminUser('col-lg-1', 'col-lg-1') }}"><span class="d-xs-block d-lg-none">N° : </span>{{ $order->id }}</div>
               @admin
-                <div class="col-lg-2"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_name }}</div>
+                <div class="col-lg-2"><span class="d-xs-block d-lg-none">Nom : </span>{{ $order->user_firstname }} {{ $order->user_name }}</div>
             @endadmin
               <div class="statut {{ differentClassAdminUser('col-lg-1', 'col-lg-2') }}" id="status"><span class="d-xs-block d-lg-none">Statut : </span><span id="label-status" ><?php echo e(displayStatus($order->status)); ?></span></div>
               <div class="{{ differentClassAdminUser('col-lg-2', 'col-lg-2') }}"><span class="d-xs-block d-lg-none">Produits : </span>{{ $order->category_name }}<br />{{ $order->quantity }} x {{ $order->product_name }}</div>

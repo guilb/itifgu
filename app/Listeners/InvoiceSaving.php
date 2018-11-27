@@ -27,6 +27,7 @@ class InvoiceSaving
      */
     public function handle($event)
     {
+        $event->model->user_firstname = $event->model->user->firstname;
         $event->model->user_name = $event->model->user->name;
         $event->model->user_address = $event->model->user->address;
         $event->model->user_zipcode = $event->model->user->zipcode;

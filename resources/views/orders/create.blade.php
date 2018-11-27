@@ -226,7 +226,7 @@
                         $.each(data[0], function (id,value) {
                             $('#user_id').append($('<option/>', {
                                 value: value.id,
-                                text : value.name
+                                text : value.firstname+' '+value.name
                             }));
                         });
 

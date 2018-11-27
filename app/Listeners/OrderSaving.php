@@ -30,6 +30,7 @@ class OrderSaving
         $event->model->product_name = $event->model->product->name;
         $event->model->category_name = $event->model->category->name;
         $event->model->parking_name = $event->model->parking->name;
+        $event->model->user_firstname = $event->model->user->firstname;
         $event->model->user_name = $event->model->user->name;
         $event->model->user_address = $event->model->user->address;
         $event->model->user_zipcode = $event->model->user->zipcode;

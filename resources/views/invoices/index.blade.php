@@ -16,7 +16,7 @@
           @foreach($invoices as $invoice)
             <div class="clearfix div-row row">
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">N° : </span>{{ $invoice->number }}</div>
-              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Utilisateur : </span>{{ $invoice->user->name }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Utilisateur : </span>{{ $invoice->user->firstname }} {{ $invoice->user->name }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Site : </span>{{ $invoice->parking->name }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Date : </span>{{ Carbon\Carbon::parse($invoice->date)->format('d-m-Y') }}</div>
               <div class="col-xs-12 col-md-4 actions" id="buttons">

@@ -21,6 +21,7 @@ class UserRequest extends FormRequest
     {   
         $id = $this->user ? ',' . $this->user->id : '';
         return $rules = [
+            'firstname' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users,email',
             #'password' => 'required',

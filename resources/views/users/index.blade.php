@@ -9,6 +9,7 @@
         @endslot
         <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-md-flex">
+            <div class="col-sm-3">Nom</div>
             <div class="col-sm-3">Email</div>
             <div class="col-sm-2">Role</div>
             <div class="col-sm-3">Nb commande à facturer</div>
@@ -17,7 +18,7 @@
 
           @foreach($users as $user)
             <div class="clearfix div-row row">
-              <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Email : </span>{{ $user->email }}</div>
+              <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $user->firstname }} {{ $user->name }}</div><div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Email : </span>{{ $user->email }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Role : </span>{{ $user->role }}</div>
               <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Nb de commandes à facturer : </span>{{ finishedOrders($user) }}</div>
               <div class="col-xs-12 col-md-4 actions" id="buttons">

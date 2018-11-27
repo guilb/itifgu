@@ -11,6 +11,14 @@
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             @include('partials.form-group', [
+                'title' => __('Prénom'),
+                'type' => 'name',
+                'name' => 'firstname',
+                'required' => true,
+                'disabled' => '',
+                'value' => $user->firstname,
+                ])
+            @include('partials.form-group', [
                 'title' => __('Nom'),
                 'type' => 'name',
                 'name' => 'name',

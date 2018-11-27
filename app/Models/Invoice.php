@@ -8,7 +8,7 @@ use App\Events\InvoiceCreating;
 class Invoice extends Model
 {
     protected $fillable = [
-        'user_id', 'parking_id','number', 'date','user_name', 'user_address', 'user_city','user_zipcode', 'user_country'
+        'user_id', 'parking_id','number', 'date','user_firstname','user_name', 'user_address', 'user_city','user_zipcode', 'user_country'
     ];
 
 	public function orders()

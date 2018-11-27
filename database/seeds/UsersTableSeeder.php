@@ -6,7 +6,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'François Guilbert',
+            'name' => 'Guilbert',
+            'firstname' => 'François',
             'email' => 'francois.guilbert@neoweb.fr',
             'role' => 'admin',
             'parking_id' => '99',
@@ -18,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 06 14 17",
         ]);
         User::create([
-            'name' => 'Fabien Lanselle',
+            'name' => 'Lanselle',
+            'firstname' => 'Fabien',
             'email' => 'fabien.lanselle@neoweb.fr',
             'role' => 'admin',
             'parking_id' => '99',
@@ -30,7 +32,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 06 14 17",
         ]);
         User::create([
-            'name' => 'Matthieu Estève',
+            'name' => 'Estève',
+            'firstname' => 'Matthieu',
             'email' => 'matthieu.esteve@groupevitaminet.com',
             'role' => 'admin',
             'parking_id' => '99',
@@ -42,7 +45,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 61 70 70",
         ]);
         User::create([
-            'name' => 'Olivier Decornet',
+            'name' => 'Decornet',
+            'firstname' => 'Olivier',
             'email' => 'olivier.decornet@groupevitaminet.com',
             'role' => 'admin',
             'parking_id' => '99',
@@ -54,7 +58,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 61 70 70",
         ]);
         User::create([
-            'name' => 'Paul Rolland',
+            'name' => 'Rolland',
+            'firstname' => 'Paul',
             'email' => 'rolland@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
@@ -65,7 +70,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Pierre Dupont',
+            'name' => 'Dupont',
+            'firstname' => 'Pierre',
             'email' => 'dupont@chezlui.fr',
             'parking_id' => '1',
             'password' => bcrypt('user'),
@@ -76,7 +82,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Jacques Carpentier',
+            'name' => 'Carpentier',
+            'firstname' => 'Jacques',
             'email' => 'carpentier@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
@@ -87,7 +94,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Virginie Leroux',
+            'name' => 'Leroux',
+            'firstname' => 'Virginie',
             'email' => 'leroux@chezlui.fr',
             'parking_id' => '2',
             'password' => bcrypt('user'),
@@ -98,7 +106,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Valérie Dufour',
+            'name' => 'Dufour',
+            'firstname' => 'Valérie',
             'email' => 'dufour@chezlui.fr',
             'parking_id' => '3',
             'password' => bcrypt('user'),
@@ -109,7 +118,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Rolland Ledoux',
+            'name' => 'Ledoux',
+            'firstname' => 'Rolland',
             'email' => 'ledoux@chezlui.fr',
             'parking_id' => '3',
             'password' => bcrypt('user'),
@@ -120,7 +130,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'François Dumont',
+            'name' => 'Dumont',
+            'firstname' => 'François',
             'email' => 'dumont@chezlui.fr',
             'parking_id' => '4',
             'password' => bcrypt('user'),
@@ -131,7 +142,8 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
         ]);
         User::create([
-            'name' => 'Stéphane Hermant',
+            'name' => 'Hermant',
+            'firstname' => 'Stéphane',
             'email' => 'hermant@chezlui.fr',
             'parking_id' => '4',
             'password' => bcrypt('user'),

@@ -24,7 +24,7 @@
                 <label for="user_id">@lang('Client')</label>
               </div>
               <div class="col-md-6">
-                <span>{{ $order->user_name }}</span>
+                <span>{{ $order->user_firstname }} {{ $order->user_name }}</span>
                 <input class="form-control" id="user_id" type="hidden" name="user_id" value="{{ $order->user_id }}">
               </div>
             </div>

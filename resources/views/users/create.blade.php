@@ -10,13 +10,19 @@
         <form method="POST" action="{{ route('user.store') }}" >
             {{ csrf_field() }}
             @include('partials.form-group', [
+                'title' => __('Prénom'),
+                'type' => 'name',
+                'name' => 'firstname',
+                'required' => true,
+                'disabled' => '',
+                ])
+            @include('partials.form-group', [
                 'title' => __('Nom'),
                 'type' => 'name',
                 'name' => 'name',
                 'required' => true,
                 'disabled' => '',
-                ])
-            @include('partials.form-group', [
+                ])            @include('partials.form-group', [
                 'title' => __('Adresse email'),
                 'type' => 'email',
                 'name' => 'email',
