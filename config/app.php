@@ -109,7 +109,7 @@ return [
     'cipher' => 'AES-256-CBC',
 
     //custom
-    'pagination' => 10,
+    'pagination' => 25,
     //
 
 
