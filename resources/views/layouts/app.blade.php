@@ -38,7 +38,7 @@
                   <a class="dropdown-item" href="{{ route('order.index') }}">@lang('Toutes les commandes')</a>
                   <div class="dropdown-divider"></div>
                   @foreach($all_parkings as $parking)
-                    <a class="dropdown-item" href="{{ route('orderparking', $parking->slug) }}">@lang('Site') {{ $parking->name }}</a>
+                    <a class="dropdown-item" href="{{ route('orderparking', $parking->slug) }}">{{ $parking->name }}</a>
                   @endforeach
                 </div>
             </li>
