@@ -86,7 +86,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('order.index') }}">@lang('Mes commandes')</a>
               </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('invoice.index') }}">@lang('Mes factures')</a>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('order.create') }}">@lang('Passer une commande')</a>
             </li>
