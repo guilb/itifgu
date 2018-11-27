@@ -48,6 +48,6 @@ Product::create(['name'=>'ressemelage meteor dame','category_id'=>'5','price_dis
 Product::create(['name'=>'ressemelage meteor homme','category_id'=>'5','price_display'=>'36,80€','price_value'=>'36.80','delay'=>'J+3', 'vat'=>'20', ]);
 Product::create(['name'=>'<20mn','category_id'=>'6','price_display'=>'à partir de 7€','delay'=>'SUR RDV', 'vat'=>'20', ]);
 Product::create(['name'=>'<30mn','category_id'=>'6','price_display'=>'à partir de 10€','delay'=>'SUR RDV', 'vat'=>'20', ]);
-Product::create(['name'=>'Selon les bons de commande','category_id'=>'7','price_display'=>'selon demande','delay'=>'CHAQUE SEMAINE', 'vat'=>'20', ]);
+Product::create(['name'=>'Selon les bons de commande','category_id'=>'7','price_display'=>'selon demande','delay'=>'CHAQUE SEMAINE', 'vat'=>'5.5', ]);
 }
 }
