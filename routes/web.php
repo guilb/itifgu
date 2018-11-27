@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('invoice', 'InvoiceController', [
         'except' => 'store'
     ]);
+    Route::get('/invoice/user/{id}', 'InvoiceController@user')->name('invoice.user');
     Route::name('userparking')->get('userparking/{slug}', 'UserController@parking');
     Route::name('orderparking')->get('orderparking/{slug}', 'OrderController@parking');
     Route::post('/load_product/{id}', 'ProductController@load_product');

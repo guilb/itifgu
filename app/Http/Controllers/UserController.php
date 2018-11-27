@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(config('app.pagination'));
+        $users = User::orderBy('name', 'asc')->paginate(config('app.pagination'));
         return view('users.index', compact('users'));
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function parking($slug)
     {
         $parking = Parking::whereSlug($slug)->firstorFail();
-        $users = User::whereParking_id($parking->id)->paginate(config('app.pagination'));;
+        $users = User::whereParking_id($parking->id)->orderBy('name', 'asc')->paginate(config('app.pagination'));;
 
         return view('users.index', compact('parking', 'users'));
     }
