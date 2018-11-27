@@ -68,7 +68,7 @@
     <tbody>
       @foreach ($invoice->orders as $order)
       <tr>
-        <td>{{ $order->product_name }}{{ $order->id }}</td>
+        <td>{{ $order->product_name }}</td>
         <td>{{ $order->quantity }}</td>
         <td>{{ formatPrice($order->unit_price/((100+$order->vat)/100)) }}</td>
         <td>{{ formatPrice($order->quantity*$order->unit_price/((100+$order->vat)/100)) }}</td>
