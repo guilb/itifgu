@@ -36,11 +36,11 @@
             @admin
                 <div class="form-row">
                   <div class="col-md-3">
-                    <label for="parking_id">@lang('Parking')</label>
+                    <label for="parking_id">@lang('Site')</label>
                   </div>
                   <div class="col-md-6">
                     <select id="parking_id" name="parking_id" class="form-control">
-                        <option>Choisissez un parking</option>
+                        <option>Choisissez un site</option>
                         @foreach($parkings as $parking)
                             <option value="{{ $parking->id }}">{{ $parking->name }}</option>
                         @endforeach

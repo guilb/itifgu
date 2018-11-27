@@ -68,7 +68,7 @@
             </div>
             <div class="form-row">
               <div class="col-md-3">
-                <label for="role">Parking</label>
+                <label for="role">Site</label>
               </div>
               <div class="col-md-3">
                 {{ Form::select('parking_id', $parkings,'', array('class' => 'form-control', 'id' => 'parking_id')) }}
@@ -101,7 +101,7 @@
                 $('#parking_id').children('option').remove();
                 $('#parking_id').append($('<option/>', {
                                 value: 99,
-                                text : "Tous les parkings"
+                                text : "Tous les sites"
                             }));
                 break;
             case 'user':

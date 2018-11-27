@@ -11,7 +11,7 @@
 
             <div class="form-row">
               <div class="col-md-3">
-                <label for="parking_id">@lang('Parking')</label>
+                <label for="parking_id">@lang('Site')</label>
               </div>
               <div class="col-md-6">
                 <span>{{ $order->parking_name }}</span>

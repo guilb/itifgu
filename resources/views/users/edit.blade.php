@@ -83,7 +83,7 @@
                 @if ($user->role == "user")
                     <div class="form-row">
                       <div class="col-md-3">
-                        <label for="role">Parking</label>
+                        <label for="role">Site</label>
                       </div>
                       <div class="col-md-3">
                         {{ Form::select('parking_id', $parkings, $user->parking_id, array('class' => 'form-control', 'id' => 'parking_id')) }}
@@ -92,18 +92,18 @@
                @else
                 <div class="form-row">
                   <div class="col-md-3">
-                    <label for="role">Parking</label>
+                    <label for="role">Site</label>
                   </div>
                   <div class="col-md-3">
                     <select class="form-control" id="parking_id" name="parking_id">
-                        <option value="99">Tous les parkings</option>
+                        <option value="99">Tous les sites</option>
                     </select>
                   </div>
                </div>
                @endif
 
             @else
-                <span>Parking</span>
+                <span>Site</span>
                 <span>{{ $user->parking->name }}</span>
                 <input class="form-control" id="parking_id" type="hidden" name="parking_id" value="{{ $user->parking_id }}">
             @endadmin
@@ -133,7 +133,7 @@
                 $('#parking_id').children('option').remove();
                 $('#parking_id').append($('<option/>', {
                                 value: 99,
-                                text : "Tous les parkings"
+                                text : "Tous les sites"
                             }));
                 break;
             case 'user':
