@@ -21,11 +21,11 @@ class OrderController extends Controller
     {
         $user = \Auth::user();
         if ( $user->role === 'admin') {
-            $orders = Order::paginate(config('app.pagination'));;
+            $orders = Order::orderBy('id', 'desc')->paginate(config('app.pagination'));;
         }
         else
         {
-            $orders = Order::whereUser_id($user->id)->paginate(config('app.pagination'));;
+            $orders = Order::orderBy('id', 'desc')->whereUser_id($user->id)->paginate(config('app.pagination'));;
         }
         return view('orders.index', compact('orders'));
 
