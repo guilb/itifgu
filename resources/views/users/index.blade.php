@@ -25,6 +25,7 @@
                 <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm float-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>
                 <a type="button" href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm float-right mr-2" data-toggle="tooltip" title="Modifier cet utilisateur {{ $user->email }}"><i class="fas fa-edit fa-lg"></i></a>
                 <a type="button" href="{{ route('order.user', $user->id) }}" class="btn btn-primary btn-sm float-right mr-2" data-toggle="tooltip" title="Afficher les commandes"><i class="fas fa-eye fa-lg"></i></a>
+                <a type="button" href="{{ route('invoice.user', $user->id) }}" class="btn btn-primary btn-sm float-right mr-2" data-toggle="tooltip" title="Afficher les factures"><i class="fas fa-eye fa-lg"></i></a>
                 @if (finishedOrders($user) != "0")
                     <a type="button" href="{{ route('invoice.store', $user) }}" class="btn btn-primary btn-invoice btn-sm float-right mr-2" data-toggle="tooltip" title="@lang('Facturer les commande de') {{ $user->name }}"><i class="fas fa-euro-sign fa-lg"></i></a>
                 @endif

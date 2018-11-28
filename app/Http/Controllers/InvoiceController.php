@@ -85,6 +85,13 @@ class InvoiceController extends Controller
         return $pdf->download($invoice->number.'.pdf');
     }
 
+
+    public function user($id)
+    {
+        $invoices = Invoice::whereUser_id($id)->paginate(config('app.pagination'));;
+
+        return view('invoices.index', compact ('invoices'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
