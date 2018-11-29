@@ -27,7 +27,7 @@ class OrderController extends Controller
         {
             $orders = Order::orderBy('id', 'desc')->whereUser_id($user->id)->paginate(config('app.pagination'));;
         }
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('orders','user'));
 
     }
 
@@ -63,10 +63,12 @@ class OrderController extends Controller
 
     public function parking($slug)
     {
+        $user = \Auth::user();
+
         $parking = Parking::whereSlug($slug)->firstorFail();
         $orders = Order::whereParking_id($parking->id)->paginate(config('app.pagination'));;
 
-        return view('orders.index', compact('parking', 'orders'));
+        return view('orders.index', compact('parking', 'orders','user'));
     }
 
 

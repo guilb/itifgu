@@ -3,9 +3,11 @@
     @component('components.card')
         @slot('title')
             @lang('Gestion des commandes')
-            <a class="btn btn-primary float-right" href="{{ route('order.create') }}">
-              <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
-            </a>
+            @if( $user->status === 'active')
+                <a class="btn btn-primary float-right" href="{{ route('order.create') }}">
+                    <i class="fas fa-plus pr5"></i> <span class="pl-2 d-none d-lg-block">@lang('Ajouter une commande')</span>
+                </a>
+            @endif
         @endslot
         <div class="table-div-container container-fluid clearfix">
           <div class="clearfix div-row header row d-none d-lg-flex">

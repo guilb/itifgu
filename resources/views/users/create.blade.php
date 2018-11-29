@@ -74,6 +74,14 @@
             </div>
             <div class="form-row">
               <div class="col-md-3">
+                <label for="role">Statut</label>
+              </div>
+              <div class="col-md-3">
+                {{ Form::select('status', array('active' => 'Actif', 'blocked' => 'Bloqué'), 'user', array('class' => 'form-control', 'id' => 'status')) }}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="role">Site</label>
               </div>
               <div class="col-md-3">

@@ -77,6 +77,14 @@
             @admin
                 <div class="form-row">
                   <div class="col-md-3">
+                    <label for="role">Statut</label>
+                  </div>
+                  <div class="col-md-3">
+                    {{ Form::select('status', array('active' => 'Actif', 'blocked' => 'Bloqué'), $user->status, array('class' => 'form-control', 'id' => 'status')) }}
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-3">
                     <label for="role">Rôle</label>
                     {{ $user->role }}
                   </div>
@@ -85,6 +93,7 @@
                   </div>
                 </div>
             @else
+                <input class="form-control" id="status" type="hidden" name="status" value="{{ $user->status }}">
                 <input class="form-control" id="role" type="hidden" name="role" value="{{ $user->role }}">
             @endadmin
             @admin

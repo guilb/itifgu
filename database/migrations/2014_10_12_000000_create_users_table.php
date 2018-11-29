@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->integer('parking_id')->unsigned();
             $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('cascade');
             $table->enum('role', ['user', 'admin'])->default('user');
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -12,6 +12,7 @@
             <div class="col-sm-3">Nom</div>
             <div class="col-sm-3">Email</div>
             <div class="col-sm-2">Role</div>
+            <div class="col-sm-2">Status</div>
             <div class="col-sm-3">Nb commande à facturer</div>
             <div class="col-xs-12 col-md-4 text-right">Actions</div>
           </div>
@@ -20,6 +21,7 @@
             <div class="clearfix div-row row">
               <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Nom : </span>{{ $user->firstname }} {{ $user->name }}</div><div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Email : </span>{{ $user->email }}</div>
               <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Role : </span>{{ $user->role }}</div>
+              <div class="col-sm-2"><span class="d-xs-block d-sm-block d-md-none">Statut : </span>{{ $user->status }}</div>
               <div class="col-sm-3"><span class="d-xs-block d-sm-block d-md-none">Nb de commandes à facturer : </span>{{ finishedOrders($user) }}</div>
               <div class="col-xs-12 col-md-4 actions" id="buttons">
                 <a type="button" href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger btn-sm float-right" data-toggle="tooltip" title="Supprimer cet utilisateur {{ $user->email }}"><i class="fas fa-trash fa-lg"></i></a>

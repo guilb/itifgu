@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 06 14 17",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Lanselle',
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 06 14 17",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Estève',
@@ -43,6 +45,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lesquin",
             'country' => "France",
             'phone' => "03 20 61 70 70",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Decornet',
@@ -56,6 +59,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lesquin",
             'country' => "France",
             'phone' => "03 20 61 70 70",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Rolland',
@@ -68,6 +72,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Dupont',
@@ -80,6 +85,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Carpentier',
@@ -92,6 +98,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Leroux',
@@ -104,6 +111,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Dufour',
@@ -116,6 +124,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Ledoux',
@@ -128,6 +137,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Dumont',
@@ -140,6 +150,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
         User::create([
             'name' => 'Hermant',
@@ -152,6 +163,7 @@ class UsersTableSeeder extends Seeder
             'city' => "Lille",
             'country' => "France",
             'phone' => "03 20 03 20 03",
+            'status' => "active",
         ]);
     }
 }

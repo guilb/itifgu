@@ -123,6 +123,7 @@ class UserController extends Controller
             'city' => $request->city,
             'country' => $request->country,
             'phone' => $request->phone,
+            'status' => $request->status,
         ]);
         return back()->with(['ok' => __('Le profil a bien été mis à jour')]);
     }
