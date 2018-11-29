@@ -25,11 +25,11 @@ class InvoiceController extends Controller
 
         $user = \Auth::user();
         if ( $user->role === 'admin') {
-            $invoices = Invoice::paginate(config('app.pagination'));
+            $invoices = Invoice::orderBy('created_at', 'desc')->paginate(config('app.pagination'));
         }
         else
         {
-            $invoices = Invoice::whereUser_id($user->id)->paginate(config('app.pagination'));
+            $invoices = Invoice::whereUser_id($user->id)->orderBy('created_at', 'desc')->paginate(config('app.pagination'));
         }
         return view('invoices.index', compact('invoices'));    }
 
