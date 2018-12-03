@@ -86,7 +86,7 @@ return [
 
     'username' => env('Neoweb'),
 
-    'password' => env('ksXGePIOZNRYi2t6fgXMnA'),
+    'password' => env('ssf4SOZFpMbZqlf7XiVbIQ'),
 
     /*
     |--------------------------------------------------------------------------

@@ -69,7 +69,7 @@
                     ])
                 @endadmin
                 @admin
-                <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting',$order->total_price) }} btn-sm btn-status btn-warning float-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
+                <a type="button" href="{{ route('order.edit', $order->id) }}" class="btn {{classButtonStatus($order->status,'waiting',$order->total_price) }} btn-sm btn-edit btn-warning float-left mr-2" data-toggle="tooltip" title="@lang('Modifier la commande') {{ $order->id }}"><i class="fas fa-edit fa-lg"></i></a>
                 @endadmin
             </div>
             <div class="clearfix div-comment">
@@ -162,19 +162,23 @@
                             case 'accepted':
                                 console.log('accepted');
                                 that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-edit').addClass( "disable-me" );
                                 that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
                             break;
                             case 'validated':
                                 console.log('validated');
                                 that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
+                                that.parent('div').parent('div').children('#buttons').children('.btn-edit').addClass( "disable-me" );
                                 that.parent('div').parent('div').children('#buttons').children('.btn-finished').removeClass( "disable-me" );
                             break;
                             case 'cancelled':
                                 console.log('cancelled');
+                                that.parent('div').parent('div').children('#buttons').children('.btn-edit').addClass( "disable-me" );
                                 that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
                             break;
                             case 'finished':
                                 console.log('finished');
+                                that.parent('div').parent('div').children('#buttons').children('.btn-edit').addClass( "disable-me" );
                                 that.parent('div').parent('div').children('#buttons').children('.btn-status').addClass( "disable-me" );
                             break;
                             default:
