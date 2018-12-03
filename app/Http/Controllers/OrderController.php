@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\Category;
 use App\Models\Product;
 use Log;
+use Mail;
 class OrderController extends Controller
 {
     /**
@@ -20,6 +21,18 @@ class OrderController extends Controller
     public function index()
     {
         $user = \Auth::user();
+        #$user = User::findOrFail($id);
+
+        $test = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            $m->from('test@neoweb.fr', 'SOLUTIS');
+
+            $m->to($user->email, $user->name)->subject('Mail pour tester');
+        });
+        Log::alert($test);
+        Log::alert($user->email);
+        Log::alert("pigeon");
+
+        
         if ( $user->role === 'admin') {
             $orders = Order::orderBy('id', 'desc')->paginate(config('app.pagination'));;
         }
@@ -74,9 +87,10 @@ class OrderController extends Controller
 
     public function user($id)
     {
+        $user = \Auth::user();
         $orders = Order::whereUser_id($id)->paginate(config('app.pagination'));;
 
-        return view('orders.index', compact ('orders'));
+        return view('orders.index', compact ('orders','user'));
     }
     /**
      * Display the specified resource.
