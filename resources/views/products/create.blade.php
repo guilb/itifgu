@@ -12,16 +12,20 @@
                 'name' => 'name',
                 'required' => false,
                 'disabled' => '',
-                ])   
-            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">        
+                ])
+            <div class="form-group{{ $errors->has('product') ? ' is-invalid' : '' }}">
 
-            <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-3">
                 <label for="category_id">@lang('Catégorie')</label>
+              </div>
+              <div class="col-md-6">
                 <select id="category_id" name="category_id" class="form-control">
                     @foreach($all_categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+              </div>
             </div>
             @include('partials.form-group', [
                 'title' => __('Prix affiché'),
@@ -29,38 +33,38 @@
                 'name' => 'price_display',
                 'required' => false,
                 'disabled' => '',
-                ])  
+                ])
             @include('partials.form-group', [
                 'title' => __('Prix réel'),
                 'type' => 'float',
                 'name' => 'price_value',
                 'required' => false,
                 'disabled' => '',
-                ])  
+                ])
             @include('partials.form-group', [
                 'title' => __('TVA'),
                 'type' => 'float',
                 'name' => 'vat',
                 'required' => false,
                 'disabled' => '',
-                ])  
+                ])
             @include('partials.form-group', [
                 'title' => __('Délai'),
                 'type' => 'text',
                 'name' => 'delay',
                 'required' => false,
                 'disabled' => '',
-                ])   
+                ])
             @include('partials.form-group', [
                 'title' => __('Description (optionnelle)'),
                 'type' => 'text',
                 'name' => 'description',
                 'required' => false,
                 'disabled' => '',
-                ])   
+                ])
             @component('components.button')
                 @lang('Envoyer')
             @endcomponent
         </form>
-    @endcomponent            
+    @endcomponent
 @endsection
