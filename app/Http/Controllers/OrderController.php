@@ -128,8 +128,20 @@ class OrderController extends Controller
     public function update(OrderRequest $request, Order $order)
     {   
 
+
+        $label_status = "modifiée"
+
         $order->update($request->all());
 
+        $order = Order::find($id);
+
+        $user = User::find($order->user_id);
+
+        $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order, 'label_status' => $label_status ], function ($m) use ($user,$order,$label_status) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
+
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été  '.$label_status);
+        });
 
 
         return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
@@ -139,6 +151,20 @@ class OrderController extends Controller
     public function update_status($id,$status)
     {
 
+        switch ($status) {
+        case 'accepted':
+            $label_status = "acceptée"
+            break;
+        case 'finished':
+            $label_status = "finalisée"
+            break;
+        case 'cancelled':
+            $label_status = "annulée"
+            break;
+        default :
+            $label_status = $status
+        }
+
         Order::where('id', $id)->update(array('status' => $status));
         Log::error('The system is down!');
         Log::error('$order');
@@ -147,10 +173,10 @@ class OrderController extends Controller
 
         $user = User::find($order->user_id);
 
-        $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order ], function ($m) use ($user,$order) {
+        $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order, 'label_status' => $label_status ], function ($m) use ($user,$order,$label_status) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été modifiée '.$order->status);
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été  '.$label_status);
         });
 
         #Order::where('id', $id)->update(array('status' => $status));

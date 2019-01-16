@@ -1,1 +1,1 @@
-Votre commande a été modifiée
+Votre commande a été {{ $label_status }}
