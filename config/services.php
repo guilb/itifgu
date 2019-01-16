@@ -35,7 +35,7 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'mandrill' => [
-        'secret' => 'ssf4SOZFpMbZqlf7XiVbIQ',
+        'secret' => 'B8r_cfYgdDZIo-_jJhjCcA',
     ],
 
 ];

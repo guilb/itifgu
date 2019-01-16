@@ -21,16 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        #$user = User::findOrFail($id);
-
-        $test = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('test@neoweb.fr', 'SOLUTIS');
-
-            $m->to($user->email, $user->name)->subject('Mail pour tester');
-        });
-        Log::alert($test);
-        Log::alert($user->email);
-        Log::alert("pigeon");
+        #$user = User::findOrFail($id)
 
         
         if ( $user->role === 'admin') {
@@ -55,6 +46,12 @@ class OrderController extends Controller
         $parkings = Parking::all ()->except(99);
         $users = User::all();
         return view('orders.create', compact('parkings','users','this_user'));
+
+        $test = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            $m->from('test@neoweb.fr', 'SOLUTIS');
+
+            $m->to($user->email, $user->name)->subject('Mail pour tester');
+        });
     }
 
     /**
@@ -138,7 +135,17 @@ class OrderController extends Controller
 
     public function update_status($id,$status)
     {
+
+
+
+
         Order::where('id', $id)->update(array('status' => $status));
+
+        $user = \Auth::user();
+
+        console.log($user->role+" "+$status);
+
+
         return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
     }
 

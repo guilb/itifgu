@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'francois@neoweb.fr'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contact@conciergerie-vt.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('Neoweb'),
+    'username' => env('Solutis le concierge'),
 
-    'password' => env('ssf4SOZFpMbZqlf7XiVbIQ'),
+    'password' => env('B8r_cfYgdDZIo-_jJhjCcA'),
 
     /*
     |--------------------------------------------------------------------------
