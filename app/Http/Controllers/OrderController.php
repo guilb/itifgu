@@ -140,7 +140,7 @@ class OrderController extends Controller
         $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order, 'label_status' => $label_status ], function ($m) use ($user,$order,$label_status) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été  '.$label_status);
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été '.$label_status);
         });
 
 
@@ -161,6 +161,9 @@ class OrderController extends Controller
         case 'cancelled':
             $label_status = "annulée";
             break;
+        case 'validated':
+            $label_status = "validée";
+            break;
         default :
             $label_status = $status;
         }
@@ -176,7 +179,7 @@ class OrderController extends Controller
         $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order, 'label_status' => $label_status ], function ($m) use ($user,$order,$label_status) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été  '.$label_status);
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été '.$label_status);
         });
 
         #Order::where('id', $id)->update(array('status' => $status));
