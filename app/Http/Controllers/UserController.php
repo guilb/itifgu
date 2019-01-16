@@ -52,8 +52,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        $parkings = Parking::all ()->except(99)->pluck('name', 'id');
+        $user = User::find($request->user_id);
 
+        $parkings = Parking::all ()->except(99)->pluck('name', 'id');
+        $email = Mail::send('emails.user_create', ['user' => $user], function ($m) use ($user) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
+
+            $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Votre compte a été créé '.$user->firstname.' '.$user->name.' '.$user->password);
+        });
         return view('users.create',compact('parkings'));
     }
 
@@ -69,7 +75,11 @@ class UserController extends Controller
         $request->merge(['password' => Hash::make($request->password)]);
         
         $user = User::create($request->all());
+        $email = Mail::send('emails.user_create', ['user' => $user], function ($m) use ($user) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre compte a été créé '.$user->firstname.' '.$user->name.' '.$user->password);
+        });
         return redirect('/user');
     }
 

@@ -1,3 +1,1 @@
-une commande a été créée 
-        {{ $user->name }}
-        {{ $user->firstname }}
+une commande a été créée pour {{ $user->firstname }} {{ $user->name }}

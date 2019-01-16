@@ -60,15 +60,12 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
         $user = User::find($request->user_id);
-        Log::warning($user);
         $email = Mail::send('emails.order_create', ['user' => $user], function ($m) use ($user) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
             $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Nouvelle commande pour '.$user->firstname.' '.$user->name);
         });
-        Log::warning($request);
         Order::create($request->all());
-        Log::warning($request);
         return back()->with('ok', __("La commande a bien été enregistrée"));
     }
 
