@@ -47,7 +47,8 @@ class OrderController extends Controller
         $users = User::all();
         $user = \Auth::user();
 
-
+        $email = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
             $m->to($user->email, $user->name)->subject('Mail pour tester');
         });
@@ -62,11 +63,12 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-
-
+        $user = $request->user
         $email = Mail::send('emails.order_create', ['user' => $user], function ($m) use ($user) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
+            $m->to($user->email, $user->name)->subject('Mail pour tester');
+        });
         Log::warning($request);
         Order::create($request->all());
         Log::warning($request);
