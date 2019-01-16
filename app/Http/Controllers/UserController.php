@@ -68,9 +68,10 @@ class UserController extends Controller
     public function store(UserRequest $request)
     { 
 
-        $password = $request->password;
-        $password = "ddddd";
-        $request->merge(['password' => Hash::make($request->password)]);
+        $password = hash('sha512', rand());
+
+        #$password = "ddddd";
+        $request->merge(['password' => Hash::make($password)]);
         
         $user = User::create($request->all());
         $email = Mail::send('emails.user_create', ['user' => $user, 'password' => $password ], function ($m) use ($user,$password) {
