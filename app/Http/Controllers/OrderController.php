@@ -139,25 +139,28 @@ class OrderController extends Controller
     public function update_status($id,$status)
     {
 
+        Order::where('id', $id)->update(array('status' => $status));
+        Log::error('The system is down!');
+        Log::error('$order');
 
-        $order = Order::where('id', $id)->update(array('status' => $status));
+        $order = Order::find($id);
 
         $user = User::find($order->user_id);
 
         $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order ], function ($m) use ($user,$order) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été créée '.$order->status);
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été modifiée '.$order->status);
         });
 
-        Order::where('id', $id)->update(array('status' => $status));
+        #Order::where('id', $id)->update(array('status' => $status));
 
-        $user = \Auth::user();
+        #$user = \Auth::user();
 
-        console.log($user->role+" "+$status);
+        #console.log($user->role+" "+$status);
 
 
-        return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
+        #return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
     }
 
 
