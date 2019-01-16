@@ -72,7 +72,7 @@ class UserController extends Controller
         $request->merge(['password' => Hash::make($request->password)]);
         
         $user = User::create($request->all());
-        $email = Mail::send('emails.user_create', ['user' => $user], function ($m) use ($user) {
+        $email = Mail::send('emails.user_create', ['user' => $user, 'password' => $password ], function ($m) use ($user,$password) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
             $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre compte a été créé '.$user->firstname.' '.$user->name.' '.$password);
