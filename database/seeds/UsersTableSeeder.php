@@ -168,7 +168,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Guilb',
             'firstname' => 'Guilb',
-            'email' => 'francois.guilbert@neoweb.fr',
+            'email' => 'francois@neoweb.fr',
             'parking_id' => '5',
             'password' => bcrypt('user'),
             'address' => "12 rue du lion",
