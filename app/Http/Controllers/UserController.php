@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Parking;
 use Illuminate\Support\Facades\Input;
+use Mail;
 
 
 class UserController extends Controller
