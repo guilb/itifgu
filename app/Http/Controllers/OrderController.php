@@ -129,7 +129,7 @@ class OrderController extends Controller
     {   
 
 
-        $label_status = "modifiée"
+        $label_status = "modifiée";
 
         $order->update($request->all());
 
