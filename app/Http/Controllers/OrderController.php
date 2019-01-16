@@ -133,7 +133,7 @@ class OrderController extends Controller
 
         $order->update($request->all());
 
-        $order = Order::find($id);
+        $order = Order::find($order->id);
 
         $user = User::find($order->user_id);
 
