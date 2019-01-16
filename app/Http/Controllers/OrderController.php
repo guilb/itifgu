@@ -47,13 +47,10 @@ class OrderController extends Controller
         $users = User::all();
         $user = \Auth::user();
 
-        $test = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
+
 
             $m->to($user->email, $user->name)->subject('Mail pour tester');
         });
-        Log::debug($test);
-        Log::debug("sss");
         return view('orders.create', compact('parkings','users','this_user'));
     }
 
@@ -65,6 +62,10 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
+
+
+        $email = Mail::send('emails.order_create', ['user' => $user], function ($m) use ($user) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
         Log::warning($request);
         Order::create($request->all());

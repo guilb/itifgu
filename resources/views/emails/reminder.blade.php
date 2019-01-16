@@ -1,1 +1,1 @@
-reminder.blade.php
+une commande a été créée
