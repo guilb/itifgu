@@ -45,13 +45,16 @@ class OrderController extends Controller
         $this_user = \Auth::user();
         $parkings = Parking::all ()->except(99);
         $users = User::all();
-        return view('orders.create', compact('parkings','users','this_user'));
+        $user = \Auth::user();
 
         $test = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('test@neoweb.fr', 'SOLUTIS');
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
             $m->to($user->email, $user->name)->subject('Mail pour tester');
         });
+        Log::debug($test);
+        Log::debug("sss");
+        return view('orders.create', compact('parkings','users','this_user'));
     }
 
     /**
