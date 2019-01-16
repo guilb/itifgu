@@ -64,7 +64,7 @@ class OrderController extends Controller
         $email = Mail::send('emails.create_order', ['user' => $user], function ($m) use ($user) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Nouvelle commande pour '+$user->firstname+' '+$user->name);
+            $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Nouvelle commande pour '.$user->firstname.' '.$user->name);
         });
         Log::warning($request);
         Order::create($request->all());
