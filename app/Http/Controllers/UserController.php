@@ -76,7 +76,7 @@ class UserController extends Controller
         $email = Mail::send('emails.user_create', ['user' => $user, 'password' => $password ], function ($m) use ($user,$password) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre compte a été créé '.$user->firstname.' '.$user->name.' '.$password);
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre compte a été créé '.$user->firstname.' '.$user->name);
         });
         return redirect('/user');
     }

@@ -129,6 +129,9 @@ class OrderController extends Controller
     {   
 
         $order->update($request->all());
+
+
+
         return redirect()->route('order.index')->with('ok', __('La commande a bien été modifié'));
     }
 
@@ -137,7 +140,15 @@ class OrderController extends Controller
     {
 
 
+        $order = Order::where('id', $id)->update(array('status' => $status));
 
+        $user = User::find($order->user_id);
+
+        $email = Mail::send('emails.order_update', ['user' => $user, 'order' => $order ], function ($m) use ($user,$order) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
+
+            $m->to($user->email, $user->firstname.' '.$user->name)->subject('Votre commande a été créée '.$order->status);
+        });
 
         Order::where('id', $id)->update(array('status' => $status));
 
