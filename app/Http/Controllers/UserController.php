@@ -68,8 +68,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     { 
 
-        $password = hash('sha512', rand());
-
+        $password = substr(hash('sha512',rand()),0,12);
         #$password = "ddddd";
         $request->merge(['password' => Hash::make($password)]);
         
