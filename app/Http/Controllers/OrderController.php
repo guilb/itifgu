@@ -153,13 +153,13 @@ class OrderController extends Controller
 
         switch ($status) {
         case 'accepted':
-            $label_status = "acceptée"
+            $label_status = "acceptée";
             break;
         case 'finished':
-            $label_status = "finalisée"
+            $label_status = "finalisée";
             break;
         case 'cancelled':
-            $label_status = "annulée"
+            $label_status = "annulée";
             break;
         default :
             $label_status = $status
