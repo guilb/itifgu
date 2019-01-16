@@ -63,7 +63,8 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        $user = User::find($request->user);
+        $user = User::find($request->user_id);
+        Log::warning($user);
         $email = Mail::send('emails.order_create', ['user' => $user], function ($m) use ($user) {
             $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
