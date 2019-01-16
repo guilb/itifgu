@@ -47,11 +47,7 @@ class OrderController extends Controller
         $users = User::all();
         $user = \Auth::user();
 
-        $email = Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
-            $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Nouvelle commande pour '+$user->firstname+' '+$user->name);
-        });
         return view('orders.create', compact('parkings','users','this_user'));
     }
 
@@ -65,7 +61,11 @@ class OrderController extends Controller
     {
         $user = User::find($request->user_id);
         Log::warning($user);
+        $email = Mail::send('emails.create_order', ['user' => $user], function ($m) use ($user) {
+            $m->from('contact@conciergerie-vt.com', 'SOLUTIS');
 
+            $m->to('contact@conciergerie-vt.com', 'Conciergerie')->subject('Nouvelle commande pour '+$user->firstname+' '+$user->name);
+        });
         Log::warning($request);
         Order::create($request->all());
         Log::warning($request);
