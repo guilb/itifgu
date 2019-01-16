@@ -165,5 +165,17 @@ class UsersTableSeeder extends Seeder
             'phone' => "03 20 03 20 03",
             'status' => "active",
         ]);
-    }
+        User::create([
+            'name' => 'Guilb',
+            'firstname' => 'Guilb',
+            'email' => 'francois.guilbert@neoweb.fr',
+            'parking_id' => '5',
+            'password' => bcrypt('user'),
+            'address' => "12 rue du lion",
+            'zipcode' => "59000",
+            'city' => "Lille",
+            'country' => "France",
+            'phone' => "03 20 03 20 03",
+            'status' => "active",
+        ]);    }
 }
