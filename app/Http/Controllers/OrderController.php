@@ -162,7 +162,7 @@ class OrderController extends Controller
             $label_status = "annulée";
             break;
         default :
-            $label_status = $status
+            $label_status = $status;
         }
 
         Order::where('id', $id)->update(array('status' => $status));
