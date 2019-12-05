@@ -13,33 +13,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
-        ],
-        'App\Events\CategorySaving' => [
-            'App\Listeners\CategorySaving',
-        ],
-        'App\Events\ProductSaving' => [
-            'App\Listeners\ProductSaving',
-        ],
-        'App\Events\ParkingSaving' => [
-        'App\Listeners\ParkingSaving',
-        ],
-        'App\Events\OrderSaving' => [
-        'App\Listeners\OrderSaving',
-        ],
-        'App\Events\OrderUpdating' => [
-        'App\Listeners\OrderUpdating',
-        ],
-        'App\Events\InvoiceSaving' => [
-        'App\Listeners\InvoiceSaving',
-        ],
-        'App\Events\InvoiceCreating' => [
-        'App\Listeners\InvoiceCreating',
-        ],
-        'App\Events\UserCreating' => [
-        'App\Listeners\UserCreating',
-        ],
     ];
 
 

@@ -166,6 +166,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        #GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
 
         'Collective\Html\HtmlServiceProvider',
 
@@ -220,6 +221,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        #'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
+
     ],
 
 ];
